@@ -1,0 +1,9 @@
+docs_dir: docs/book
+site_dir: docs/html
+pages:
+    - index.md
+    - Introduction: intro.md
+site_name: 'laminas-zendframework-bridge'
+site_description: 'Alias legacy ZF class names to Laminas Project equivalents.'
+repo_url: 'https://github.com/laminas/laminas-zendframework-bridge'
+copyright: 'Copyright (c) 2019 <a href="https://getlaminas.org/">Laminas Foundation</a>'

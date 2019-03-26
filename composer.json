@@ -1,0 +1,31 @@
+{
+    "name": "laminas/laminas-zendframework-bridge",
+    "description": "Alias legacy ZF class names to Laminas Project equivalents.",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "autoloading",
+        "laminas",
+        "zf",
+        "zendframework"
+    ],
+    "support": {
+        "docs": "https://docs.laminas.dev/laminas-zendframework-bridge/",
+        "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
+        "source": "https://github.com/laminas/laminas-zendframework-bridge",
+        "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
+        "forum": "https://discourse.laminas.dev/"
+    },
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+        "files": [
+            "src/autoload.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
