@@ -17,14 +17,22 @@ class Autoloader
      */
     public static function load()
     {
-        $classes = RewriteRules::classRewrite();
+        $classes = RewriteRules::namespaceRewrite();
         spl_autoload_register(static function ($class) use ($classes) {
-            foreach ($classes as $legacy => $new) {
-                if (strpos($class, $legacy) === 0) {
-                    $alias = $new . substr($class, strlen($legacy));
-                    class_alias($alias, $class);
-                    return;
-                }
+            $segments = explode('\\', $class);
+
+            $i = 0;
+            $check = '';
+
+            while (isset($classes[$check . $segments[$i] . '\\'])) {
+                $check .= $segments[$i] . '\\';
+                ++$i;
+            }
+
+            if ($check !== '') {
+                $alias = $classes[$check] . substr($class, strlen($check));
+                class_alias($alias, $class);
+                return;
             }
         });
     }

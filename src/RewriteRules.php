@@ -12,7 +12,7 @@ class RewriteRules
     /**
      * @return array
      */
-    public static function classRewrite()
+    public static function namespaceRewrite()
     {
         // @todo Need to determine the final name and namespace for zf-console
         return [
