@@ -12,45 +12,10 @@ namespace Laminas\ZendFrameworkBridge;
  */
 class Autoloader
 {
-    public static function load()
-    {
-        self::registerFunctionAliases();
-        self::registerClassLoader();
-    }
-
-    /**
-     * @todo: maybe we should remove aliasing for functions from this bridge library
-     *      and using similar method we can provide aliases in the respective libraries,
-     *      then we can easily support all version of zend-stratigility, zend-diactoros...
-     */
-    public static function registerFunctionAliases()
-    {
-        $functions = RewriteRules::functionRewrite();
-        foreach ($functions as $legacy => $new) {
-            if (! function_exists($legacy)
-                && function_exists($new)
-            ) {
-                $last = strrpos($legacy, '\\');
-                $namespace = substr($legacy, 0, $last);
-                $function = substr($legacy, $last + 1);
-
-                $string = sprintf(
-                    'namespace %s; function %s() { return call_user_func_array(\'%s\', func_get_args()); }',
-                    $namespace,
-                    $function,
-                    $new
-                );
-
-                // @todo: think about better method here, as eval can be disabled on many prod env
-                eval($string);
-            }
-        }
-    }
-
     /**
      * This autoloader is _append_, so a mix of legacy and Laminas classes can be used.
      */
-    public static function registerClassLoader()
+    public static function load()
     {
         $classes = RewriteRules::classRewrite();
         spl_autoload_register(static function ($class) use ($classes) {
