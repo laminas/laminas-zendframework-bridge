@@ -5,6 +5,12 @@
  * @license   https://github.com/laminas/laminas-zendframework-bridge/blob/master/LICENSE.md New BSD License
  */
 
+if (PHP_VERSION_ID >= 71000) {
+    require __DIR__ . '/autoload-functions-containerconfigtest.php';
+    require __DIR__ . '/autoload-functions-diactoros.php';
+    require __DIR__ . '/autoload-functions-stratigility.php';
+}
+
 /**
  * Alias legacy Zend Framework project classes/interfaces/traits to Laminas equivalents.
  *
@@ -14,7 +20,7 @@ spl_autoload_register(function ($class) {
     // Zend and Expressive
     if (strpos($class, 'Zend\\') === 0) {
         $alias = strpos($class, 'Zend\\Expressive\\') === 0 || strpos($class, 'Zend\\ProblemDetails\\') === 0
-            ? str_replace(['Zend\\Expressive\\', 'Zend\\ProblemDetails\\'], 'Expressive\\', $class)
+            ? str_replace(array('Zend\\Expressive\\', 'Zend\\ProblemDetails\\'), 'Expressive\\', $class)
             : str_replace('Zend\\', 'Laminas\\', $class);
 
         class_alias($alias, $class);
@@ -45,8 +51,8 @@ spl_autoload_register(function ($class) {
     ) {
         // phpcs:disable
         $alias = str_replace(
-            [     'ZendXml\\', 'ZendService\\',      'ZendOAuth\\',      'ZendDiagnostics\\'],
-            ['Laminas\\Xml\\',     'Laminas\\', 'Laminas\\OAuth\\', 'Laminas\\Diagnostics\\'],
+            array(     'ZendXml\\', 'ZendService\\',      'ZendOAuth\\',      'ZendDiagnostics\\'),
+            array('Laminas\\Xml\\',     'Laminas\\', 'Laminas\\OAuth\\', 'Laminas\\Diagnostics\\'),
             $class
         );
         // phpcs:enable
