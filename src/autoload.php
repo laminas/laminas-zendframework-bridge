@@ -9,8 +9,6 @@
  * Alias legacy Zend Framework project classes/interfaces/traits to Laminas equivalents.
  *
  * This autoloader is _prepended_ to ensure that the original is not looked up first.
- *
- * @todo Need to address the various namespaced functions available in ZF packages.
  */
 spl_autoload_register(function ($class) {
     // Zend and Expressive
@@ -55,4 +53,4 @@ spl_autoload_register(function ($class) {
         class_alias($alias, $class);
         return;
     }
-}, true, true); // prepend aliases!
+}); // append aliases, so a mix of legacy and Laminas classes can be used.

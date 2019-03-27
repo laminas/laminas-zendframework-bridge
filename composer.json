@@ -20,7 +20,10 @@
     },
     "autoload": {
         "files": [
-            "src/autoload.php"
+            "src/autoload.php",
+            "src/autoload-functions-containerconfigtest.php",
+            "src/autoload-functions-diactoros.php",
+            "src/autoload-functions-stratigility.php"
         ]
     },
     "extra": {
