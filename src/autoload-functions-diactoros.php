@@ -3,7 +3,7 @@
  * Provide aliases for zend-diactoros functions.
  *
  * @see       https://github.com/laminas/laminas-zendframework-bridge for the canonical source repository
- * @copyright Copyright (c) 2019 Laminas Foundation (https://getlaminas.org)
+ * @copyright https://github.com/laminas/laminas-zendframework-bridge/blob/master/COPYRIGHT.md
  * @license   https://github.com/laminas/laminas-zendframework-bridge/blob/master/LICENSE.md New BSD License
  */
 
