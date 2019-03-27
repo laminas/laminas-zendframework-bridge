@@ -18,19 +18,19 @@ class RewriteRules
         return array(
             // Expressive
             'Zend\\ProblemDetails\\' => 'Expressive\\',
-            'Zend\\Expressive\\' => 'Expressive\\',
+            'Zend\\Expressive\\'     => 'Expressive\\',
             // Laminas
-            'Zend\\' => 'Laminas\\',
+            'Zend\\'                    => 'Laminas\\',
             'ZF\\ComposerAutoloading\\' => 'Laminas\\ComposerAutoloading\\',
-            'ZF\\Deploy\\' => 'Laminas\\Deploy\\',
-            'ZF\\DevelopmentMode\\' => 'Laminas\\DevelopmentMode\\',
+            'ZF\\Deploy\\'              => 'Laminas\\Deploy\\',
+            'ZF\\DevelopmentMode\\'     => 'Laminas\\DevelopmentMode\\',
             // Apigility
             'ZF\\Apigility\\' => 'Apigility\\',
-            'ZF\\' => 'Apigility\\',
+            'ZF\\'            => 'Apigility\\',
             // ZendXml, API wrappers, zend-http OAuth support, zend-diagnostics
-            'ZendXml\\' => 'Laminas\\Xml\\',
-            'ZendService\\' => 'Laminas\\',
-            'ZendOAuth\\' => 'Laminas\\OAuth\\',
+            'ZendXml\\'         => 'Laminas\\Xml\\',
+            'ZendService\\'     => 'Laminas\\',
+            'ZendOAuth\\'       => 'Laminas\\OAuth\\',
             'ZendDiagnostics\\' => 'Laminas\\Diagnostics\\',
         );
     }
