@@ -14,7 +14,7 @@ if (PHP_VERSION_ID >= 71000) {
 /**
  * Alias legacy Zend Framework project classes/interfaces/traits to Laminas equivalents.
  *
- * This autoloader is _prepended_ to ensure that the original is not looked up first.
+ * This autoloader is _appended_, so a mix of legacy and Laminas classes can be used.
  */
 spl_autoload_register(function ($class) {
     // Zend and Expressive
@@ -59,4 +59,4 @@ spl_autoload_register(function ($class) {
         class_alias($alias, $class);
         return;
     }
-}); // append aliases, so a mix of legacy and Laminas classes can be used.
+});
