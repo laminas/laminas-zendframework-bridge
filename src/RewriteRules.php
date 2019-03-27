@@ -15,7 +15,7 @@ class RewriteRules
     public static function namespaceRewrite()
     {
         // @todo Need to determine the final name and namespace for zf-console
-        return [
+        return array(
             // Expressive
             'Zend\\ProblemDetails\\' => 'Expressive\\',
             'Zend\\Expressive\\' => 'Expressive\\',
@@ -32,6 +32,6 @@ class RewriteRules
             'ZendService\\' => 'Laminas\\',
             'ZendOAuth\\' => 'Laminas\\OAuth\\',
             'ZendDiagnostics\\' => 'Laminas\\Diagnostics\\',
-        ];
+        );
     }
 }
