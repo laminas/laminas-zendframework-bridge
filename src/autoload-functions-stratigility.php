@@ -10,38 +10,15 @@
 namespace Zend\Stratigility;
 
 use Laminas\Stratigility\Middleware\CallableMiddlewareDecorator;
-use Laminas\Stratigility\Middleware\DoublePassMiddlewareDecorator;
-use Laminas\Stratigility\Middleware\HostMiddlewareDecorator;
-use Laminas\Stratigility\Middleware\PathMiddlewareDecorator;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
-
-use function Laminas\Stratigility\doublePassMiddleware as laminasDoublePassMiddleware;
-use function Laminas\Stratigility\host as laminasHost;
-use function Laminas\Stratigility\middleware as laminasMiddleware;
-use function Laminas\Stratigility\path as laminasPath;
+use Webimpress\HttpMiddlewareCompatibility;
 
 // Only define functions if one or more known functions do not exist
-if (! function_exists(__NAMESPACE__ . '\middleware')) {
-    function doublePassMiddleware(
-        callable $middleware,
-        ResponseInterface $response = null
-    ) : DoublePassMiddlewareDecorator {
-        return laminasDoublePassMiddleware($middleware, $response);
-    }
-
-    function host(string $host, MiddlewareInterface $middleware) : HostMiddlewareDecorator
-    {
-        return laminasHost($host, $middleware);
-    }
-
-    function middleware(callable $middleware) : CallableMiddlewareDecorator
-    {
-        return laminasMiddleware($middleware);
-    }
-
-    function path(string $path, MiddlewareInterface $middleware) : PathMiddlewareDecorator
-    {
-        return laminasPath($path, $middleware);
+// and a known class is present.
+if (! function_exists(__NAMESPACE__ . '\middleware') && class_exists(CallableMiddlewareDecorator::class)) {
+    if (interface_exists(MiddlewareInterface::class)) {
+        require __DIR__ . '/autoload-functions-stratigility-v3.php';
+    } elseif (interface_exists(HttpMiddlewareCompatibility\MiddlewareInterface::class)) {
+        require __DIR__ . '/autoload-functions-stratigility-v2.php';
     }
 }

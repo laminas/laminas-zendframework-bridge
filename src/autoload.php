@@ -8,6 +8,9 @@
 if (PHP_VERSION_ID >= 71000) {
     require __DIR__ . '/autoload-functions-containerconfigtest.php';
     require __DIR__ . '/autoload-functions-diactoros.php';
+}
+
+if (PHP_VERSION_ID >= 56000) {
     require __DIR__ . '/autoload-functions-stratigility.php';
 }
 
