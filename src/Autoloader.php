@@ -24,6 +24,7 @@ class Autoloader
             $i = 0;
             $check = '';
 
+            // We are checking segments of the namespace to match quicker
             while (isset($classes[$check . $segments[$i] . '\\'])) {
                 $check .= $segments[$i] . '\\';
                 ++$i;
