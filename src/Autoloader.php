@@ -29,11 +29,12 @@ class Autoloader
                 ++$i;
             }
 
-            if ($check !== '') {
-                $alias = $classes[$check] . substr($class, strlen($check));
-                class_alias($alias, $class);
+            if ($check === '') {
                 return;
             }
+
+            $alias = $classes[$check] . substr($class, strlen($check));
+            class_alias($alias, $class);
         });
     }
 }
