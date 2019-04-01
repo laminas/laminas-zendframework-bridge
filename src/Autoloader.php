@@ -13,7 +13,8 @@ namespace Laminas\ZendFrameworkBridge;
 class Autoloader
 {
     /**
-     * This autoloader is _append_, so a mix of legacy and Laminas classes can be used.
+     * This autoloader is _appended_, so a mix of legacy and Laminas classes
+     * can be used.
      */
     public static function load()
     {
