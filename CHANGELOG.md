@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.2.0 - 2019-04-01
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- [#4](https://github.com/laminas/laminas-zendframework-bridge/pull/4) rewrites the autoloader to be class-based, via the class
+  `Laminas\ZendFrameworkBridge\Autoloader`. Additionally, the new approach
+  provides a performance boost by using a balanced tree algorithm, ensuring
+  matches occur faster.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- [#4](https://github.com/laminas/laminas-zendframework-bridge/pull/4) removes function aliasing. Function aliasing will move to the packages that
+  provide functions.
+
+### Fixed
+
+- Nothing.
+
 ## 0.1.0 - 2019-03-27
 
 ### Added
