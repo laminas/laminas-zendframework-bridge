@@ -17,7 +17,7 @@ class RewriteRules
         // @todo Need to determine the final name and namespace for zf-console
         return array(
             // Expressive
-            'Zend\\ProblemDetails\\'                                 => 'Expressive\\',
+            'Zend\\ProblemDetails\\'                                 => 'Expressive\\ProblemDetails\\',
             'Zend\\Expressive\\Authentication\\ZendAuthentication\\' => 'Expressive\\Authentication\\LaminasAuthentication\\',
             'Zend\\Expressive\\Router\\ZendRouter\\'                 => 'Expressive\\Router\\LaminasRouter\\',
             'Zend\\Expressive\\ZendView\\'                           => 'Expressive\\LaminasView\\',
