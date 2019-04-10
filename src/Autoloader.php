@@ -36,7 +36,10 @@ class Autoloader
             }
 
             $alias = $classes[$check] . substr($class, strlen($check));
-            class_alias($alias, $class);
+
+            if (class_exists($alias) || interface_exists($alias) || trait_exists($alias)) {
+                class_alias($alias, $class);
+            }
         });
     }
 }

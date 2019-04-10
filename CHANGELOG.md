@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.2.2 - 2019-04-10
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Added a check that the discovered alias exists as a class, interface, or trait
+  before attempting to call `class_alias()`.
+
 ## 0.2.1 - 2019-04-10
 
 ### Added
