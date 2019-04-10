@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.2.3 - 2019-04-10
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#9](https://github.com/laminas/laminas-zendframework-bridge/pull/9) fixes the mapping for the Problem Details package.
+
 ## 0.2.2 - 2019-04-10
 
 ### Added
