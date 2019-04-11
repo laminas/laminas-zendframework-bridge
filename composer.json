@@ -18,6 +18,9 @@
     "require": {
         "php": "^5.3 || ^7.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5 || ^7.5 || ^8.1"
+    },
     "autoload": {
         "files": [
             "src/autoload.php"
@@ -26,9 +29,24 @@
             "Laminas\\ZendFrameworkBridge\\": "src//"
         }
     },
+    "autoload-dev": {
+        "files": [
+            "test/classes.php"
+        ],
+        "psr-4": {
+            "LaminasTest\\ZendFrameworkBridge\\": "test//"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     }
 }
