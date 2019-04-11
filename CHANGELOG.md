@@ -2,9 +2,11 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 0.2.4 - TBD
+## 0.2.4 - 2019-04-11
 
 ### Added
+
+- [#11](https://github.com/laminas/laminas-zendframework-bridge/pull/11) adds maps for the Expressive router adapter packages.
 
 - [#10](https://github.com/laminas/laminas-zendframework-bridge/pull/10) adds a map for the Psr7Bridge package, as it used `Zend` within a subnamespace.
 
