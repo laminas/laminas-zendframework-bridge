@@ -58,6 +58,12 @@ class RewriteRules
                 => 'Expressive\\Authorization\\Rbac\\LaminasRbacAssertionInterface',
             'Zend\\Expressive\\Authorization\\Rbac\\ZendRbacFactory'
                 => 'Expressive\\Authorization\\Rbac\\LaminasRbacFactory',
+            'Zend\\Expressive\\Router\\ZendRouter'
+                => 'Expressive\\Router\\LaminasRouter',
+            'Zend\\Expressive\\ZendView\\ZendViewRenderer'
+                => 'Expressive\\LaminasView\\LaminasViewRenderer',
+            'Zend\\Expressive\\ZendView\\ZendViewRendererFactory'
+                => 'Expressive\\LaminasView\\LaminasViewRendererFactory',
         );
     }
 }
