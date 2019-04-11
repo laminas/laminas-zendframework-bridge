@@ -49,15 +49,15 @@ class RewriteRules
     {
         return array(
             'Zend\\Expressive\\Authorization\\Acl\\ZendAclFactory'
-                => 'Laminas\\Expressive\\Authorization\\Acl\\LaminasAclFactory',
+                => 'Expressive\\Authorization\\Acl\\LaminasAclFactory',
             'Zend\\Expressive\\Authorization\\Acl\\ZendAcl'
-                => 'Laminas\\Expressive\\Authorization\\Acl\\LaminasAcl',
+                => 'Expressive\\Authorization\\Acl\\LaminasAcl',
             'Zend\\Expressive\\Authorization\\Rbac\\ZendRbac'
-                => 'Laminas\\Expressive\\Authorization\\Rbac\\LaminasRbac',
+                => 'Expressive\\Authorization\\Rbac\\LaminasRbac',
             'Zend\\Expressive\\Authorization\\Rbac\\ZendRbacAssertionInterface'
-                => 'Laminas\\Expressive\\Authorization\\Rbac\\LaminasRbacAssertionInterface',
+                => 'Expressive\\Authorization\\Rbac\\LaminasRbacAssertionInterface',
             'Zend\\Expressive\\Authorization\\Rbac\\ZendRbacFactory'
-                => 'Laminas\\Expressive\\Authorization\\Rbac\\LaminasRbacFactory',
+                => 'Expressive\\Authorization\\Rbac\\LaminasRbacFactory',
         );
     }
 }
