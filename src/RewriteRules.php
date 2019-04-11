@@ -48,6 +48,10 @@ class RewriteRules
     public static function classRewrite()
     {
         return array(
+            'Zend\\Expressive\\Authentication\\ZendAuthentication\\ZendAuthentication'
+                => 'Expressive\\Authentication\\LaminasAuthentication\\LaminasAuthentication',
+            'Zend\\Expressive\\Authentication\\ZendAuthentication\\ZendAuthenticationFactory'
+                => 'Expressive\\Authentication\\LaminasAuthentication\\LaminasAuthenticationFactory',
             'Zend\\Expressive\\Authorization\\Acl\\ZendAclFactory'
                 => 'Expressive\\Authorization\\Acl\\LaminasAclFactory',
             'Zend\\Expressive\\Authorization\\Acl\\ZendAcl'
