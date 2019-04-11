@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.2.5 - TBD
+
+### Added
+
+- [#12](https://github.com/laminas/laminas-zendframework-bridge/pull/12) adds functionality for ensuring we alias namespaces and classes that
+  include the word `Zend` in them; e.g., `Zend\Expressive\ZendView\ZendViewRendererFactory`
+  will now alias to `Expressive\LaminasView\LaminasViewRendererFactory`.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.2.4 - 2019-04-11
 
 ### Added
