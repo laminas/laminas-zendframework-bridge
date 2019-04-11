@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.2.4 - TBD
+
+### Added
+
+- [#10](https://github.com/laminas/laminas-zendframework-bridge/pull/10) adds a map for the Psr7Bridge package, as it used `Zend` within a subnamespace.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.2.3 - 2019-04-10
 
 ### Added
