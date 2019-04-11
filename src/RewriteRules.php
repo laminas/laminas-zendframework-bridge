@@ -19,7 +19,9 @@ class RewriteRules
             // Expressive
             'Zend\\ProblemDetails\\'                                 => 'Expressive\\ProblemDetails\\',
             'Zend\\Expressive\\Authentication\\ZendAuthentication\\' => 'Expressive\\Authentication\\LaminasAuthentication\\',
+            'Zend\\Expressive\\Authentication\\'                     => 'Expressive\\Authentication\\',
             'Zend\\Expressive\\Router\\ZendRouter\\'                 => 'Expressive\\Router\\LaminasRouter\\',
+            'Zend\\Expressive\\Router\\'                             => 'Expressive\\Router\\',
             'Zend\\Expressive\\ZendView\\'                           => 'Expressive\\LaminasView\\',
             'Zend\\Expressive\\'                                     => 'Expressive\\',
             // Laminas
