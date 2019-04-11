@@ -23,6 +23,8 @@ class RewriteRules
             'Zend\\Expressive\\ZendView\\'                           => 'Expressive\\LaminasView\\',
             'Zend\\Expressive\\'                                     => 'Expressive\\',
             // Laminas
+            'Zend\\Psr7Bridge\\Zend\\'  => 'Laminas\\Psr7Bridge\\Laminas\\',
+            'Zend\\Psr7Bridge\\'        => 'Laminas\\Psr7Bridge\\',
             'Zend\\'                    => 'Laminas\\',
             'ZF\\ComposerAutoloading\\' => 'Laminas\\ComposerAutoloading\\',
             'ZF\\Deploy\\'              => 'Laminas\\Deploy\\',
