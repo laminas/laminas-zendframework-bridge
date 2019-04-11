@@ -41,4 +41,23 @@ class RewriteRules
             'ZendDiagnostics\\' => 'Laminas\\Diagnostics\\',
         );
     }
+
+    /**
+     * @return array
+     */
+    public static function classRewrite()
+    {
+        return array(
+            'Zend\\Expressive\\Authorization\\Acl\\ZendAclFactory'
+                => 'Laminas\\Expressive\\Authorization\\Acl\\LaminasAclFactory',
+            'Zend\\Expressive\\Authorization\\Acl\\ZendAcl'
+                => 'Laminas\\Expressive\\Authorization\\Acl\\LaminasAcl',
+            'Zend\\Expressive\\Authorization\\Rbac\\ZendRbac'
+                => 'Laminas\\Expressive\\Authorization\\Rbac\\LaminasRbac',
+            'Zend\\Expressive\\Authorization\\Rbac\\ZendRbacAssertionInterface'
+                => 'Laminas\\Expressive\\Authorization\\Rbac\\LaminasRbacAssertionInterface',
+            'Zend\\Expressive\\Authorization\\Rbac\\ZendRbacFactory'
+                => 'Laminas\\Expressive\\Authorization\\Rbac\\LaminasRbacFactory',
+        );
+    }
 }

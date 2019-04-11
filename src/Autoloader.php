@@ -18,24 +18,29 @@ class Autoloader
      */
     public static function load()
     {
-        $classes = RewriteRules::namespaceRewrite();
-        spl_autoload_register(static function ($class) use ($classes) {
-            $segments = explode('\\', $class);
+        $classes = RewriteRules::classRewrite();
+        $namespaces = RewriteRules::namespaceRewrite();
+        spl_autoload_register(static function ($class) use ($classes, $namespaces) {
+            if (isset($classes[$class])) {
+                $alias = $classes[$class];
+            } else {
+                $segments = explode('\\', $class);
 
-            $i = 0;
-            $check = '';
+                $i = 0;
+                $check = '';
 
-            // We are checking segments of the namespace to match quicker
-            while (isset($classes[$check . $segments[$i] . '\\'])) {
-                $check .= $segments[$i] . '\\';
-                ++$i;
+                // We are checking segments of the namespace to match quicker
+                while (isset($namespaces[$check . $segments[$i] . '\\'])) {
+                    $check .= $segments[$i] . '\\';
+                    ++$i;
+                }
+
+                if ($check === '') {
+                    return;
+                }
+
+                $alias = $namespaces[$check] . substr($class, strlen($check));
             }
-
-            if ($check === '') {
-                return;
-            }
-
-            $alias = $classes[$check] . substr($class, strlen($check));
 
             if (class_exists($alias) || interface_exists($alias) || trait_exists($alias)) {
                 class_alias($alias, $class);
