@@ -22,7 +22,9 @@ matrix:
       env:
         - TEST_COVERAGE=true
     - php: 7.3
-    - php: 7.4
+    - php: 7.4snapshot
+  allow_failures:
+    - php: 7.4snapshot
 
 before_install:
   - if [[ $TEST_COVERAGE != 'true' ]]; then phpenv config-rm xdebug.ini || return 0 ; fi
