@@ -20,7 +20,7 @@ class Autoloader
     {
         $classes = RewriteRules::classRewrite();
         $namespaces = RewriteRules::namespaceRewrite();
-        spl_autoload_register(static function ($class) use ($classes, $namespaces) {
+        spl_autoload_register(function ($class) use ($classes, $namespaces) {
             if (isset($classes[$class])) {
                 $alias = $classes[$class];
             } else {
