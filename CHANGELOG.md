@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.3.0 - 2019-04-12
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- [#16](https://github.com/laminas/laminas-zendframework-bridge/pull/16) removes the `RewriteRules::classRewrite()` method, as it is no longer
+  needed due to internal refactoring.
+
+### Fixed
+
+- [#16](https://github.com/laminas/laminas-zendframework-bridge/pull/16) fixes how the rewrite rules detect the word `Zend` in subnamespaces and
+  class names to be both more robust and simpler.
+
 ## 0.2.5 - 2019-04-11
 
 ### Added
