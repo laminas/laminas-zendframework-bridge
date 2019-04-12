@@ -17,16 +17,9 @@ class RewriteRules
         // @todo Need to determine the final name and namespace for zf-console
         return array(
             // Expressive
-            'Zend\\ProblemDetails\\'                                 => 'Expressive\\ProblemDetails\\',
-            'Zend\\Expressive\\Authentication\\ZendAuthentication\\' => 'Expressive\\Authentication\\LaminasAuthentication\\',
-            'Zend\\Expressive\\Authentication\\'                     => 'Expressive\\Authentication\\',
-            'Zend\\Expressive\\Router\\ZendRouter\\'                 => 'Expressive\\Router\\LaminasRouter\\',
-            'Zend\\Expressive\\Router\\'                             => 'Expressive\\Router\\',
-            'Zend\\Expressive\\ZendView\\'                           => 'Expressive\\LaminasView\\',
-            'Zend\\Expressive\\'                                     => 'Expressive\\',
+            'Zend\\ProblemDetails\\' => 'Expressive\\ProblemDetails\\',
+            'Zend\\Expressive\\'     => 'Expressive\\',
             // Laminas
-            'Zend\\Psr7Bridge\\Zend\\'  => 'Laminas\\Psr7Bridge\\Laminas\\',
-            'Zend\\Psr7Bridge\\'        => 'Laminas\\Psr7Bridge\\',
             'Zend\\'                    => 'Laminas\\',
             'ZF\\ComposerAutoloading\\' => 'Laminas\\ComposerAutoloading\\',
             'ZF\\Deploy\\'              => 'Laminas\\Deploy\\',
@@ -39,35 +32,6 @@ class RewriteRules
             'ZendService\\'     => 'Laminas\\',
             'ZendOAuth\\'       => 'Laminas\\OAuth\\',
             'ZendDiagnostics\\' => 'Laminas\\Diagnostics\\',
-        );
-    }
-
-    /**
-     * @return array
-     */
-    public static function classRewrite()
-    {
-        return array(
-            'Zend\\Expressive\\Authentication\\ZendAuthentication\\ZendAuthentication'
-                => 'Expressive\\Authentication\\LaminasAuthentication\\LaminasAuthentication',
-            'Zend\\Expressive\\Authentication\\ZendAuthentication\\ZendAuthenticationFactory'
-                => 'Expressive\\Authentication\\LaminasAuthentication\\LaminasAuthenticationFactory',
-            'Zend\\Expressive\\Authorization\\Acl\\ZendAclFactory'
-                => 'Expressive\\Authorization\\Acl\\LaminasAclFactory',
-            'Zend\\Expressive\\Authorization\\Acl\\ZendAcl'
-                => 'Expressive\\Authorization\\Acl\\LaminasAcl',
-            'Zend\\Expressive\\Authorization\\Rbac\\ZendRbac'
-                => 'Expressive\\Authorization\\Rbac\\LaminasRbac',
-            'Zend\\Expressive\\Authorization\\Rbac\\ZendRbacAssertionInterface'
-                => 'Expressive\\Authorization\\Rbac\\LaminasRbacAssertionInterface',
-            'Zend\\Expressive\\Authorization\\Rbac\\ZendRbacFactory'
-                => 'Expressive\\Authorization\\Rbac\\LaminasRbacFactory',
-            'Zend\\Expressive\\Router\\ZendRouter'
-                => 'Expressive\\Router\\LaminasRouter',
-            'Zend\\Expressive\\ZendView\\ZendViewRenderer'
-                => 'Expressive\\LaminasView\\LaminasViewRenderer',
-            'Zend\\Expressive\\ZendView\\ZendViewRendererFactory'
-                => 'Expressive\\LaminasView\\LaminasViewRendererFactory',
         );
     }
 }

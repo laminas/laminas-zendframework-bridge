@@ -18,29 +18,24 @@ class Autoloader
      */
     public static function load()
     {
-        $classes = RewriteRules::classRewrite();
         $namespaces = RewriteRules::namespaceRewrite();
-        spl_autoload_register(function ($class) use ($classes, $namespaces) {
-            if (isset($classes[$class])) {
-                $alias = $classes[$class];
-            } else {
-                $segments = explode('\\', $class);
+        spl_autoload_register(function ($class) use ($namespaces) {
+            $segments = explode('\\', $class);
 
-                $i = 0;
-                $check = '';
+            $i = 0;
+            $check = '';
 
-                // We are checking segments of the namespace to match quicker
-                while (isset($namespaces[$check . $segments[$i] . '\\'])) {
-                    $check .= $segments[$i] . '\\';
-                    ++$i;
-                }
-
-                if ($check === '') {
-                    return;
-                }
-
-                $alias = $namespaces[$check] . substr($class, strlen($check));
+            // We are checking segments of the namespace to match quicker
+            while (isset($namespaces[$check . $segments[$i] . '\\'])) {
+                $check .= $segments[$i] . '\\';
+                ++$i;
             }
+
+            if ($check === '') {
+                return;
+            }
+
+            $alias = $namespaces[$check] . str_replace('Zend', 'Laminas', substr($class, strlen($check)));
 
             if (class_exists($alias) || interface_exists($alias) || trait_exists($alias)) {
                 class_alias($alias, $class);
