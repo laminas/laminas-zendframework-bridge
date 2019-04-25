@@ -38,7 +38,7 @@ class Autoloader
             $i = 0;
             $check = '';
 
-            while (isset($namespaces[$check . $segments[$i] . '\\'])) {
+            while (isset($segments[$i + 1], $namespaces[$check . $segments[$i] . '\\'])) {
                 $check .= $segments[$i] . '\\';
                 ++$i;
             }
@@ -61,7 +61,7 @@ class Autoloader
             $check = '';
 
             // We are checking segments of the namespace to match quicker
-            while (isset($namespaces[$check . $segments[$i] . '\\'])) {
+            while (isset($segments[$i + 1], $namespaces[$check . $segments[$i] . '\\'])) {
                 $check .= $segments[$i] . '\\';
                 ++$i;
             }

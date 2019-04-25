@@ -32,6 +32,7 @@ class AutoloaderTest extends TestCase
             array('Zend\Expressive\ZendView\ZendViewRenderer',                               'Expressive\LaminasView\LaminasViewRenderer'),
             array('Zend\ProblemDetails\ProblemDetails',                                      'Expressive\ProblemDetails\ProblemDetails'),
             // Laminas
+            array('Zend\Expressive',                    'Laminas\Expressive'),
             array('Zend\Main',                          'Laminas\Main'),
             array('Zend\Psr7Bridge\Psr7Bridge',         'Laminas\Psr7Bridge\Psr7Bridge'),
             array('Zend\Psr7Bridge\ZendBridge',         'Laminas\Psr7Bridge\LaminasBridge'),

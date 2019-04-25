@@ -48,6 +48,7 @@ namespace Expressive\ProblemDetails {
 }
 
 namespace Laminas {
+    class Expressive {}
     class Main {}
     class Service {}
 }
