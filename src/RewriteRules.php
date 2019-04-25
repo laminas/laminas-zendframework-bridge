@@ -19,14 +19,17 @@ class RewriteRules
             // Expressive
             'Zend\\ProblemDetails\\' => 'Expressive\\ProblemDetails\\',
             'Zend\\Expressive\\'     => 'Expressive\\',
+
             // Laminas
             'Zend\\'                    => 'Laminas\\',
             'ZF\\ComposerAutoloading\\' => 'Laminas\\ComposerAutoloading\\',
             'ZF\\Deploy\\'              => 'Laminas\\Deploy\\',
             'ZF\\DevelopmentMode\\'     => 'Laminas\\DevelopmentMode\\',
+
             // Apigility
             'ZF\\Apigility\\' => 'Apigility\\',
             'ZF\\'            => 'Apigility\\',
+
             // ZendXml, API wrappers, zend-http OAuth support, zend-diagnostics
             'ZendXml\\'         => 'Laminas\\Xml\\',
             'ZendService\\'     => 'Laminas\\',
@@ -42,37 +45,37 @@ class RewriteRules
     {
         return array(
             // ZendXml, ZendOAuth, ZendDiagnostics
-            'Laminas\\Xml\\' => 'ZendXml\\',
-            'Laminas\\OAuth\\' => 'ZendOAuth\\',
+            'Laminas\\Xml\\'         => 'ZendXml\\',
+            'Laminas\\OAuth\\'       => 'ZendOAuth\\',
             'Laminas\\Diagnostics\\' => 'ZendDiagnostics\\',
 
             // Zend Service
-            'Laminas\\Amazon\\' => 'ZendService\\Amazon\\',
-            'Laminas\\Apple\\' => 'ZendService\\Apple\\',
-            'Laminas\\Google\\' => 'ZendService\\Google\\',
+            'Laminas\\Amazon\\'    => 'ZendService\\Amazon\\',
+            'Laminas\\Apple\\'     => 'ZendService\\Apple\\',
+            'Laminas\\Google\\'    => 'ZendService\\Google\\',
             'Laminas\\ReCaptcha\\' => 'ZendService\\ReCaptcha\\',
-            'Laminas\\Twitter\\' => 'ZendService\\Twitter\\',
+            'Laminas\\Twitter\\'   => 'ZendService\\Twitter\\',
 
             // Zend
             'Laminas\\' => 'Zend\\',
 
             // Expressive
             'Expressive\\ProblemDetails\\' => 'Zend\\ProblemDetails\\',
-            'Expressive\\' => 'Zend\\Expressive\\',
+            'Expressive\\'                 => 'Zend\\Expressive\\',
 
             // Laminas to ZfCampus
             'Laminas\\ComposerAutoloading\\' => 'ZF\\ComposerAutoloading\\',
-            'Laminas\\Deploy\\' => 'ZF\\Deploy\\',
-            'Laminas\\DevelopmentMode\\' => 'ZF\\DevelopmentMode\\',
+            'Laminas\\Deploy\\'              => 'ZF\\Deploy\\',
+            'Laminas\\DevelopmentMode\\'     => 'ZF\\DevelopmentMode\\',
 
             // Apigility
-            'Apigility\\Admin\\' => 'ZF\\Apigility\\Admin\\',
-            'Apigility\\Doctrine\\' => 'ZF\\Apigility\\Doctrine\\',
+            'Apigility\\Admin\\'         => 'ZF\\Apigility\\Admin\\',
+            'Apigility\\Doctrine\\'      => 'ZF\\Apigility\\Doctrine\\',
             'Apigility\\Documentation\\' => 'ZF\\Apigility\\Documentation\\',
-            'Apigility\\Example\\' => 'ZF\\Apigility\\Example\\',
-            'Apigility\\Provider\\' => 'ZF\\Apigility\\Provider\\',
-            'Apigility\\Welcome\\' => 'ZF\\Apiglity\\Welcome\\',
-            'Apigility\\' => 'ZF\\',
+            'Apigility\\Example\\'       => 'ZF\\Apigility\\Example\\',
+            'Apigility\\Provider\\'      => 'ZF\\Apigility\\Provider\\',
+            'Apigility\\Welcome\\'       => 'ZF\\Apiglity\\Welcome\\',
+            'Apigility\\'                => 'ZF\\',
         );
     }
 }
