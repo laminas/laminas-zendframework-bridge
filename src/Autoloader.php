@@ -7,6 +7,7 @@
 
 namespace Laminas\ZendFrameworkBridge;
 
+use ArrayObject;
 use Composer\Autoload\ClassLoader;
 use RuntimeException;
 
@@ -32,12 +33,47 @@ class Autoloader
      */
     public static function load()
     {
-        static $loaded = array();
+        $loaded = new ArrayObject(array());
 
-        $classLoader = self::getClassLoader();
+        spl_autoload_register(self::createPrependAutoloader(
+            RewriteRules::namespaceReverse(),
+            self::getClassLoader(),
+            $loaded
+        ), true, true);
 
-        $namespaces = RewriteRules::namespaceReverse();
-        spl_autoload_register(function ($class) use ($namespaces, $classLoader, &$loaded) {
+        spl_autoload_register(self::createAppendAutoloader(
+            RewriteRules::namespaceRewrite(),
+            $loaded
+        ));
+    }
+
+    /**
+     * @return ClassLoader
+     * @throws RuntimeException
+     */
+    private static function getClassLoader()
+    {
+        if (file_exists(__DIR__ . '/../../../autoload.php')) {
+            return include __DIR__ . '/../../../autoload.php';
+        }
+
+        if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+            return include __DIR__ . '/../vendor/autoload.php';
+        }
+
+        throw new RuntimeException('Cannot detect composer autoload. Please run composer install');
+    }
+
+    /**
+     * @return callable
+     */
+    private static function createPrependAutoloader(array $namespaces, ClassLoader $classLoader, ArrayObject $loaded)
+    {
+        /**
+         * @param  string $class Class name to autoload
+         * @return void
+         */
+        return function ($class) use ($namespaces, $classLoader, $loaded) {
             if (isset($loaded[$class])) {
                 return;
             }
@@ -60,10 +96,19 @@ class Autoloader
                 $legacy = $namespaces[$check] . str_replace('Laminas', 'Zend', substr($class, strlen($check)));
                 class_alias($class, $legacy);
             }
-        }, true, true);
+        };
+    }
 
-        $namespaces = RewriteRules::namespaceRewrite();
-        spl_autoload_register(function ($class) use ($namespaces, &$loaded) {
+    /**
+     * @return callable
+     */
+    private static function createAppendAutoloader(array $namespaces, ArrayObject $loaded)
+    {
+        /**
+         * @param  string $class Class name to autoload
+         * @return void
+         */
+        return function ($class) use ($namespaces, $loaded) {
             $segments = explode('\\', $class);
 
             $i = 0;
@@ -85,23 +130,6 @@ class Autoloader
             if (class_exists($alias) || interface_exists($alias) || trait_exists($alias)) {
                 class_alias($alias, $class);
             }
-        });
-    }
-
-    /**
-     * @return ClassLoader
-     * @throws RuntimeException
-     */
-    private static function getClassLoader()
-    {
-        if (file_exists(__DIR__ . '/../../../autoload.php')) {
-            return include __DIR__ . '/../../../autoload.php';
-        }
-
-        if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-            return include __DIR__ . '/../vendor/autoload.php';
-        }
-
-        throw new RuntimeException('Cannot detect composer autoload. Please run composer install');
+        };
     }
 }
