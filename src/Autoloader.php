@@ -16,10 +16,19 @@ use RuntimeException;
 class Autoloader
 {
     /**
+     * Attach autoloaders for managing legacy ZF artifacts.
+     *
      * We attach two autoloaders:
-     * - _prepend_ to handle new classes and add aliases for legacy classes.
-     *   This is required to keep typehints compatibility.
-     * - _append_ to handle legacy classes and alias them to new classes.
+     *
+     * - The first is _prepended_ to handle new classes and add aliases for
+     *   legacy classes. PHP expects any interfaces implemented, classes
+     *   extended, or traits used when declaring class_alias() to exist and/or
+     *   be autoloadable already at the time of declaration. If not, it will
+     *   raise a fatal error. This autoloader helps mitigate errors in such
+     *   situations.
+     *
+     * - The second is _appended_ in order to create aliases for legacy
+     *   classes.
      */
     public static function load()
     {
