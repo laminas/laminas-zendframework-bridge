@@ -12,6 +12,9 @@ use PHPUnit\Framework\TestCase;
 
 class AutoloaderTest extends TestCase
 {
+    /**
+     * @return array[]
+     */
     public function classProvider()
     {
         return array(
@@ -62,5 +65,55 @@ class AutoloaderTest extends TestCase
     {
         self::assertTrue(class_exists('Laminas\LegacyTypeHint'));
         new LegacyTypeHint(new \Laminas\Example());
+    }
+
+    /**
+     * @return array[]
+     */
+    public function reverseClassProvider()
+    {
+        return array(
+            // Apigility
+            array('Apigility\Admin\Example',         'ZF\Apigility\Admin\Example'),
+            array('Apigility\Doctrine\Example',      'ZF\Apigility\Doctrine\Example'),
+            array('Apigility\Documentation\Example', 'ZF\Apigility\Documentation\Example'),
+            array('Apigility\Example\Example',       'ZF\Apigility\Example\Example'),
+            array('Apigility\Provider\Example',      'ZF\Apigility\Provider\Example'),
+            array('Apigility\Welcome\Example',       'ZF\Apigility\Welcome\Example'),
+            array('Apigility\Other\Example',         'ZF\Other\Example'),
+            array('Apigility\Example',               'ZF\Example'),
+
+            // Expressive
+            array('Expressive\ProblemDetails\Example', 'Zend\ProblemDetails\Example'),
+            array('Expressive\Other\Example',          'Zend\Expressive\Other\Example'),
+            array('Expressive\Example',                'Zend\Expressive\Example'),
+
+            // Laminas
+            array('Laminas\Amazon\Example',              'ZendService\Amazon\Example'),
+            array('Laminas\Apple\Example',               'ZendService\Apple\Example'),
+            array('Laminas\Google\Example',              'ZendService\Google\Example'),
+            array('Laminas\ReCaptcha\Example',           'ZendService\ReCaptcha\Example'),
+            array('Laminas\Twitter\Example',             'ZendService\Twitter\Example'),
+            array('Laminas\ComposerAutoloading\Example', 'ZF\ComposerAutoloading\Example'),
+            array('Laminas\Deploy\Example',              'ZF\Deploy\Example'),
+            array('Laminas\DevelopmentMode\Example',     'ZF\DevelopmentMode\Example'),
+            array('Laminas\Diagnostics\Example',         'ZendDiagnostics\Example'),
+            array('Laminas\OAuth\Example',               'ZendOAuth\Example'),
+            array('Laminas\Xml\Example',                 'ZendXml\Example'),
+            array('Laminas\Other\LaminasExample',        'Zend\Other\ZendExample'),
+            array('Laminas\Other\Example',               'Zend\Other\Example'),
+            array('Laminas\Example',                     'Zend\Example'),
+        );
+    }
+
+    /**
+     * @dataProvider reverseClassProvider
+     * @param string $actual
+     * @param string $legacy
+     */
+    public function testReverseAliasCreated($actual, $legacy)
+    {
+        self::assertTrue(class_exists($actual));
+        self::assertTrue(class_exists($legacy));
     }
 }

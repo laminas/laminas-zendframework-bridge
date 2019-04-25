@@ -34,4 +34,45 @@ class RewriteRules
             'ZendDiagnostics\\' => 'Laminas\\Diagnostics\\',
         );
     }
+
+    /**
+     * @return array
+     */
+    public static function namespaceReverse()
+    {
+        return array(
+            // ZendXml, ZendOAuth, ZendDiagnostics
+            'Laminas\\Xml\\' => 'ZendXml\\',
+            'Laminas\\OAuth\\' => 'ZendOAuth\\',
+            'Laminas\\Diagnostics\\' => 'ZendDiagnostics\\',
+
+            // Zend Service
+            'Laminas\\Amazon\\' => 'ZendService\\Amazon\\',
+            'Laminas\\Apple\\' => 'ZendService\\Apple\\',
+            'Laminas\\Google\\' => 'ZendService\\Google\\',
+            'Laminas\\ReCaptcha\\' => 'ZendService\\ReCaptcha\\',
+            'Laminas\\Twitter\\' => 'ZendService\\Twitter\\',
+
+            // Zend
+            'Laminas\\' => 'Zend\\',
+
+            // Expressive
+            'Expressive\\ProblemDetails\\' => 'Zend\\ProblemDetails\\',
+            'Expressive\\' => 'Zend\\Expressive\\',
+
+            // Laminas to ZfCampus
+            'Laminas\\ComposerAutoloading\\' => 'ZF\\ComposerAutoloading\\',
+            'Laminas\\Deploy\\' => 'ZF\\Deploy\\',
+            'Laminas\\DevelopmentMode\\' => 'ZF\\DevelopmentMode\\',
+
+            // Apigility
+            'Apigility\\Admin\\' => 'ZF\\Apigility\\Admin\\',
+            'Apigility\\Doctrine\\' => 'ZF\\Apigility\\Doctrine\\',
+            'Apigility\\Documentation\\' => 'ZF\\Apigility\\Documentation\\',
+            'Apigility\\Example\\' => 'ZF\\Apigility\\Example\\',
+            'Apigility\\Provider\\' => 'ZF\\Apigility\\Provider\\',
+            'Apigility\\Welcome\\' => 'ZF\\Apiglity\\Welcome\\',
+            'Apigility\\' => 'ZF\\',
+        );
+    }
 }

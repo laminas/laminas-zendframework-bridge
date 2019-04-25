@@ -7,14 +7,19 @@
 
 namespace Laminas\ZendFrameworkBridge;
 
+use Composer\Autoload\ClassLoader;
+use RuntimeException;
+
 /**
  * Alias legacy Zend Framework project classes/interfaces/traits to Laminas equivalents.
  */
 class Autoloader
 {
     /**
-     * This autoloader is _appended_, so a mix of legacy and Laminas classes
-     * can be used.
+     * We attach two autoloaders:
+     * - _prepend_ to handle new classes and add aliases for legacy classes.
+     *   This is required to keep typehints compatibility.
+     * - _append_ to handle legacy classes and alias them to new classes.
      */
     public static function load()
     {
@@ -22,34 +27,33 @@ class Autoloader
 
         $classLoader = self::getClassLoader();
 
-        $namespaces = RewriteRules::namespaceRewrite();
+        $namespaces = RewriteRules::namespaceReverse();
         spl_autoload_register(function ($class) use ($namespaces, $classLoader, &$loaded) {
             if (isset($loaded[$class])) {
                 return;
             }
 
-            // @todo: we need here reverse mapping:
-            //    from new class names we need to get old class name
-            //    that we can add alias - then typehints can work
-            //    as expected.
-            if (strpos($class, 'Expressive\\') === 0) {
-                if ($file = $classLoader->findFile($class)) {
-                    \Composer\Autoload\includeFile($file);
-                    class_alias($class, 'Zend\\' . $class, false);
-                }
-            } elseif (strpos($class, 'Laminas\\') === 0) {
-                if ($file = $classLoader->findFile($class)) {
-                    \Composer\Autoload\includeFile($file);
-                    class_alias($class, str_replace('Laminas\\', 'Zend\\', $class), false);
-                }
-            } elseif (strpos($class, 'Apigility\\') === 0) {
-                if ($file = $classLoader->findFile($class)) {
-                    \Composer\Autoload\includeFile($file);
-                    class_alias($class, 'ZF\\' . $class);
-                }
+            $segments = explode('\\', $class);
+
+            $i = 0;
+            $check = '';
+
+            while (isset($namespaces[$check . $segments[$i] . '\\'])) {
+                $check .= $segments[$i] . '\\';
+                ++$i;
+            }
+
+            if ($check === '') {
+                return;
+            }
+
+            if ($classLoader->loadClass($class)) {
+                $legacy = $namespaces[$check] . str_replace('Laminas', 'Zend', substr($class, strlen($check)));
+                class_alias($class, $legacy);
             }
         }, true, true);
 
+        $namespaces = RewriteRules::namespaceRewrite();
         spl_autoload_register(function ($class) use ($namespaces, &$loaded) {
             $segments = explode('\\', $class);
 
@@ -75,6 +79,10 @@ class Autoloader
         });
     }
 
+    /**
+     * @return ClassLoader
+     * @throws RuntimeException
+     */
     private static function getClassLoader()
     {
         if (file_exists(__DIR__ . '/../../../autoload.php')) {
@@ -85,6 +93,6 @@ class Autoloader
             return include __DIR__ . '/../vendor/autoload.php';
         }
 
-        throw new \RuntimeException('Cannot detect composer autoload. Please run composer install');
+        throw new RuntimeException('Cannot detect composer autoload. Please run composer install');
     }
 }
