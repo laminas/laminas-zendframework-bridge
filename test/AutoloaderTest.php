@@ -7,6 +7,7 @@
 
 namespace LaminasTest\ZendFrameworkBridge;
 
+use Laminas\LegacyTypeHint;
 use PHPUnit\Framework\TestCase;
 
 class AutoloaderTest extends TestCase
@@ -55,5 +56,11 @@ class AutoloaderTest extends TestCase
     {
         self::assertTrue(class_exists($legacy));
         self::assertSame($actual, get_class(new $legacy()));
+    }
+
+    public function testTypeHint()
+    {
+        self::assertTrue(class_exists('Laminas\LegacyTypeHint'));
+        new LegacyTypeHint(new \Laminas\Example());
     }
 }
