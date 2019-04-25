@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.3.1 - 2019-04-25
+
+### Added
+
+- [#20](https://github.com/laminas/laminas-zendframework-bridge/pull/20) provides an additional autoloader that is _prepended_ to the autoloader
+  stack. This new autoloader will create class aliases for interfaces, classes,
+  and traits referenced in type hints and class declarations, ensuring PHP is
+  able to resolve them correctly during class_alias operations.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.3.0 - 2019-04-12
 
 ### Added
