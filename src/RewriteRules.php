@@ -50,7 +50,6 @@ class RewriteRules
             'Laminas\\Diagnostics\\' => 'ZendDiagnostics\\',
 
             // Zend Service
-            'Laminas\\Amazon\\'    => 'ZendService\\Amazon\\',
             'Laminas\\Apple\\'     => 'ZendService\\Apple\\',
             'Laminas\\Google\\'    => 'ZendService\\Google\\',
             'Laminas\\ReCaptcha\\' => 'ZendService\\ReCaptcha\\',

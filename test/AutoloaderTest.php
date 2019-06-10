@@ -90,7 +90,6 @@ class AutoloaderTest extends TestCase
             array('Expressive\Example',                'Zend\Expressive\Example'),
 
             // Laminas
-            array('Laminas\Amazon\Example',              'ZendService\Amazon\Example'),
             array('Laminas\Apple\Example',               'ZendService\Apple\Example'),
             array('Laminas\Google\Example',              'ZendService\Google\Example'),
             array('Laminas\ReCaptcha\Example',           'ZendService\ReCaptcha\Example'),
