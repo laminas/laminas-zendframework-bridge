@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.3.2 - 2019-10-30
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- [#21](https://github.com/laminas/laminas-zendframework-bridge/pull/21) removes rewriting of the Amazon library, as it is not moving to Laminas.
+
+- [#21](https://github.com/laminas/laminas-zendframework-bridge/pull/21) removes rewriting of the GCM and APNS libraries, as they are not moving to Laminas.
+
+### Fixed
+
+- [#21](https://github.com/laminas/laminas-zendframework-bridge/pull/21) fixes how the recaptcha and twitter library package and namespaces are rewritten.
+
 ## 0.3.1 - 2019-04-25
 
 ### Added
