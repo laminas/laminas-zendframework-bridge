@@ -14,7 +14,6 @@ class RewriteRules
      */
     public static function namespaceRewrite()
     {
-        // @todo Need to determine the final name and namespace for zf-console
         return array(
             // Expressive
             'Zend\\ProblemDetails\\' => 'Expressive\\ProblemDetails\\',
@@ -31,10 +30,11 @@ class RewriteRules
             'ZF\\'            => 'Apigility\\',
 
             // ZendXml, API wrappers, zend-http OAuth support, zend-diagnostics
-            'ZendXml\\'         => 'Laminas\\Xml\\',
-            'ZendService\\'     => 'Laminas\\',
-            'ZendOAuth\\'       => 'Laminas\\OAuth\\',
-            'ZendDiagnostics\\' => 'Laminas\\Diagnostics\\',
+            'ZendXml\\'                => 'Laminas\\Xml\\',
+            'ZendOAuth\\'              => 'Laminas\\OAuth\\',
+            'ZendDiagnostics\\'        => 'Laminas\\Diagnostics\\',
+            'ZendService\\ReCaptcha\\' => 'Laminas\\ReCaptcha\\',
+            'ZendService\\Twitter\\'   => 'Laminas\\Twitter\\',
         );
     }
 
@@ -50,8 +50,6 @@ class RewriteRules
             'Laminas\\Diagnostics\\' => 'ZendDiagnostics\\',
 
             // Zend Service
-            'Laminas\\Apple\\'     => 'ZendService\\Apple\\',
-            'Laminas\\Google\\'    => 'ZendService\\Google\\',
             'Laminas\\ReCaptcha\\' => 'ZendService\\ReCaptcha\\',
             'Laminas\\Twitter\\'   => 'ZendService\\Twitter\\',
 

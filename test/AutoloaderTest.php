@@ -38,7 +38,8 @@ class AutoloaderTest extends TestCase
             array('Zend\Psr7Bridge\ZendBridge',         'Laminas\Psr7Bridge\LaminasBridge'),
             array('Zend\Psr7Bridge\Zend\Psr7Bridge',    'Laminas\Psr7Bridge\Laminas\Psr7Bridge'),
             array('Zend\Psr7Bridge\Zend\ZendBridge',    'Laminas\Psr7Bridge\Laminas\LaminasBridge'),
-            array('ZendService\Service',                'Laminas\Service'),
+            array('ZendService\ReCaptcha\MyClass',      'Laminas\ReCaptcha\MyClass'),
+            array('ZendService\Twitter\MyClass',        'Laminas\Twitter\MyClass'),
             array('ZendXml\XmlService',                 'Laminas\Xml\XmlService'),
             array('ZendOAuth\OAuthService',             'Laminas\OAuth\OAuthService'),
             array('ZendDiagnostics\Tools',              'Laminas\Diagnostics\Tools'),
@@ -90,8 +91,6 @@ class AutoloaderTest extends TestCase
             array('Expressive\Example',                'Zend\Expressive\Example'),
 
             // Laminas
-            array('Laminas\Apple\Example',               'ZendService\Apple\Example'),
-            array('Laminas\Google\Example',              'ZendService\Google\Example'),
             array('Laminas\ReCaptcha\Example',           'ZendService\ReCaptcha\Example'),
             array('Laminas\Twitter\Example',             'ZendService\Twitter\Example'),
             array('Laminas\ComposerAutoloading\Example', 'ZF\ComposerAutoloading\Example'),

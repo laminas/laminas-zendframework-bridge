@@ -111,6 +111,12 @@ class Autoloader
         return function ($class) use ($namespaces, $loaded) {
             $segments = explode('\\', $class);
 
+            if ($segments[0] === 'ZendService' && isset($segments[1])) {
+                $segments[0] .= '\\' . $segments[1];
+                unset($segments[1]);
+                $segments = array_values($segments);
+            }
+
             $i = 0;
             $check = '';
 

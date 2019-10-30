@@ -75,6 +75,14 @@ namespace Laminas\DevelopmentMode {
     class DevelopmentMode {}
 }
 
+namespace Laminas\ReCaptcha {
+    class MyClass {}
+}
+
+namespace Laminas\Twitter {
+    class MyClass {}
+}
+
 namespace Apigility {
     class BaseModule {}
 }
