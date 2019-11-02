@@ -1,0 +1,10 @@
+<?php
+namespace Acelaya\Expressive;
+
+return [
+    'dependencies' => [
+        'factories' => [
+            'Expressive\Router\RouterInterface' => Factory\SlimRouterFactory::class,
+        ],
+    ],
+];
