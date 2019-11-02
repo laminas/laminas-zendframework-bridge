@@ -16,11 +16,19 @@ class Module
     /** @var string[] */
     private $replacements;
 
-    public function init(ModuleManager $moduleManager)
+    /**
+     * Initialize the module.
+     *
+     * Type-hinting deliberately omitted to allow unit testing
+     * without dependencies on packages that do not exist yet.
+     *
+     * @param ModuleManager $moduleManager
+     */
+    public function init($moduleManager)
     {
         $moduleManager
             ->getEventManager()
-            ->attach(ModuleEvent::EVENT_MERGE_CONFIG, [$this, 'onMergeConfig']);
+            ->attach('mergeConfig', [$this, 'onMergeConfig']);
     }
 
     /**
@@ -28,8 +36,13 @@ class Module
      *
      * Rewrites keys and values matching known ZF classes, namespaces, and
      * configuration keys to their Laminas equivalents.
+     *
+     * Type-hinting deliberately omitted to allow unit testing
+     * without dependencies on packages that do not exist yet.
+     *
+     * @param ModuleEvent $moduleEvent
      */
-    public function onMergeConfig(ModuleEvent $event)
+    public function onMergeConfig($event)
     {
         /** @var ConfigMergerInterface */
         $configMerger = $event->getConfigListener();

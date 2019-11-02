@@ -34,10 +34,11 @@
             "test/classes.php"
         ],
         "psr-4": {
-            "LaminasTest\\ZendFrameworkBridge\\": "test//",
-            "Apigility\\": "test//TestAsset//Apigility//",
-            "Expressive\\": "test//TestAsset//Expressive//",
-            "Laminas\\": "test//TestAsset//Laminas//"
+            "LaminasTest\\ZendFrameworkBridge\\": "test/",
+            "LaminasTest\\ZendFrameworkBridge\\TestAsset\\": "test/TestAsset/classes/",
+            "Apigility\\": "test/TestAsset/Apigility/",
+            "Expressive\\": "test/TestAsset/Expressive/",
+            "Laminas\\": "test/TestAsset/Laminas/"
         }
     },
     "extra": {
