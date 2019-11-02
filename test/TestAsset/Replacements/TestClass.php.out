@@ -1,0 +1,20 @@
+<?php
+
+namespace Expressive\ProblemDetails;
+
+use Laminas\ComposerAutoloading\Something;
+use Apigility\Doctrine\MyDoctrine;
+use Zend\Version;
+use ZendService\Amazon;
+use ZendPdf\Renderer;
+
+class MyClass extends \Expressive\Router
+{
+    /** @var string|\Laminas\View\Renderer */
+    private $class;
+
+    public function __construct()
+    {
+        $this->class = 'Laminas\\View\\Renderer';
+    }
+}
