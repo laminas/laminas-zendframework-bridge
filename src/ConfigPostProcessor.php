@@ -31,9 +31,13 @@ class ConfigPostProcessor
 
         foreach ($config as $key => $value) {
             $newKey = is_string($key) ? $this->replacements->replace($key) : $key;
-            $rewritten[$newKey] = isset($rewritten[$newKey])
-                ? self::merge($rewritten[$newKey], $this->rewriteValue($value))
-                : $this->rewriteValue($value);
+
+            if (isset($rewritten[$newKey]) && is_array($rewritten[$newKey])) {
+                $rewritten[$newKey] = self::merge($rewritten[$newKey], $this->rewriteValue($value));
+                continue;
+            }
+
+            $rewritten[$newKey] = $this->rewriteValue($value);
         }
 
         return $rewritten;
