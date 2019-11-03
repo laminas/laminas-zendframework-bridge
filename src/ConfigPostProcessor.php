@@ -33,11 +33,11 @@ class ConfigPostProcessor
             $newKey = is_string($key) ? $this->replacements->replace($key) : $key;
 
             if (isset($rewritten[$newKey]) && is_array($rewritten[$newKey])) {
-                $rewritten[$newKey] = self::merge($rewritten[$newKey], $this->rewriteValue($value));
+                $rewritten[$newKey] = self::merge($rewritten[$newKey], $this->rewriteValue($value, $newKey));
                 continue;
             }
 
-            $rewritten[$newKey] = $this->rewriteValue($value);
+            $rewritten[$newKey] = $this->rewriteValue($value, $newKey);
         }
 
         return $rewritten;
@@ -46,10 +46,13 @@ class ConfigPostProcessor
     /**
      * Perform subsitutions as needed on an individual value.
      *
+     * The $key is provided to ensure we do not rewrite aliases configuration.
+     *
      * @param mixed $value
+     * @param string|int $key
      * @return mixed
      */
-    private function rewriteValue($value)
+    private function rewriteValue($value, $key)
     {
         if (is_string($value)) {
             return $this->replacements->replace($value);
@@ -59,8 +62,8 @@ class ConfigPostProcessor
             return $value;
         }
 
-        // Array; time to recurse
-        return $this($value);
+        // Array; time to recurse, but only if not aliases.
+        return $key === 'aliases' ? $value : $this($value);
     }
 
     /**
