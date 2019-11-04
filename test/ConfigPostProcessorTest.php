@@ -21,6 +21,7 @@ class ConfigPostProcessorTest extends TestCase
         yield 'mwop.net App module config' => ['MwopNetAppConfig.php'];
         yield 'cyclical aliasing' => ['CyclicalAliasing.php'];
         yield 'unknown Expressive config' => ['UnknownExpressiveConfiguration.php'];
+        yield 'equivalent key merging' => ['MergeEquivalentKeys.php'];
     }
 
     /**

@@ -62,12 +62,22 @@ class ConfigPostProcessor
         foreach ($config as $key => $value) {
             $newKey = is_string($key) ? $this->replace($key) : $key;
 
-            if (array_key_exists($newKey, $rewritten) && is_array($rewritten[$newKey])) {
-                $rewritten[$newKey] = self::merge($rewritten[$newKey], $this->replace($value, $newKey));
+            // Key does not already exist and/or is not an array value
+            if (! array_key_exists($newKey, $rewritten) || ! is_array($rewritten[$newKey])) {
+                $rewritten[$newKey] = $this->replace($value, $newKey);
                 continue;
             }
 
-            $rewritten[$newKey] = $this->replace($value, $newKey);
+            $value = $this->replace($value, $newKey);
+
+            // Key already exists as an array value, but $value is not an array
+            if (! is_array($value)) {
+                $rewritten[$newKey][] = $value;
+                continue;
+            }
+
+            // Key already exists as an array value, and $value is also an array
+            $rewritten[$newKey] = static::merge($rewritten[$newKey], $value);
         }
 
         return $rewritten;
@@ -110,7 +120,7 @@ class ConfigPostProcessor
                 continue;
             }
 
-            if (! $preserveNumericKeys && is_int($key)) {
+            if (is_int($key)) {
                 $a[] = $value;
                 continue;
             }

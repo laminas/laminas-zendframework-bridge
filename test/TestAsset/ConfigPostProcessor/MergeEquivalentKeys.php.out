@@ -1,0 +1,16 @@
+<?php
+return [
+    'apigility-rest' => [
+        [
+            'name' => 'Some\Rest\Controller',
+        ],
+        'Some\Other\Rest\Controller',
+    ],
+    'expressive' => [
+        'error_handler' => [
+            'template_404' => 'custom::404',
+            'template_error' => 'custom::500',
+        ],
+    ],
+];
+
