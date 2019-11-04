@@ -62,7 +62,7 @@ class ConfigPostProcessor
             return $this->replace($value);
         }
 
-        if (null === $value || is_scalar($value) || is_object($value)) {
+        if (! is_array($value)) {
             return $value;
         }
 
