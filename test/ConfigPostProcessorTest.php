@@ -19,6 +19,8 @@ class ConfigPostProcessorTest extends TestCase
     {
         yield 'Acelaya Expressive Slim Router' => ['ExpressiveSlimRouterConfig.php'];
         yield 'mwop.net App module config' => ['MwopNetAppConfig.php'];
+        yield 'cyclical aliasing' => ['CyclicalAliasing.php'];
+        yield 'unknown Expressive config' => ['UnknownExpressiveConfiguration.php'];
     }
 
     /**

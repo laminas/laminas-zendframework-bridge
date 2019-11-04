@@ -9,17 +9,21 @@ namespace Laminas\ZendFrameworkBridge;
 
 class ConfigPostProcessor
 {
+    /** @var array String keys => string values */
+    private $exactReplacements = [
+        'zend-expressive' => 'expressive',
+    ];
+
+    /** @var string[] */
+    private $exactReplacementsLookupTable;
+
     /** @var Replacements */
     private $replacements;
 
     public function __construct()
     {
-        $this->replacements = new Replacements([
-            // Since we're rewriting at the PHP level, and not the raw
-            // strings from reading file contents, we need to add this
-            // one.
-            'zend-expressive' => 'expressive',
-        ]);
+        $this->replacements = new Replacements();
+        $this->exactReplacementsLookupTable = array_keys($this->exactReplacements);
     }
 
     /**
@@ -30,7 +34,7 @@ class ConfigPostProcessor
         $rewritten = [];
 
         foreach ($config as $key => $value) {
-            $newKey = is_string($key) ? $this->replacements->replace($key) : $key;
+            $newKey = is_string($key) ? $this->replace($key) : $key;
 
             if (isset($rewritten[$newKey]) && is_array($rewritten[$newKey])) {
                 $rewritten[$newKey] = self::merge($rewritten[$newKey], $this->rewriteValue($value, $newKey));
@@ -55,7 +59,7 @@ class ConfigPostProcessor
     private function rewriteValue($value, $key)
     {
         if (is_string($value)) {
-            return $this->replacements->replace($value);
+            return $this->replace($value);
         }
 
         if (null === $value || is_scalar($value) || is_object($value)) {
@@ -103,5 +107,17 @@ class ConfigPostProcessor
         }
 
         return $a;
+    }
+
+    /**
+     * @param string $value
+     * @return string
+     */
+    private function replace($value)
+    {
+        if (in_array($value, $this->exactReplacementsLookupTable, true)) {
+            return $this->exactReplacements[$value];
+        }
+        return $this->replacements->replace($value);
     }
 }
