@@ -82,10 +82,9 @@ class ConfigPostProcessor
      *
      * @param  array $a
      * @param  array $b
-     * @param  bool  $preserveNumericKeys
      * @return array
      */
-    public static function merge(array $a, array $b, $preserveNumericKeys = false)
+    public static function merge(array $a, array $b)
     {
         foreach ($b as $key => $value) {
             if (! isset($a[$key]) && ! array_key_exists($key, $a)) {
@@ -99,7 +98,7 @@ class ConfigPostProcessor
             }
             
             if (is_array($value) && is_array($a[$key])) {
-                $a[$key] = static::merge($a[$key], $value, $preserveNumericKeys);
+                $a[$key] = static::merge($a[$key], $value);
                 continue;
             }
 
