@@ -13,9 +13,6 @@ use Laminas\ModuleManager\ModuleManager;
 
 class Module
 {
-    /** @var string[] */
-    private $replacements;
-
     /**
      * Initialize the module.
      *
