@@ -26,9 +26,6 @@ class Replacements
      */
     public function replace($value)
     {
-        if (! is_string($value)) {
-            return $value;
-        }
         return strtr($value, $this->replacements);
     }
 }
