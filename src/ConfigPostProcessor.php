@@ -14,16 +14,42 @@ class ConfigPostProcessor
         'zend-expressive' => 'expressive',
     ];
 
-    /** @var string[] */
-    private $exactReplacementsLookupTable;
-
     /** @var Replacements */
     private $replacements;
+
+    /** @var callable[] */
+    private $rulesets;
 
     public function __construct()
     {
         $this->replacements = new Replacements();
-        $this->exactReplacementsLookupTable = array_keys($this->exactReplacements);
+
+        // Define the rulesets for replacements.
+        // Each rulest receives the value being rewritten, and the key, if any.
+        // It then returns either null (no match), or a callable (match).
+        // A returned callable is then used to perform the replacement.
+        $this->rulesets     = [
+            // Exact values
+            function ($value) {
+                return is_string($value) && array_key_exists($value, $this->exactReplacements)
+                    ? [$this, 'replaceExactValue']
+                    : null;
+            },
+
+            // Aliases
+            function ($value, $key) {
+                return $key === 'aliases' && is_array($value)
+                    ? [$this, 'replaceDependencyAliases']
+                    : null;
+            },
+
+            // Array values
+            function ($value, $key) {
+                return null !== $key && is_array($value)
+                    ? [$this, '__invoke']
+                    : null;
+            },
+        ];
     }
 
     /**
@@ -37,11 +63,11 @@ class ConfigPostProcessor
             $newKey = is_string($key) ? $this->replace($key) : $key;
 
             if (array_key_exists($newKey, $rewritten) && is_array($rewritten[$newKey])) {
-                $rewritten[$newKey] = self::merge($rewritten[$newKey], $this->rewriteValue($value, $newKey));
+                $rewritten[$newKey] = self::merge($rewritten[$newKey], $this->replace($value, $newKey));
                 continue;
             }
 
-            $rewritten[$newKey] = $this->rewriteValue($value, $newKey);
+            $rewritten[$newKey] = $this->replace($value, $newKey);
         }
 
         return $rewritten;
@@ -50,24 +76,16 @@ class ConfigPostProcessor
     /**
      * Perform subsitutions as needed on an individual value.
      *
-     * The $key is provided to ensure we do not rewrite aliases configuration.
+     * The $key is provided to allow fine-grained selection of rewrite rules.
      *
      * @param mixed $value
-     * @param string|int $key
+     * @param null|int|string $key
      * @return mixed
      */
-    private function rewriteValue($value, $key)
+    private function replace($value, $key = null)
     {
-        if (is_string($value)) {
-            return $this->replace($value);
-        }
-
-        if (! is_array($value)) {
-            return $value;
-        }
-
-        // Array; time to recurse, but only if not aliases.
-        return $key === 'aliases' ? $value : $this($value);
+        $rewriteRule = $this->replacementRuleMatch($value, $key);
+        return $rewriteRule($value);
     }
 
     /**
@@ -109,14 +127,58 @@ class ConfigPostProcessor
     }
 
     /**
-     * @param string $value
-     * @return string
+     * @param mixed $value
+     * @param null|int|string $key
+     * @return callable Callable to invoke with value
      */
-    private function replace($value)
+    private function replacementRuleMatch($value, $key = null)
     {
-        if (in_array($value, $this->exactReplacementsLookupTable, true)) {
-            return $this->exactReplacements[$value];
+        foreach ($this->rulesets as $ruleset) {
+            $result = $ruleset($value, $key);
+            if (is_callable($result)) {
+                return $result;
+            }
         }
-        return $this->replacements->replace($value);
+        return [$this, 'fallbackReplacement'];
+    }
+
+    /**
+     * Replace a value using the translation table, if the value is a string.
+     *
+     * @param mixed $value
+     * @return mixed
+     */
+    private function fallbackReplacement($value)
+    {
+        return is_string($value)
+            ? $this->replacements->replace($value)
+            : $value;
+    }
+
+    /**
+     * Replace a value matched exactly.
+     *
+     * @param mixed $value
+     * @return mixed
+     */
+    private function replaceExactValue($value)
+    {
+        return $this->exactReplacements[$value];
+    }
+
+    /**
+     * Rewrite dependency aliases array
+     *
+     * In this case, we want to keep the alias as-is, but rewrite the target.
+     *
+     * @param array $value
+     * @return array
+     */
+    private function replaceDependencyAliases(array $aliases)
+    {
+        foreach ($aliases as $alias => $target) {
+            $aliases[$alias] = $this->replacements->replace($target);
+        }
+        return $aliases;
     }
 }
