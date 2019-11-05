@@ -85,7 +85,7 @@ class ConfigPostProcessor
     }
 
     /**
-     * Perform subsitutions as needed on an individual value.
+     * Perform substitutions as needed on an individual value.
      *
      * The $key is provided to allow fine-grained selection of rewrite rules.
      *
