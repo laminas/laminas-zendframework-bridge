@@ -32,7 +32,7 @@ class ConfigPostProcessor
         $this->rulesets     = [
             // Exact values
             function ($value) {
-                return is_string($value) && array_key_exists($value, $this->exactReplacements)
+                return is_string($value) && isset($this->exactReplacements[$value])
                     ? [$this, 'replaceExactValue']
                     : null;
             },
