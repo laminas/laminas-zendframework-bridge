@@ -22,6 +22,7 @@ class ConfigPostProcessorTest extends TestCase
         yield 'cyclical aliasing' => ['CyclicalAliasing.php'];
         yield 'unknown Expressive config' => ['UnknownExpressiveConfiguration.php'];
         yield 'equivalent key merging' => ['MergeEquivalentKeys.php'];
+        yield 'ignore router config' => ['RouterConfig.php'];
     }
 
     /**

@@ -37,6 +37,14 @@ class ConfigPostProcessor
                     : null;
             },
 
+            // Router (MVC applications)
+            // We do not want to rewrite these.
+            function ($value, $key) {
+                return $key === 'router' && is_array($value)
+                    ? [$this, 'noopReplacement']
+                    : null;
+            },
+
             // Aliases
             function ($value, $key) {
                 return $key === 'aliases' && is_array($value)
@@ -204,5 +212,14 @@ class ConfigPostProcessor
             $aliases[$alias] = $this->replacements->replace($target);
         }
         return $aliases;
+    }
+
+    /**
+     * @param mixed $value
+     * @return mixed Returns $value verbatim.
+     */
+    private function noopReplacement($value)
+    {
+        return $value;
     }
 }
