@@ -23,6 +23,7 @@ class ConfigPostProcessorTest extends TestCase
         yield 'unknown Expressive config' => ['UnknownExpressiveConfiguration.php'];
         yield 'equivalent key merging' => ['MergeEquivalentKeys.php'];
         yield 'ignore router config' => ['RouterConfig.php'];
+        yield 'process invokable config' => ['InvokableConfig.php'];
     }
 
     /**

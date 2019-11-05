@@ -59,11 +59,24 @@ return [
         ],
         'posts' => [],
     ],
+    'zend-expressive' => [
+        'error_handler' => [
+            'template_404'   => 'error::404',
+            'template_error' => 'error::500',
+        ],
+    ],
     'expressive' => [
         'error_handler' => [
             'template_404'   => 'error::404',
             'template_error' => 'error::500',
         ],
+    ],
+    'zend-expressive-session-cache' => [
+        'cache_item_pool_service' => SessionCachePool::class,
+        'cookie_name' => 'MWOPSESS',
+        'cache_limiter' => 'nocache',
+        'cache_expire' => 60 * 60 * 24 * 28, // 28 days
+        'persistent' => true,
     ],
     'expressive-session-cache' => [
         'cache_item_pool_service' => SessionCachePool::class,
@@ -71,6 +84,45 @@ return [
         'cache_limiter' => 'nocache',
         'cache_expire' => 60 * 60 * 24 * 28, // 28 days
         'persistent' => true,
+    ],
+    'zend-expressive-swoole' => [
+        'enable_coroutine' => true,
+        'swoole-http-server' => [
+            'process-name' => 'mwopnet',
+            'host'         => '0.0.0.0',
+            'port'         => 9000,
+            // Using string value instead of constant to prevent testing errors
+            'mode'         => 'SWOOLE_PROCESS',
+            'options'      => [
+                'max_conn' => 1024,
+                'task_worker_num' => 4,
+            ],
+            'static-files' => [
+                'type-map' => [
+                    'asc' => 'application/octet-stream',
+                ],
+                'gzip' => [
+                    'level' => 6,
+                ],
+                'directives' => [
+                    '/\.(?:ico|png|gif|jpg|jpeg)$/' => [
+                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 365],
+                        'last-modified' => true,
+                        'etag' => true,
+                    ],
+                    '/\.(?:asc)$/' => [
+                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 365],
+                        'last-modified' => true,
+                    ],
+                    '/\.(?:css|js)$/' => [
+                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 30],
+                        'last-modified' => true,
+                        'etag' => true,
+                    ],
+                ],
+
+            ],
+        ],
     ],
     'expressive-swoole' => [
         'enable_coroutine' => true,

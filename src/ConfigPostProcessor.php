@@ -12,7 +12,7 @@ class ConfigPostProcessor
     /** @var array String keys => string values */
     private $exactReplacements = [
         'zend-expressive' => 'expressive',
-        'zf-apigility' => 'apigility',
+        'zf-apigility'    => 'apigility',
     ];
 
     /** @var Replacements */
@@ -25,11 +25,25 @@ class ConfigPostProcessor
     {
         $this->replacements = new Replacements();
 
-        // Define the rulesets for replacements.
-        // Each rulest receives the value being rewritten, and the key, if any.
-        // It then returns either null (no match), or a callable (match).
-        // A returned callable is then used to perform the replacement.
-        $this->rulesets     = [
+        /* Define the rulesets for replacements.
+         *
+         * Each ruleset has the following signature:
+         *
+         * @param mixed $value
+         * @param string[] $keys Full nested key hierarchy leading to the value
+         * @return null|callable
+         *
+         * If no match is made, a null is returned, allowing it to fallback to
+         * the next ruleset in the list. If a match is made, a callback is returned,
+         * and that will be used to perform the replacement on the value.
+         *
+         * The callback should have the following signature:
+         *
+         * @param mixed $value
+         * @param string[] $keys
+         * @return mixed The transformed value
+         */
+        $this->rulesets = [
             // Exact values
             function ($value) {
                 return is_string($value) && isset($this->exactReplacements[$value])
@@ -39,22 +53,33 @@ class ConfigPostProcessor
 
             // Router (MVC applications)
             // We do not want to rewrite these.
-            function ($value, $key) {
-                return $key === 'router' && is_array($value)
+            function ($value, array $keys) {
+                $key = array_pop($keys);
+                // Only worried about a top-level "router" key.
+                return $key === 'router' && count($keys) === 0 && is_array($value)
                     ? [$this, 'noopReplacement']
                     : null;
             },
 
             // Aliases
-            function ($value, $key) {
+            function ($value, array $keys) {
+                $key = array_pop($keys);
                 return $key === 'aliases' && is_array($value)
                     ? [$this, 'replaceDependencyAliases']
                     : null;
             },
 
+            // Invokables
+            function ($value, array $keys) {
+                $key = array_pop($keys);
+                return $key === 'invokables' && is_array($value)
+                    ? [$this, 'replaceInvokables']
+                    : null;
+            },
+
             // Array values
-            function ($value, $key) {
-                return null !== $key && is_array($value)
+            function ($value, array $keys) {
+                return 0 !== count($keys) && is_array($value)
                     ? [$this, '__invoke']
                     : null;
             },
@@ -62,15 +87,17 @@ class ConfigPostProcessor
     }
 
     /**
+     * @param string[] $keys Hierarchy of keys, for determining location in
+     *     nested configuration.
      * @return array
      */
-    public function __invoke(array $config)
+    public function __invoke(array $config, $keys = [])
     {
         $rewritten = [];
 
         foreach ($config as $key => $value) {
-            $newKey   = is_string($key) ? $this->replace($key) : $key;
-            $newValue = $this->replace($value, $newKey);
+            $newKey   = is_string($key) ? $this->replace($key, $keys) : $key;
+            $newValue = $this->replace($value, $keys, $newKey);
 
             // Key does not already exist and/or is not an array value
             if (! array_key_exists($newKey, $rewritten) || ! is_array($rewritten[$newKey])) {
@@ -105,13 +132,19 @@ class ConfigPostProcessor
      * The $key is provided to allow fine-grained selection of rewrite rules.
      *
      * @param mixed $value
+     * @param string[] $keys Key hierarchy
      * @param null|int|string $key
      * @return mixed
      */
-    private function replace($value, $key = null)
+    private function replace($value, array $keys, $key = null)
     {
-        $rewriteRule = $this->replacementRuleMatch($value, $key);
-        return $rewriteRule($value);
+        // Add new key to the list of keys.
+        // We do not need to remove it later, as we are working on a copy of the array.
+        array_push($keys, $key);
+
+        // Identify rewrite strategy and perform replacements
+        $rewriteRule = $this->replacementRuleMatch($value, $keys);
+        return $rewriteRule($value, $keys);
     }
 
     /**
@@ -221,5 +254,36 @@ class ConfigPostProcessor
     private function noopReplacement($value)
     {
         return $value;
+    }
+
+    /**
+     * Rewrite invokable dependency configuration
+     *
+     * If the key is not rewritten, we only worry about rewriting the value.
+     *
+     * If the key is rewritten, we also point the original key to the new value.
+     *
+     * @param array $value
+     * @return array
+     */
+    private function replaceInvokables(array $invokables)
+    {
+        foreach ($invokables as $alias => $target) {
+            $newAlias  = $this->replacements->replace($alias);
+            $newTarget = $this->replacements->replace($target);
+
+            // Assign the rewritten target to the new alias
+            $invokables[$newAlias] = $newTarget;
+
+            if ($newAlias === $alias) {
+                // Alias was unchanged, so we are done
+                continue;
+            }
+
+            // Alias changed; assign the rewritten target to the old alias
+            $invokables[$alias] = $newTarget;
+        }
+
+        return $invokables;
     }
 }
