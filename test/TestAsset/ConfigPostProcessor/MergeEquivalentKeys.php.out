@@ -1,16 +1,38 @@
 <?php
 return [
+    // Test merging array with scalar
     'apigility-rest' => [
         [
             'name' => 'Some\Rest\Controller',
         ],
         'Some\Other\Rest\Controller',
     ],
+
+    // Test merging null with array
     'expressive' => [
         'error_handler' => [
             'template_404' => 'custom::404',
             'template_error' => 'custom::500',
         ],
     ],
-];
 
+    // Test merging null with scalar
+    'expressive-hal' => 'some-value',
+
+    // Test merging scalar with null
+    'apigility-content-negotiation' => 'some-value',
+
+    // Test merging array with null
+    'expressive-swoole' => [
+        'swoole-http-server' => [
+        ],
+    ],
+
+    // Test merging scalar with array
+    'expressive-tooling' => [
+        'some' => 'value',
+    ],
+
+    // Test merging two scalars
+    'expressive-authorization' => 2.0,
+];

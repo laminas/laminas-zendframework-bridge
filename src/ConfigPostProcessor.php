@@ -66,7 +66,15 @@ class ConfigPostProcessor
 
             // Key does not already exist and/or is not an array value
             if (! array_key_exists($newKey, $rewritten) || ! is_array($rewritten[$newKey])) {
-                $rewritten[$newKey] = $newValue;
+                // Do not overwrite existing values with null values
+                $rewritten[$newKey] = array_key_exists($newKey, $rewritten) && null === $newValue
+                    ? $rewritten[$newKey]
+                    : $newValue;
+                continue;
+            }
+
+            // New value is null; nothing to do.
+            if (null === $newValue) {
                 continue;
             }
 
@@ -118,6 +126,11 @@ class ConfigPostProcessor
         foreach ($b as $key => $value) {
             if (! isset($a[$key]) && ! array_key_exists($key, $a)) {
                 $a[$key] = $value;
+                continue;
+            }
+
+            if (null === $value && array_key_exists($key, $a)) {
+                // Leave as-is if value from $b is null
                 continue;
             }
 
