@@ -102,9 +102,10 @@ class ConfigPostProcessor
     /**
      * Merge two arrays together.
      *
-     * If an integer key exists in both arrays and preserveNumericKeys is false, the value
-     * from the second array will be appended to the first array. If both values are arrays, they
-     * are merged together, else the value of the second array overwrites the one of the first array.
+     * If an integer key exists in both arrays, the value from the second array
+     * will be appended to the first array. If both values are arrays, they are
+     * merged together, else the value of the second array overwrites the one
+     * of the first array.
      *
      * Based on zend-stdlib Zend\Stdlib\ArrayUtils::merge
      * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
