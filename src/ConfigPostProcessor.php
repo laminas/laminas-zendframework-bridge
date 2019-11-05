@@ -61,19 +61,15 @@ class ConfigPostProcessor
                     : null;
             },
 
-            // Aliases
+            // Aliases and invokables
             function ($value, array $keys) {
-                $key = array_pop($keys);
-                return $key === 'aliases' && is_array($value)
-                    ? [$this, 'replaceDependencyAliases']
-                    : null;
-            },
+                static $keysOfInterest;
 
-            // Invokables
-            function ($value, array $keys) {
-                $key = array_pop($keys);
-                return $key === 'invokables' && is_array($value)
-                    ? [$this, 'replaceInvokables']
+                $keysOfInterest = $keysOfInterest ?: ['aliases', 'invokables'];
+                $key            = array_pop($keys);
+
+                return in_array($key, $keysOfInterest, true) && is_array($value)
+                    ? [$this, 'replaceDependencyAliases']
                     : null;
             },
 
@@ -244,6 +240,9 @@ class ConfigPostProcessor
      *
      * In this case, we want to keep the alias as-is, but rewrite the target.
      *
+     * This same logic can be used for invokables, which are essentially just
+     * an alias map.
+     *
      * @param array $value
      * @return array
      */
@@ -262,36 +261,5 @@ class ConfigPostProcessor
     private function noopReplacement($value)
     {
         return $value;
-    }
-
-    /**
-     * Rewrite invokable dependency configuration
-     *
-     * If the key is not rewritten, we only worry about rewriting the value.
-     *
-     * If the key is rewritten, we also point the original key to the new value.
-     *
-     * @param array $value
-     * @return array
-     */
-    private function replaceInvokables(array $invokables)
-    {
-        foreach ($invokables as $alias => $target) {
-            $newAlias  = $this->replacements->replace($alias);
-            $newTarget = $this->replacements->replace($target);
-
-            // Assign the rewritten target to the new alias
-            $invokables[$newAlias] = $newTarget;
-
-            if ($newAlias === $alias) {
-                // Alias was unchanged, so we are done
-                continue;
-            }
-
-            // Alias changed; assign the rewritten target to the old alias
-            $invokables[$alias] = $newTarget;
-        }
-
-        return $invokables;
     }
 }
