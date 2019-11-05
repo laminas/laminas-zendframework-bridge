@@ -96,7 +96,15 @@ class ConfigPostProcessor
         $rewritten = [];
 
         foreach ($config as $key => $value) {
-            $newKey   = is_string($key) ? $this->replace($key, $keys) : $key;
+            // Determine new key from replacements
+            $newKey = is_string($key) ? $this->replace($key, $keys) : $key;
+
+            // Keep original values with original key, if the key has changed, but only at the top-level.
+            if (empty($keys) && $newKey !== $key) {
+                $rewritten[$key] = $value;
+            }
+
+            // Perform value replacements, if any
             $newValue = $this->replace($value, $keys, $newKey);
 
             // Key does not already exist and/or is not an array value
