@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 0.3.5 - TBD
+## 0.3.5 - 2019-11-06
 
 ### Added
 
@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#25](https://github.com/laminas/laminas-zendframework-bridge/pull/25) adds entries for ZendHttp and ZendModule, which are file name segments in files from the zend-feed and zend-config-aggregator-module packages, respectively.
 
 ## 0.3.4 - 2019-11-06
 
