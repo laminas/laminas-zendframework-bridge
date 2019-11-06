@@ -153,6 +153,8 @@ return [
     'Zend\\\\View' => 'Laminas\\\\View',
     'Zend\\\\Xml2Json' => 'Laminas\\\\Xml2Json',
     'Zend\\\\XmlRpc' => 'Laminas\\\\XmlRpc',
+    'ZendHttp' => 'LaminasHttp', // class ZendHttpClientDecorator in zend-feed
+    'ZendModule' => 'LaminasModule', // class ZendModuleProvider in zend-config-aggregator-modulemanager
 
     // Expressive
     'Zend\\Expressive' => 'Expressive',
