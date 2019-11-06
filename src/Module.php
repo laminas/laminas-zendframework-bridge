@@ -37,7 +37,7 @@ class Module
      * Type-hinting deliberately omitted to allow unit testing
      * without dependencies on packages that do not exist yet.
      *
-     * @param ModuleEvent $moduleEvent
+     * @param ModuleEvent $event
      */
     public function onMergeConfig($event)
     {

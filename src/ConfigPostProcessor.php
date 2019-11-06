@@ -87,7 +87,7 @@ class ConfigPostProcessor
      *     nested configuration.
      * @return array
      */
-    public function __invoke(array $config, $keys = [])
+    public function __invoke(array $config, array $keys = [])
     {
         $rewritten = [];
 
@@ -162,8 +162,6 @@ class ConfigPostProcessor
      * Based on zend-stdlib Zend\Stdlib\ArrayUtils::merge
      * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
      *
-     * @param  array $a
-     * @param  array $b
      * @return array
      */
     public static function merge(array $a, array $b)
@@ -243,7 +241,6 @@ class ConfigPostProcessor
      * This same logic can be used for invokables, which are essentially just
      * an alias map.
      *
-     * @param array $value
      * @return array
      */
     private function replaceDependencyAliases(array $aliases)
