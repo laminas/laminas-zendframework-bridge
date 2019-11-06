@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.3.3 - 2019-11-06
+
+### Added
+
+- [#22](https://github.com/laminas/laminas-zendframework-bridge/pull/22) adds configuration post-processing features, exposed both as a laminas-config-aggregator post processor (for use with Expressive applications) and as a laminas-modulemanager `EVENT_MERGE_CONFIG` listener (for use with MVC applications). When registered, it will post-process the configuration, replacing known Zend Framework-specific strings with their Laminas replacements. A ruleset is provided that ensures dependency configuration is rewritten in a safe manner, routing configuration is skipped, and certain top-level configuration keys are matched exactly (instead of potentially as substrings or word stems). A later release of laminas-migration will auto-register these tools in applications when possible.
+
+### Changed
+
+- [#22](https://github.com/laminas/laminas-zendframework-bridge/pull/22) removes support for PHP versions prior to PHP 5.6. We have decided to only support supported PHP versions, whether that support is via php.net or commercial. The lowest supported PHP version we have found is 5.6. Users wishing to migrate to Laminas must at least update to PHP 5.6 before doing so.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.3.2 - 2019-10-30
 
 ### Added
