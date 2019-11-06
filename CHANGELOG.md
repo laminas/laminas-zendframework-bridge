@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 0.3.4 - TBD
+## 0.3.4 - 2019-11-06
 
 ### Added
 
@@ -22,7 +22,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#24](https://github.com/laminas/laminas-zendframework-bridge/pull/24) adds a rule to never rewrite the string `Doctrine\Zend`.
+
+- [#23](https://github.com/laminas/laminas-zendframework-bridge/pull/23) adds a missing map for each of ZendAcl and ZendRbac, which occur in the zend-expressive-authorization-acl and zend-expressive-authorization-rbac packages, respectively.
 
 ## 0.3.3 - 2019-11-06
 
