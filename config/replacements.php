@@ -157,6 +157,8 @@ return [
     'Zend\\Expressive' => 'Expressive',
     'Zend\\\\Expressive' => 'Expressive',
     'ZendAuthentication' => 'LaminasAuthentication',
+    'ZendAcl' => 'LaminasAcl',
+    'ZendRbac' => 'LaminasRbac',
     'ZendRouter' => 'LaminasRouter',
 
     // Apigility
