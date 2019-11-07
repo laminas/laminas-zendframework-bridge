@@ -344,6 +344,7 @@ return [
     'ZendValidator' => 'LaminasValidator',
     'zendview' => 'laminasview',
     'ZendView' => 'LaminasView',
+    'zend-framework.flf' => 'laminas-project.flf',
 
     // Expressive-related
     "'zend-expressive'" => "'expressive'",
