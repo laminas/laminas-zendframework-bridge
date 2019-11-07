@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 0.3.6 - TBD
+## 0.3.6 - 2019-11-07
 
 ### Added
 
@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#27](https://github.com/laminas/laminas-zendframework-bridge/pull/27) adds a rewrite rule for zend-framework.flf => laminas-project.flf.
 
 ## 0.3.5 - 2019-11-06
 
