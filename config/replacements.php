@@ -309,7 +309,7 @@ return [
     'zend-config' => 'laminas-config',
     'zend-developer-tools/' => 'laminas-developer-tools/',
     'zend-tag-cloud' => 'laminas-tag-cloud',
-    'zenddevelopertools' => 'laminasdevelopertools',
+    'zenddevelopertools' => 'laminas-developer-tools',
     'zendbarcode' => 'laminasbarcode',
     'ZendBarcode' => 'LaminasBarcode',
     'zendcache' => 'laminascache',
