@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 0.3.7 - TBD
+## 0.3.7 - 2019-11-12
 
 ### Added
 
@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#28](https://github.com/laminas/laminas-zendframework-bridge/pull/28) updates the `zenddevelopertools` string to rewrite to `laminas-developer-tools` instead of `laminasdevelopertools`.
 
 ## 0.3.6 - 2019-11-07
 
