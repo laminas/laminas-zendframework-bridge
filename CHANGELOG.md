@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#29](https://github.com/laminas/laminas-zendframework-bridge/pull/29) adds entries to translate `ZendDeveloperTools` to `Laminas\DeveloperTools`, and vice-versa.
 
 ### Changed
 
