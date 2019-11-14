@@ -98,3 +98,7 @@ namespace Laminas\OAuth {
 namespace Laminas\Diagnostics {
     class Tools {}
 }
+
+namespace Laminas\DeveloperTools {
+    class Tools {}
+}

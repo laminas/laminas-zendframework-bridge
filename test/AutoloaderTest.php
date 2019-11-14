@@ -43,6 +43,7 @@ class AutoloaderTest extends TestCase
             array('ZendXml\XmlService',                 'Laminas\Xml\XmlService'),
             array('ZendOAuth\OAuthService',             'Laminas\OAuth\OAuthService'),
             array('ZendDiagnostics\Tools',              'Laminas\Diagnostics\Tools'),
+            array('ZendDeveloperTools\Tools',           'Laminas\DeveloperTools\Tools'),
             array('ZF\ComposerAutoloading\Autoloading', 'Laminas\ComposerAutoloading\Autoloading'),
             array('ZF\Deploy\Deploy',                   'Laminas\Deploy\Deploy'),
             array('ZF\DevelopmentMode\DevelopmentMode', 'Laminas\DevelopmentMode\DevelopmentMode'),
@@ -102,6 +103,7 @@ class AutoloaderTest extends TestCase
             array('Laminas\Other\LaminasExample',        'Zend\Other\ZendExample'),
             array('Laminas\Other\Example',               'Zend\Other\Example'),
             array('Laminas\Example',                     'Zend\Example'),
+            array('Laminas\DeveloperTools\Example',      'ZendDeveloperTools\Example'),
         );
     }
 
