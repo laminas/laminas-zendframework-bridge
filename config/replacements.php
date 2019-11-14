@@ -25,7 +25,7 @@ return [
     'Zend\\Crypt' => 'Laminas\\Crypt',
     'Zend\\Db' => 'Laminas\\Db',
     'Zend\\Debug' => 'Laminas\\Debug',
-    'ZendDeveloperTools' => 'LaminasDeveloperTools',
+    'ZendDeveloperTools' => 'Laminas\\DeveloperTools',
     'Zend\\Di' => 'Laminas\\Di',
     'Zend\\Diactoros' => 'Laminas\\Diactoros',
     'ZendDiagnostics\\Check' => 'Laminas\\Diagnostics\\Check',

@@ -29,12 +29,13 @@ class RewriteRules
             'ZF\\Apigility\\' => 'Apigility\\',
             'ZF\\'            => 'Apigility\\',
 
-            // ZendXml, API wrappers, zend-http OAuth support, zend-diagnostics
+            // ZendXml, API wrappers, zend-http OAuth support, zend-diagnostics, ZendDeveloperTools
             'ZendXml\\'                => 'Laminas\\Xml\\',
             'ZendOAuth\\'              => 'Laminas\\OAuth\\',
             'ZendDiagnostics\\'        => 'Laminas\\Diagnostics\\',
             'ZendService\\ReCaptcha\\' => 'Laminas\\ReCaptcha\\',
             'ZendService\\Twitter\\'   => 'Laminas\\Twitter\\',
+            'ZendDeveloperTools\\'     => 'Laminas\\DeveloperTools\\',
         );
     }
 
@@ -44,10 +45,11 @@ class RewriteRules
     public static function namespaceReverse()
     {
         return array(
-            // ZendXml, ZendOAuth, ZendDiagnostics
-            'Laminas\\Xml\\'         => 'ZendXml\\',
-            'Laminas\\OAuth\\'       => 'ZendOAuth\\',
-            'Laminas\\Diagnostics\\' => 'ZendDiagnostics\\',
+            // ZendXml, ZendOAuth, ZendDiagnostics, ZendDeveloperTools
+            'Laminas\\Xml\\'            => 'ZendXml\\',
+            'Laminas\\OAuth\\'          => 'ZendOAuth\\',
+            'Laminas\\Diagnostics\\'    => 'ZendDiagnostics\\',
+            'Laminas\\DeveloperTools\\' => 'ZendDeveloperTools\\',
 
             // Zend Service
             'Laminas\\ReCaptcha\\' => 'ZendService\\ReCaptcha\\',
