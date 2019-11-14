@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see       https://github.com/laminas/laminas-zendframework-bridge for the canonical source repository
  * @copyright https://github.com/laminas/laminas-zendframework-bridge/blob/master/COPYRIGHT.md
@@ -33,7 +34,7 @@ class Autoloader
      */
     public static function load()
     {
-        $loaded = new ArrayObject(array());
+        $loaded = new ArrayObject([]);
 
         spl_autoload_register(self::createPrependAutoloader(
             RewriteRules::namespaceReverse(),

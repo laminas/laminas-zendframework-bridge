@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see       https://github.com/laminas/laminas-zendframework-bridge for the canonical source repository
  * @copyright https://github.com/laminas/laminas-zendframework-bridge/blob/master/COPYRIGHT.md
@@ -14,7 +15,7 @@ class RewriteRules
      */
     public static function namespaceRewrite()
     {
-        return array(
+        return [
             // Expressive
             'Zend\\ProblemDetails\\' => 'Expressive\\ProblemDetails\\',
             'Zend\\Expressive\\'     => 'Expressive\\',
@@ -36,7 +37,7 @@ class RewriteRules
             'ZendService\\ReCaptcha\\' => 'Laminas\\ReCaptcha\\',
             'ZendService\\Twitter\\'   => 'Laminas\\Twitter\\',
             'ZendDeveloperTools\\'     => 'Laminas\\DeveloperTools\\',
-        );
+        ];
     }
 
     /**
@@ -44,7 +45,7 @@ class RewriteRules
      */
     public static function namespaceReverse()
     {
-        return array(
+        return [
             // ZendXml, ZendOAuth, ZendDiagnostics, ZendDeveloperTools
             'Laminas\\Xml\\'            => 'ZendXml\\',
             'Laminas\\OAuth\\'          => 'ZendOAuth\\',
@@ -75,6 +76,6 @@ class RewriteRules
             'Apigility\\Provider\\'      => 'ZF\\Apigility\\Provider\\',
             'Apigility\\Welcome\\'       => 'ZF\\Apiglity\\Welcome\\',
             'Apigility\\'                => 'ZF\\',
-        );
+        ];
     }
 }

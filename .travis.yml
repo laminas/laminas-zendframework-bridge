@@ -10,6 +10,7 @@ env:
     - COVERAGE_DEPS="php-coveralls/php-coveralls"
 
 matrix:
+  fast_finish: true
   include:
     - php: 5.6
     - php: 7.0
@@ -17,6 +18,7 @@ matrix:
     - php: 7.2
       env:
         - TEST_COVERAGE=true
+        - CS_CHECK=true
     - php: 7.3
     - php: 7.4snapshot
   allow_failures:
@@ -32,6 +34,7 @@ install:
 
 script:
   - if [[ $TEST_COVERAGE == 'true' ]]; then composer test-coverage ; else composer test ; fi
+  - if [[ $CS_CHECK == 'true' ]]; then composer cs-check ; fi
 
 after_script:
   - if [[ $TEST_COVERAGE == 'true' ]]; then vendor/bin/php-coveralls -v ; fi
