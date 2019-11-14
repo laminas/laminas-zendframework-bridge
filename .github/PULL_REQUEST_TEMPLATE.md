@@ -5,7 +5,7 @@ Pick the target branch based on the following criteria:
   * Bugfix: master branch
   * QA improvement (additional tests, CS fixes, etc.) that does not change code
     behavior: master branch
-  * New feature or refactor or existing code: develop branch
+  * New feature, or refactor of existing code: develop branch
 -->
 
 |    Q        |   A
