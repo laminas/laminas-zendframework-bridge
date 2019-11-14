@@ -1,6 +1,6 @@
 # Getting Support
 
-Laminas offers three support channels:
+Laminas offers the following support channels:
 
 - For real-time questions, use our
   [chat](https://laminas.dev/chat)
