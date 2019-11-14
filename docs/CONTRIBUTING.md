@@ -7,6 +7,7 @@ read/subscribe to the following resources:
 
  - [Coding Standards](https://github.com/laminas/laminas-coding-standard)
  - [Forums](https://discourse.laminas.dev/c/contributors)
+ - [Chat](https://laminas.dev/chat)
  - [Code of Conduct](CODE_OF_CONDUCT.md)
 
 If you are working on new features or refactoring
@@ -70,7 +71,7 @@ Your first step is to establish a public repository from which we can
 pull your work into the master repository. We recommend using
 [GitHub](https://github.com), as that is where the component is already hosted.
 
-1. Setup a [GitHub account](https://github.com/), if you haven't yet
+1. Setup a [GitHub account](https://github.com/join), if you haven't yet
 2. Fork the repository (https://github.com/laminas/laminas-zendframework-bridge)
 3. Clone the canonical repository locally and enter it.
 
@@ -90,7 +91,7 @@ pull your work into the master repository. We recommend using
 ### Keeping Up-to-Date
 
 Periodically, you should update your fork or personal repository to
-match the canonical ZF repository. Assuming you have setup your local repository
+match the canonical repository. Assuming you have setup your local repository
 per the instructions above, you can do the following:
 
 

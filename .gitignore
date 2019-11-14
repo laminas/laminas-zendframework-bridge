@@ -1,6 +1,6 @@
 /.phpunit.result.cache
 /composer.lock
 /docs/html/
-/vendor/
 /laminas-mkdoc-theme.tgz
 /laminas-mkdoc-theme/
+/vendor/

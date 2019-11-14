@@ -1,9 +1,11 @@
 # Getting Support
 
-Laminas offers the following support channels:
+Laminas offers three support channels:
 
+- For real-time questions, use our
+  [chat](https://laminas.dev/chat)
 - For detailed questions (e.g., those requiring examples) use our
-  [forums](https://discourse.laminas.dev/c/questions)
+  [forums](https://discourse.laminas.dev)
 - To report issues, use this repository's
   [issue tracker](https://github.com/laminas/laminas-zendframework-bridge/issues/new)
 
