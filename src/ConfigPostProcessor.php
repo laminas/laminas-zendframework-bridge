@@ -12,7 +12,7 @@ class ConfigPostProcessor
 {
     /** @var array String keys => string values */
     private $exactReplacements = [
-        'zend-expressive' => 'expressive',
+        'zend-expressive' => 'mezzio',
         'zf-apigility'    => 'apigility',
     ];
 

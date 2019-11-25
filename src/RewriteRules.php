@@ -17,8 +17,8 @@ class RewriteRules
     {
         return [
             // Expressive
-            'Zend\\ProblemDetails\\' => 'Expressive\\ProblemDetails\\',
-            'Zend\\Expressive\\'     => 'Expressive\\',
+            'Zend\\ProblemDetails\\' => 'Mezzio\\ProblemDetails\\',
+            'Zend\\Expressive\\'     => 'Mezzio\\',
 
             // Laminas
             'Zend\\'                    => 'Laminas\\',
@@ -60,8 +60,8 @@ class RewriteRules
             'Laminas\\' => 'Zend\\',
 
             // Expressive
-            'Expressive\\ProblemDetails\\' => 'Zend\\ProblemDetails\\',
-            'Expressive\\'                 => 'Zend\\Expressive\\',
+            'Mezzio\\ProblemDetails\\' => 'Zend\\ProblemDetails\\',
+            'Mezzio\\'                 => 'Zend\\Expressive\\',
 
             // Laminas to ZfCampus
             'Laminas\\ComposerAutoloading\\' => 'ZF\\ComposerAutoloading\\',

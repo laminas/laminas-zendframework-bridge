@@ -57,7 +57,7 @@ return [
     'Zend\\Paginator' => 'Laminas\\Paginator',
     'Zend\\Permissions' => 'Laminas\\Permissions',
     'Zend\\Pimple\\Config' => 'Laminas\\Pimple\\Config',
-    'Zend\\ProblemDetails' => 'Expressive\\ProblemDetails',
+    'Zend\\ProblemDetails' => 'Mezzio\\ProblemDetails',
     'Zend\\ProgressBar' => 'Laminas\\ProgressBar',
     'Zend\\Psr7Bridge' => 'Laminas\\Psr7Bridge',
     'Zend\\Router' => 'Laminas\\Router',
@@ -131,7 +131,7 @@ return [
     'Zend\\\\Paginator' => 'Laminas\\\\Paginator',
     'Zend\\\\Permissions' => 'Laminas\\\\Permissions',
     'Zend\\\\Pimple\\\\Config' => 'Laminas\\\\Pimple\\\\Config',
-    'Zend\\\\ProblemDetails' => 'Expressive\\\\ProblemDetails',
+    'Zend\\\\ProblemDetails' => 'Mezzio\\\\ProblemDetails',
     'Zend\\\\ProgressBar' => 'Laminas\\\\ProgressBar',
     'Zend\\\\Psr7Bridge' => 'Laminas\\\\Psr7Bridge',
     'Zend\\\\Router' => 'Laminas\\\\Router',
@@ -157,8 +157,8 @@ return [
     'ZendModule' => 'LaminasModule', // class ZendModuleProvider in zend-config-aggregator-modulemanager
 
     // Expressive
-    'Zend\\Expressive' => 'Expressive',
-    'Zend\\\\Expressive' => 'Expressive',
+    'Zend\\Expressive' => 'Mezzio',
+    'Zend\\\\Expressive' => 'Mezzio',
     'ZendAuthentication' => 'LaminasAuthentication',
     'ZendAcl' => 'LaminasAcl',
     'ZendRbac' => 'LaminasRbac',
@@ -279,10 +279,10 @@ return [
     'zendframework/zend-xmlrpc' => 'laminas/laminas-xmlrpc',
 
     // Expressive packages
-    'zendframework/zend-expressive' => 'expressive/expressive',
-    'zendframework/zend-expressive-zendrouter' => 'expressive/expressive-laminasrouter',
-    'zendframework/zend-problem-details' => 'expressive/expressive-problem-details',
-    'zendframework/zend-expressive-zendviewrenderer' => 'expressive/expressive-laminasviewrenderer',
+    'zendframework/zend-expressive' => 'mezzio/mezzio',
+    'zendframework/zend-expressive-zendrouter' => 'mezzio/mezzio-laminasrouter',
+    'zendframework/zend-problem-details' => 'mezzio/mezzio-problem-details',
+    'zendframework/zend-expressive-zendviewrenderer' => 'mezzio/mezzio-laminasviewrenderer',
 
     // Apigility packages
     'zfcampus/apigility-documentation' => 'apigility/documentation',
@@ -347,14 +347,14 @@ return [
     'zend-framework.flf' => 'laminas-project.flf',
 
     // Expressive-related
-    "'zend-expressive'" => "'expressive'",
-    '"zend-expressive"' => '"expressive"',
-    'zend-expressive.' => 'expressive.',
-    'zend-expressive-authorization' => 'expressive-authorization',
-    'zend-expressive-hal' => 'expressive-hal',
-    'zend-expressive-session' => 'expressive-session',
-    'zend-expressive-swoole' => 'expressive-swoole',
-    'zend-expressive-tooling' => 'expressive-tooling',
+    "'zend-expressive'" => "'mezzio'",
+    '"zend-expressive"' => '"mezzio"',
+    'zend-expressive.' => 'mezzio.',
+    'zend-expressive-authorization' => 'mezzio-authorization',
+    'zend-expressive-hal' => 'mezzio-hal',
+    'zend-expressive-session' => 'mezzio-session',
+    'zend-expressive-swoole' => 'mezzio-swoole',
+    'zend-expressive-tooling' => 'mezzio-tooling',
 
     // Apigility-related
     "'zf-apigility'" => "'apigility'",
