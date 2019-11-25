@@ -27,8 +27,8 @@ class RewriteRules
             'ZF\\DevelopmentMode\\'     => 'Laminas\\DevelopmentMode\\',
 
             // Apigility
-            'ZF\\Apigility\\' => 'Apigility\\',
-            'ZF\\'            => 'Apigility\\',
+            'ZF\\Apigility\\' => 'Laminas\\ApiTools\\',
+            'ZF\\'            => 'Laminas\\ApiTools\\',
 
             // ZendXml, API wrappers, zend-http OAuth support, zend-diagnostics, ZendDeveloperTools
             'ZendXml\\'                => 'Laminas\\Xml\\',
@@ -69,13 +69,13 @@ class RewriteRules
             'Laminas\\DevelopmentMode\\'     => 'ZF\\DevelopmentMode\\',
 
             // Apigility
-            'Apigility\\Admin\\'         => 'ZF\\Apigility\\Admin\\',
-            'Apigility\\Doctrine\\'      => 'ZF\\Apigility\\Doctrine\\',
-            'Apigility\\Documentation\\' => 'ZF\\Apigility\\Documentation\\',
-            'Apigility\\Example\\'       => 'ZF\\Apigility\\Example\\',
-            'Apigility\\Provider\\'      => 'ZF\\Apigility\\Provider\\',
-            'Apigility\\Welcome\\'       => 'ZF\\Apiglity\\Welcome\\',
-            'Apigility\\'                => 'ZF\\',
+            'Laminas\\ApiTools\\Admin\\'         => 'ZF\\Apigility\\Admin\\',
+            'Laminas\\ApiTools\\Doctrine\\'      => 'ZF\\Apigility\\Doctrine\\',
+            'Laminas\\ApiTools\\Documentation\\' => 'ZF\\Apigility\\Documentation\\',
+            'Laminas\\ApiTools\\Example\\'       => 'ZF\\Apigility\\Example\\',
+            'Laminas\\ApiTools\\Provider\\'      => 'ZF\\Apigility\\Provider\\',
+            'Laminas\\ApiTools\\Welcome\\'       => 'ZF\\Apiglity\\Welcome\\',
+            'Laminas\\ApiTools\\'                => 'ZF\\',
         ];
     }
 }
