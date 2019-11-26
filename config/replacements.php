@@ -163,6 +163,7 @@ return [
     'ZendAcl' => 'LaminasAcl',
     'ZendRbac' => 'LaminasRbac',
     'ZendRouter' => 'LaminasRouter',
+    'ExpressiveUrlGenerator' => 'MezzioUrlGenerator',
 
     // Apigility
     'ZF\\Apigility' => 'Laminas\\ApiTools',
