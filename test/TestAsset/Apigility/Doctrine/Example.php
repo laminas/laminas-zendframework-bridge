@@ -1,6 +1,6 @@
 <?php
 
-namespace Apigility\Doctrine;
+namespace Laminas\ApiTools\Doctrine;
 
 class Example
 {

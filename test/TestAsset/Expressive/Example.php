@@ -1,6 +1,6 @@
 <?php
 
-namespace Expressive;
+namespace Mezzio;
 
 class Example
 {

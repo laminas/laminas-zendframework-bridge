@@ -21,18 +21,18 @@ class AutoloaderTest extends TestCase
         return [
             // phpcs:disable Generic.Files.LineLength.TooLong
             // Expressive
-            ['Zend\Expressive\Expressive',                                              'Expressive\Expressive'],
-            ['Zend\Expressive\Authentication\Authentication',                           'Expressive\Authentication\Authentication'],
-            ['Zend\Expressive\Authentication\ZendAuthentication\AuthenticationAdapter', 'Expressive\Authentication\LaminasAuthentication\AuthenticationAdapter'],
-            ['Zend\Expressive\Authentication\ZendAuthentication\ZendAuthentication',    'Expressive\Authentication\LaminasAuthentication\LaminasAuthentication'],
-            ['Zend\Expressive\Authorization\Authorization',                             'Expressive\Authorization\Authorization'],
-            ['Zend\Expressive\Authorization\Acl\ZendAclFactory',                        'Expressive\Authorization\Acl\LaminasAclFactory'],
-            ['Zend\Expressive\Authorization\Rbac\ZendRbac',                             'Expressive\Authorization\Rbac\LaminasRbac'],
-            ['Zend\Expressive\Router\Router',                                           'Expressive\Router\Router'],
-            ['Zend\Expressive\Router\ZendRouter',                                       'Expressive\Router\LaminasRouter'],
-            ['Zend\Expressive\Router\ZendRouter\RouterAdapter',                         'Expressive\Router\LaminasRouter\RouterAdapter'],
-            ['Zend\Expressive\ZendView\ZendViewRenderer',                               'Expressive\LaminasView\LaminasViewRenderer'],
-            ['Zend\ProblemDetails\ProblemDetails',                                      'Expressive\ProblemDetails\ProblemDetails'],
+            ['Zend\Expressive\Application',                                             'Mezzio\Application'],
+            ['Zend\Expressive\Authentication\Authentication',                           'Mezzio\Authentication\Authentication'],
+            ['Zend\Expressive\Authentication\ZendAuthentication\AuthenticationAdapter', 'Mezzio\Authentication\LaminasAuthentication\AuthenticationAdapter'],
+            ['Zend\Expressive\Authentication\ZendAuthentication\ZendAuthentication',    'Mezzio\Authentication\LaminasAuthentication\LaminasAuthentication'],
+            ['Zend\Expressive\Authorization\Authorization',                             'Mezzio\Authorization\Authorization'],
+            ['Zend\Expressive\Authorization\Acl\ZendAclFactory',                        'Mezzio\Authorization\Acl\LaminasAclFactory'],
+            ['Zend\Expressive\Authorization\Rbac\ZendRbac',                             'Mezzio\Authorization\Rbac\LaminasRbac'],
+            ['Zend\Expressive\Router\Router',                                           'Mezzio\Router\Router'],
+            ['Zend\Expressive\Router\ZendRouter',                                       'Mezzio\Router\LaminasRouter'],
+            ['Zend\Expressive\Router\ZendRouter\RouterAdapter',                         'Mezzio\Router\LaminasRouter\RouterAdapter'],
+            ['Zend\Expressive\ZendView\ZendViewRenderer',                               'Mezzio\LaminasView\LaminasViewRenderer'],
+            ['Zend\ProblemDetails\ProblemDetails',                                      'Mezzio\ProblemDetails\ProblemDetails'],
             // phpcs:enable
 
             // Laminas
@@ -53,8 +53,8 @@ class AutoloaderTest extends TestCase
             ['ZF\DevelopmentMode\DevelopmentMode', 'Laminas\DevelopmentMode\DevelopmentMode'],
 
             // Apigility
-            ['ZF\Apigility\BaseModule', 'Apigility\BaseModule'],
-            ['ZF\BaseModule',           'Apigility\BaseModule'],
+            ['ZF\Apigility\BaseModule', 'Laminas\ApiTools\BaseModule'],
+            ['ZF\BaseModule',           'Laminas\ApiTools\BaseModule'],
         ];
     }
 
@@ -82,19 +82,19 @@ class AutoloaderTest extends TestCase
     {
         return [
             // Apigility
-            ['Apigility\Admin\Example',         'ZF\Apigility\Admin\Example'],
-            ['Apigility\Doctrine\Example',      'ZF\Apigility\Doctrine\Example'],
-            ['Apigility\Documentation\Example', 'ZF\Apigility\Documentation\Example'],
-            ['Apigility\Example\Example',       'ZF\Apigility\Example\Example'],
-            ['Apigility\Provider\Example',      'ZF\Apigility\Provider\Example'],
-            ['Apigility\Welcome\Example',       'ZF\Apigility\Welcome\Example'],
-            ['Apigility\Other\Example',         'ZF\Other\Example'],
-            ['Apigility\Example',               'ZF\Example'],
+            ['Laminas\ApiTools\Admin\Example',         'ZF\Apigility\Admin\Example'],
+            ['Laminas\ApiTools\Doctrine\Example',      'ZF\Apigility\Doctrine\Example'],
+            ['Laminas\ApiTools\Documentation\Example', 'ZF\Apigility\Documentation\Example'],
+            ['Laminas\ApiTools\Example\Example',       'ZF\Apigility\Example\Example'],
+            ['Laminas\ApiTools\Provider\Example',      'ZF\Apigility\Provider\Example'],
+            ['Laminas\ApiTools\Welcome\Example',       'ZF\Apigility\Welcome\Example'],
+            ['Laminas\ApiTools\Other\Example',         'ZF\Other\Example'],
+            ['Laminas\ApiTools\Example',               'ZF\Example'],
 
             // Expressive
-            ['Expressive\ProblemDetails\Example', 'Zend\ProblemDetails\Example'],
-            ['Expressive\Other\Example',          'Zend\Expressive\Other\Example'],
-            ['Expressive\Example',                'Zend\Expressive\Example'],
+            ['Mezzio\ProblemDetails\Example', 'Zend\ProblemDetails\Example'],
+            ['Mezzio\Other\Example',          'Zend\Expressive\Other\Example'],
+            ['Mezzio\Example',                'Zend\Expressive\Example'],
 
             // Laminas
             ['Laminas\ReCaptcha\Example',           'ZendService\ReCaptcha\Example'],

@@ -1,6 +1,6 @@
 <?php
 
-namespace Apigility\Admin;
+namespace Laminas\ApiTools\Admin;
 
 class Example
 {

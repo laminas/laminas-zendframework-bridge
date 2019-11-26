@@ -1,6 +1,6 @@
 <?php
 
-namespace Apigility\Welcome;
+namespace Laminas\ApiTools\Welcome;
 
 class Example
 {

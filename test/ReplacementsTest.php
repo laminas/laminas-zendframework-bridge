@@ -22,8 +22,8 @@ class ReplacementsTest extends TestCase
             file_get_contents(__DIR__ . '/TestAsset/Replacements/TestClass.php'),
             file_get_contents(__DIR__ . '/TestAsset/Replacements/TestClass.php.out'),
         ];
-        yield 'Apigility module' => ['ZF\Apigility', 'Apigility'];
-        yield 'Apigility documentation module' => ['ZF\Apigility\Documentation', 'Apigility\Documentation'];
+        yield 'Apigility module' => ['ZF\Apigility', 'Laminas\ApiTools'];
+        yield 'Apigility documentation module' => ['ZF\Apigility\Documentation', 'Laminas\ApiTools\Documentation'];
         yield 'Apigility modules.config.php' => [
             file_get_contents(__DIR__ . '/TestAsset/Replacements/edge-case-apigility-modules.php'),
             file_get_contents(__DIR__ . '/TestAsset/Replacements/edge-case-apigility-modules.php.out'),

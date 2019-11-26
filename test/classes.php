@@ -6,45 +6,45 @@
  * @license   https://github.com/laminas/laminas-zendframework-bridge/blob/master/LICENSE.md New BSD License
  */
 
-namespace Expressive {
-    class Expressive {}
+namespace Mezzio {
+    class Application {}
 }
 
-namespace Expressive\Authentication {
+namespace Mezzio\Authentication {
     class Authentication {}
 }
 
-namespace Expressive\Authentication\LaminasAuthentication {
+namespace Mezzio\Authentication\LaminasAuthentication {
     class AuthenticationAdapter {}
     class LaminasAuthentication {}
 }
 
-namespace Expressive\Authorization {
+namespace Mezzio\Authorization {
     class Authorization {}
 }
 
-namespace Expressive\Authorization\Acl {
+namespace Mezzio\Authorization\Acl {
     class LaminasAclFactory {}
 }
 
-namespace Expressive\Authorization\Rbac {
+namespace Mezzio\Authorization\Rbac {
     class LaminasRbac {}
 }
 
-namespace Expressive\Router {
+namespace Mezzio\Router {
     class Router {}
     class LaminasRouter {}
 }
 
-namespace Expressive\Router\LaminasRouter {
+namespace Mezzio\Router\LaminasRouter {
     class RouterAdapter {}
 }
 
-namespace Expressive\LaminasView {
+namespace Mezzio\LaminasView {
     class LaminasViewRenderer {}
 }
 
-namespace Expressive\ProblemDetails {
+namespace Mezzio\ProblemDetails {
     class ProblemDetails {}
 }
 
@@ -84,7 +84,7 @@ namespace Laminas\Twitter {
     class MyClass {}
 }
 
-namespace Apigility {
+namespace Laminas\ApiTools {
     class BaseModule {}
 }
 

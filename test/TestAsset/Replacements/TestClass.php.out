@@ -1,14 +1,14 @@
 <?php
 
-namespace Expressive\ProblemDetails;
+namespace Mezzio\ProblemDetails;
 
 use Laminas\ComposerAutoloading\Something;
-use Apigility\Doctrine\MyDoctrine;
+use Laminas\ApiTools\Doctrine\MyDoctrine;
 use Zend\Version;
 use ZendService\Amazon;
 use ZendPdf\Renderer;
 
-class MyClass extends \Expressive\Router
+class MyClass extends \Mezzio\Router
 {
     /** @var string|\Laminas\View\Renderer */
     private $class;

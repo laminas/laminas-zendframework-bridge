@@ -65,7 +65,7 @@ return [
             'template_error' => 'error::500',
         ],
     ],
-    'expressive' => [
+    'mezzio' => [
         'error_handler' => [
             'template_404'   => 'error::404',
             'template_error' => 'error::500',
@@ -78,7 +78,7 @@ return [
         'cache_expire' => 60 * 60 * 24 * 28, // 28 days
         'persistent' => true,
     ],
-    'expressive-session-cache' => [
+    'mezzio-session-cache' => [
         'cache_item_pool_service' => SessionCachePool::class,
         'cookie_name' => 'MWOPSESS',
         'cache_limiter' => 'nocache',
@@ -124,7 +124,7 @@ return [
             ],
         ],
     ],
-    'expressive-swoole' => [
+    'mezzio-swoole' => [
         'enable_coroutine' => true,
         'swoole-http-server' => [
             'process-name' => 'mwopnet',

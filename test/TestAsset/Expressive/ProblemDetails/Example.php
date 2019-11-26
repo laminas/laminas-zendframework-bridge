@@ -1,6 +1,6 @@
 <?php
 
-namespace Expressive\ProblemDetails;
+namespace Mezzio\ProblemDetails;
 
 class Example
 {

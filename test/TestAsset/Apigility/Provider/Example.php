@@ -1,6 +1,6 @@
 <?php
 
-namespace Apigility\Provider;
+namespace Laminas\ApiTools\Provider;
 
 class Example
 {
