@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 0.4.1 - TBD
+## 0.4.1 - 2019-12-10
 
 ### Added
 
@@ -22,9 +22,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#35](https://github.com/laminas/laminas-zendframework-bridge/pull/35) removes zend-debug from the replacement list, as it is not being brought over to Laminas.
 
-## 0.4.0 - TBD
+## 0.4.0 - 2019-11-27
 
 ### Added
 
