@@ -94,7 +94,12 @@ class Autoloader
             }
 
             if ($classLoader->loadClass($class)) {
-                $legacy = $namespaces[$check] . str_replace('Laminas', 'Zend', substr($class, strlen($check)));
+                $legacy = $namespaces[$check]
+                    . strtr(substr($class, strlen($check)), [
+                        'ApiTools' => 'Apigility',
+                        'Mezzio' => 'Expressive',
+                        'Laminas' => 'Zend',
+                    ]);
                 class_alias($class, $legacy);
             }
         };
@@ -131,7 +136,12 @@ class Autoloader
                 return;
             }
 
-            $alias = $namespaces[$check] . str_replace('Zend', 'Laminas', substr($class, strlen($check)));
+            $alias = $namespaces[$check]
+                . strtr(substr($class, strlen($check)), [
+                    'Apigility' => 'ApiTools',
+                    'Expressive' => 'Mezzio',
+                    'Zend' => 'Laminas',
+                ]);
 
             $loaded[$alias] = true;
             if (class_exists($alias) || interface_exists($alias) || trait_exists($alias)) {
