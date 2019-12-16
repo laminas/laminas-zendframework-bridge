@@ -37,8 +37,8 @@
         "psr-4": {
             "LaminasTest\\ZendFrameworkBridge\\": "test/",
             "LaminasTest\\ZendFrameworkBridge\\TestAsset\\": "test/TestAsset/classes/",
-            "Laminas\\ApiTools\\": "test/TestAsset/Apigility/",
-            "Mezzio\\": "test/TestAsset/Expressive/",
+            "Laminas\\ApiTools\\": "test/TestAsset/LaminasApiTools/",
+            "Mezzio\\": "test/TestAsset/Mezzio/",
             "Laminas\\": "test/TestAsset/Laminas/"
         }
     },
