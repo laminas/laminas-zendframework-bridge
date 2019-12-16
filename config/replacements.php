@@ -200,6 +200,9 @@ return [
     'ZF\\\\Rest' => 'Laminas\\\\ApiTools\\\\Rest',
     'ZF\\\\Rpc' => 'Laminas\\\\ApiTools\\\\Rpc',
     'ZF\\\\Versioning' => 'Laminas\\\\ApiTools\\\\Versioning',
+    'ApigilityModuleInterface' => 'ApiToolsModuleInterface',
+    'ApigilityProviderInterface' => 'ApiToolsProviderInterface',
+    'ApigilityVersionController' => 'ApiToolsVersionController',
 
     // PACKAGES
     // ZF components, MVC
