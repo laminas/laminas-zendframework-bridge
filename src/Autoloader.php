@@ -74,7 +74,7 @@ class Autoloader
          * @param  string $class Class name to autoload
          * @return void
          */
-        return function ($class) use ($namespaces, $classLoader, $loaded) {
+        return static function ($class) use ($namespaces, $classLoader, $loaded) {
             if (isset($loaded[$class])) {
                 return;
             }
@@ -114,7 +114,7 @@ class Autoloader
          * @param  string $class Class name to autoload
          * @return void
          */
-        return function ($class) use ($namespaces, $loaded) {
+        return static function ($class) use ($namespaces, $loaded) {
             $segments = explode('\\', $class);
 
             if ($segments[0] === 'ZendService' && isset($segments[1])) {
