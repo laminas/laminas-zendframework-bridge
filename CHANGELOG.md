@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#36](https://github.com/laminas/laminas-zendframework-bridge/pull/36) adds some cases for classes that contain the verbiage "Expressive" and "Apigility" ot ensure they are rewritten correctly.
 
 ## 0.4.1 - 2019-12-10
 
