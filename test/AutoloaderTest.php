@@ -54,11 +54,13 @@ class AutoloaderTest extends TestCase
             ['ZF\DevelopmentMode\DevelopmentMode', 'Laminas\DevelopmentMode\DevelopmentMode'],
 
             // Apigility
+            // phpcs:disable Generic.Files.LineLength.TooLong
             ['ZF\Apigility\BaseModule',        'Laminas\ApiTools\BaseModule'],
             ['ZF\BaseModule',                  'Laminas\ApiTools\BaseModule'],
             ['ZF\Apigility\Admin\Controller\ApigilityVersionController', 'Laminas\ApiTools\Admin\Controller\ApiToolsVersionController'],
             ['ZF\Apigility\ApigilityModuleInterface', 'Laminas\ApiTools\ApiToolsModuleInterface', true],
             ['ZF\Apigility\Provider\ApigilityProviderInterface', 'Laminas\ApiTools\Provider\ApiToolsProviderInterface', true],
+            // phpcs:enable
         ];
     }
 
