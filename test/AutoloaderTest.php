@@ -97,12 +97,14 @@ class AutoloaderTest extends TestCase
             ['Laminas\ApiTools\Example\Example',       'ZF\Apigility\Example\Example'],
             ['Laminas\ApiTools\Provider\Example',      'ZF\Apigility\Provider\Example'],
             ['Laminas\ApiTools\Welcome\Example',       'ZF\Apigility\Welcome\Example'],
+            ['Laminas\ApiTools\Other\ApiToolsClass',   'ZF\Other\ApigilityClass'],
             ['Laminas\ApiTools\Other\Example',         'ZF\Other\Example'],
             ['Laminas\ApiTools\Example',               'ZF\Example'],
 
             // Expressive
             ['Mezzio\ProblemDetails\Example', 'Zend\ProblemDetails\Example'],
             ['Mezzio\Other\Example',          'Zend\Expressive\Other\Example'],
+            ['Mezzio\Other\MezzioClass',      'Zend\Expressive\Other\ExpressiveClass'],
             ['Mezzio\Example',                'Zend\Expressive\Example'],
 
             // Laminas
@@ -118,6 +120,7 @@ class AutoloaderTest extends TestCase
             ['Laminas\Other\Example',               'Zend\Other\Example'],
             ['Laminas\Example',                     'Zend\Example'],
             ['Laminas\DeveloperTools\Example',      'ZendDeveloperTools\Example'],
+            ['Laminas\Router\LaminasRouterClass',   'Zend\Router\ZendRouterClass'],
         ];
     }
 
