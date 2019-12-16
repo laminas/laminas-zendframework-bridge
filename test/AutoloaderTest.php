@@ -33,10 +33,11 @@ class AutoloaderTest extends TestCase
             ['Zend\Expressive\Router\ZendRouter\RouterAdapter',                         'Mezzio\Router\LaminasRouter\RouterAdapter'],
             ['Zend\Expressive\ZendView\ZendViewRenderer',                               'Mezzio\LaminasView\LaminasViewRenderer'],
             ['Zend\ProblemDetails\ProblemDetails',                                      'Mezzio\ProblemDetails\ProblemDetails'],
+            ['Zend\Expressive\Hal\ExpressiveUrlGenerator',                              'Mezzio\Hal\MezzioUrlGenerator'],
             // phpcs:enable
 
             // Laminas
-            ['Zend\Expressive',                    'Laminas\Expressive'],
+            ['Zend\Expressive',                    'Laminas\Mezzio'],
             ['Zend\Main',                          'Laminas\Main'],
             ['Zend\Psr7Bridge\Psr7Bridge',         'Laminas\Psr7Bridge\Psr7Bridge'],
             ['Zend\Psr7Bridge\ZendBridge',         'Laminas\Psr7Bridge\LaminasBridge'],
@@ -53,8 +54,9 @@ class AutoloaderTest extends TestCase
             ['ZF\DevelopmentMode\DevelopmentMode', 'Laminas\DevelopmentMode\DevelopmentMode'],
 
             // Apigility
-            ['ZF\Apigility\BaseModule', 'Laminas\ApiTools\BaseModule'],
-            ['ZF\BaseModule',           'Laminas\ApiTools\BaseModule'],
+            ['ZF\Apigility\BaseModule',        'Laminas\ApiTools\BaseModule'],
+            ['ZF\BaseModule',                  'Laminas\ApiTools\BaseModule'],
+            ['ZF\Apigility\ApigilityProvider', 'Laminas\ApiTools\ApiToolsProvider'],
         ];
     }
 
