@@ -36,7 +36,7 @@ namespace Mezzio\Router {
     class LaminasRouter {}
 }
 
-namespace Mezzio\Hal {
+namespace Mezzio\Hal\LinkGenerator {
     class MezzioUrlGenerator {}
 }
 
@@ -89,8 +89,16 @@ namespace Laminas\Twitter {
 }
 
 namespace Laminas\ApiTools {
-    class ApiToolsProvider {}
     class BaseModule {}
+    interface ApiToolsModuleInterface {}
+}
+
+namespace Laminas\ApiTools\Provider {
+    interface ApiToolsProviderInterface {}
+}
+
+namespace Laminas\ApiTools\Admin\Controller {
+    class ApiToolsVersionController {}
 }
 
 namespace Laminas\Xml {

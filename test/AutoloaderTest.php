@@ -33,7 +33,7 @@ class AutoloaderTest extends TestCase
             ['Zend\Expressive\Router\ZendRouter\RouterAdapter',                         'Mezzio\Router\LaminasRouter\RouterAdapter'],
             ['Zend\Expressive\ZendView\ZendViewRenderer',                               'Mezzio\LaminasView\LaminasViewRenderer'],
             ['Zend\ProblemDetails\ProblemDetails',                                      'Mezzio\ProblemDetails\ProblemDetails'],
-            ['Zend\Expressive\Hal\ExpressiveUrlGenerator',                              'Mezzio\Hal\MezzioUrlGenerator'],
+            ['Zend\Expressive\Hal\LinkGenerator\ExpressiveUrlGenerator',                'Mezzio\Hal\LinkGenerator\MezzioUrlGenerator'],
             // phpcs:enable
 
             // Laminas
@@ -56,7 +56,9 @@ class AutoloaderTest extends TestCase
             // Apigility
             ['ZF\Apigility\BaseModule',        'Laminas\ApiTools\BaseModule'],
             ['ZF\BaseModule',                  'Laminas\ApiTools\BaseModule'],
-            ['ZF\Apigility\ApigilityProvider', 'Laminas\ApiTools\ApiToolsProvider'],
+            ['ZF\Apigility\Admin\Controller\ApigilityVersionController', 'Laminas\ApiTools\Admin\Controller\ApiToolsVersionController'],
+            ['ZF\Apigility\ApigilityModuleInterface', 'Laminas\ApiTools\ApiToolsModuleInterface', true],
+            ['ZF\Apigility\Provider\ApigilityProviderInterface', 'Laminas\ApiTools\Provider\ApiToolsProviderInterface', true],
         ];
     }
 
@@ -64,11 +66,14 @@ class AutoloaderTest extends TestCase
      * @dataProvider classProvider
      * @param string $legacy
      * @param string $actual
+     * @param null|bool $isInterface
      */
-    public function testLegacyClassIsAliasToLaminas($legacy, $actual)
+    public function testLegacyClassIsAliasToLaminas($legacy, $actual, $isInterface = false)
     {
-        self::assertTrue(class_exists($legacy));
-        self::assertSame($actual, get_class(new $legacy()));
+        self::assertTrue($isInterface ? interface_exists($legacy) : class_exists($legacy));
+        if (! $isInterface) {
+            self::assertSame($actual, get_class(new $legacy()));
+        }
     }
 
     public function testTypeHint()
