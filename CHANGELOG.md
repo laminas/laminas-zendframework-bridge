@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#39](https://github.com/laminas/laminas-zendframework-bridge/pull/39) fixes an issue when using the Auryn DI container. The class `Northwoods\Container\Zend\Config` was incorrectly being renamed to `Northwoods\Container\Laminas\Config` (which should not happen, as it is not a class under our control).
 
 ## 0.4.2 - 2019-12-16
 
