@@ -4,6 +4,7 @@ return [
     // NEVER REWRITE
     'zendframework/zendframework' => 'zendframework/zendframework',
     'Doctrine\\Zend' => 'Doctrine\\Zend',
+    'Northwoods\\Container\\Zend\\Config' => 'Northwoods\\Container\\Zend\\Config',
 
     // NAMESPACES
     // Zend Framework components
