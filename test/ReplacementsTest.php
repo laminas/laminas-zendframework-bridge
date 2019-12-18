@@ -28,6 +28,42 @@ class ReplacementsTest extends TestCase
             file_get_contents(__DIR__ . '/TestAsset/Replacements/edge-case-apigility-modules.php'),
             file_get_contents(__DIR__ . '/TestAsset/Replacements/edge-case-apigility-modules.php.out'),
         ];
+        yield 'Auryn' => [
+            'Northwoods\Container\Zend\Config',
+            'Northwoods\Container\Zend\Config'
+        ];
+        yield 'Expressive ZendRouter' => [
+            'Zend\Expressive\Router\ZendRouter',
+            'Mezzio\Router\LaminasRouter'
+        ];
+        yield 'Expressive ZendView Renderer' => [
+            'Zend\Expressive\ZendView\ZendViewRenderer',
+            'Mezzio\LaminasView\LaminasViewRenderer'
+        ];
+        yield 'Expressive ACL Authorizations' => [
+            'Zend\Expressive\Authorization\Acl\ZendAcl',
+            'Mezzio\Authorization\Acl\LaminasAcl'
+        ];
+        yield 'Expressive RBAC Authorizations' => [
+            'Zend\Expressive\Authorization\Rbac\ZendRbac',
+            'Mezzio\Authorization\Rbac\LaminasRbac'
+        ];
+        yield 'Cache Zend Server abstract adapter' => [
+            'Zend\Cache\Storage\Adapter\AbstractZendServer',
+            'Laminas\Cache\Storage\Adapter\AbstractZendServer'
+        ];
+        yield 'Cache Zend Server Disk adapter' => [
+            'Zend\Cache\Storage\Adapter\ZendServerDisk',
+            'Laminas\Cache\Storage\Adapter\ZendServerDisk'
+        ];
+        yield 'Cache Zend Server Shm adapter' => [
+            'Zend\Cache\Storage\Adapter\ZendServerShm',
+            'Laminas\Cache\Storage\Adapter\ZendServerShm'
+        ];
+        yield 'Log Zend Monitor writer' => [
+            'Zend\Log\Writer\ZendMonitor',
+            'Laminas\Log\Writer\ZendMonitor'
+        ];
     }
 
     /**
