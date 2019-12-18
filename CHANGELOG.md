@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Changed
 
-- Nothing.
+- [#40](https://github.com/laminas/laminas-zendframework-bridge/pull/40) adds exclusion rules for subnamespaces that reference Zend, ZF, ZendService, or ZendOAuth to ensure they are not rewritten.
 
 ### Deprecated
 
@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#40](https://github.com/laminas/laminas-zendframework-bridge/pull/40) adds exclusions for classes referencing Zend Server product features to ensure they are not rewritten (e.g., `ZendServerDisk`, `ZendServerShm`, `ZendMonitor`).
 
 ## 0.4.3 - 2019-12-17
 
