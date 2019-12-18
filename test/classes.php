@@ -72,12 +72,22 @@ namespace Laminas\ComposerAutoloading {
     class Autoloading {}
 }
 
+namespace Laminas\Cache\Storage\Adapter {
+    class AbstractZendServer {}
+    class ZendServerDisk {}
+    class ZendServerShm {}
+}
+
 namespace Laminas\Deploy {
     class Deploy {}
 }
 
 namespace Laminas\DevelopmentMode {
     class DevelopmentMode {}
+}
+
+namespace Laminas\Log\Writer {
+    class ZendMonitor {}
 }
 
 namespace Laminas\ReCaptcha {

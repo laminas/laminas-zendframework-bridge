@@ -141,6 +141,10 @@ class Autoloader
                     'Apigility' => 'ApiTools',
                     'Expressive' => 'Mezzio',
                     'Zend' => 'Laminas',
+                    'AbstractZendServer' => 'AbstractZendServer',
+                    'ZendServerDisk' => 'ZendServerDisk',
+                    'ZendServerShm' => 'ZendServerShm',
+                    'ZendMonitor' => 'ZendMonitor',
                 ]);
 
             $loaded[$alias] = true;
