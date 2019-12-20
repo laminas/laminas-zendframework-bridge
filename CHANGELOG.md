@@ -122,7 +122,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [#32](https://github.com/laminas/laminas-zendframework-bridge/pull/32) changes all references to Expressive to instead reference Mezzio.
 
-- [#32](https://github.com/laminas/laminas-zendframework-bridge/pull/32) changes all references to Apigility to instead reference Laminas API Tools. The vendor becomes laminas-api-tools, the URL becomes api-tools.laminas.dev, packages and repos are prefixed with api-tools, and namespaces become `Laminas\ApiTools`.
+- [#32](https://github.com/laminas/laminas-zendframework-bridge/pull/32) changes all references to Apigility to instead reference Laminas API Tools. The vendor becomes laminas-api-tools, the URL becomes api-tools.getlaminas.org, packages and repos are prefixed with api-tools, and namespaces become `Laminas\ApiTools`.
 
 ### Deprecated
 
