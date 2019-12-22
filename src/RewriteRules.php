@@ -23,7 +23,6 @@ class RewriteRules
             // Laminas
             'Zend\\'                    => 'Laminas\\',
             'ZF\\ComposerAutoloading\\' => 'Laminas\\ComposerAutoloading\\',
-            'ZF\\Deploy\\'              => 'Laminas\\Deploy\\',
             'ZF\\DevelopmentMode\\'     => 'Laminas\\DevelopmentMode\\',
 
             // Apigility
@@ -65,7 +64,6 @@ class RewriteRules
 
             // Laminas to ZfCampus
             'Laminas\\ComposerAutoloading\\' => 'ZF\\ComposerAutoloading\\',
-            'Laminas\\Deploy\\'              => 'ZF\\Deploy\\',
             'Laminas\\DevelopmentMode\\'     => 'ZF\\DevelopmentMode\\',
 
             // Apigility

@@ -78,10 +78,6 @@ namespace Laminas\Cache\Storage\Adapter {
     class ZendServerShm {}
 }
 
-namespace Laminas\Deploy {
-    class Deploy {}
-}
-
 namespace Laminas\DevelopmentMode {
     class DevelopmentMode {}
 }

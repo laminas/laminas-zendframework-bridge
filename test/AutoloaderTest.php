@@ -54,7 +54,6 @@ class AutoloaderTest extends TestCase
             ['ZendDiagnostics\Tools',                         'Laminas\Diagnostics\Tools'],
             ['ZendDeveloperTools\Tools',                      'Laminas\DeveloperTools\Tools'],
             ['ZF\ComposerAutoloading\Autoloading',            'Laminas\ComposerAutoloading\Autoloading'],
-            ['ZF\Deploy\Deploy',                              'Laminas\Deploy\Deploy'],
             ['ZF\DevelopmentMode\DevelopmentMode',            'Laminas\DevelopmentMode\DevelopmentMode'],
 
             // Apigility
@@ -118,7 +117,6 @@ class AutoloaderTest extends TestCase
             ['Laminas\Cache\Storage\Adapter\ZendServerDisk',     'Zend\Cache\Storage\Adapter\ZendServerDisk'],
             ['Laminas\Cache\Storage\Adapter\ZendServerShm',      'Zend\Cache\Storage\Adapter\ZendServerShm'],
             ['Laminas\ComposerAutoloading\Example',              'ZF\ComposerAutoloading\Example'],
-            ['Laminas\Deploy\Example',                           'ZF\Deploy\Example'],
             ['Laminas\DevelopmentMode\Example',                  'ZF\DevelopmentMode\Example'],
             ['Laminas\Diagnostics\Example',                      'ZendDiagnostics\Example'],
             ['Laminas\Log\Writer\ZendMonitor',                   'Zend\Log\Writer\ZendMonitor'],
