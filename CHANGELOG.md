@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 0.4.5 - TBD
+## 0.4.5 - 2019-12-23
 
 ### Added
 
@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Changed
 
-- Nothing.
+- [#42](https://github.com/laminas/laminas-zendframework-bridge/pull/42) modifies the replacement rules to no longer rewrite zf-deploy; the package will not be coming to the new organizations.
 
 ### Deprecated
 
