@@ -68,7 +68,7 @@ class Autoloader
     /**
      * @return callable
      */
-    private static function createPrependAutoloader($namespaces, ClassLoader $classLoader, ArrayObject $loaded)
+    private static function createPrependAutoloader(array $namespaces, ClassLoader $classLoader, ArrayObject $loaded)
     {
         /**
          * @param  string $class Class name to autoload

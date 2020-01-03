@@ -1,6 +1,6 @@
 <?php
 
-return [
+return array(
     // NEVER REWRITE
     'zendframework/zendframework' => 'zendframework/zendframework',
 
@@ -508,4 +508,4 @@ return [
     'ZfApigilityDoctrineQueryCreateFilterManager' => 'LaminasApiToolsDoctrineQueryCreateFilterManager',
     'zf-apigility-doctrine' => 'api-tools-doctrine',
     'zf-development-mode' => 'laminas-development-mode',
-];
+);

@@ -10,8 +10,11 @@ namespace Laminas\ZendFrameworkBridge;
 
 class ConfigPostProcessor
 {
-    /** @var array String keys => string values */
-    private $exactReplacements = array(
+    /**
+     * @var array String keys => string values
+     * public because php 5.3
+     */
+    public $exactReplacements = array(
         'zend-expressive' => 'mezzio',
         'zf-apigility'    => 'api-tools',
     );
@@ -69,7 +72,7 @@ class ConfigPostProcessor
                 static $keysOfInterest;
 
                 $keysOfInterest = $keysOfInterest ?: array('aliases', 'invokables');
-                $key            = array_pop($keys);
+                $key = array_pop($keys);
 
                 return in_array($key, $keysOfInterest, true) && is_array($value)
                     ? array($th, 'replaceDependencyAliases')
@@ -107,7 +110,7 @@ class ConfigPostProcessor
             $newValue = $this->replace($value, $keys, $newKey);
 
             // Key does not already exist and/or is not an array value
-            if (! array_key_exists($newKey, $rewritten) || ! is_array($rewritten[$newKey])) {
+            if (!array_key_exists($newKey, $rewritten) || !is_array($rewritten[$newKey])) {
                 // Do not overwrite existing values with null values
                 $rewritten[$newKey] = array_key_exists($newKey, $rewritten) && null === $newValue
                     ? $rewritten[$newKey]
@@ -121,7 +124,7 @@ class ConfigPostProcessor
             }
 
             // Key already exists as an array value, but $value is not an array
-            if (! is_array($newValue)) {
+            if (!is_array($newValue)) {
                 $rewritten[$newKey][] = $newValue;
                 continue;
             }
@@ -138,8 +141,8 @@ class ConfigPostProcessor
      *
      * The $key is provided to allow fine-grained selection of rewrite rules.
      *
-     * @param mixed $value
-     * @param string[] $keys Key hierarchy
+     * @param mixed           $value
+     * @param string[]        $keys Key hierarchy
      * @param null|int|string $key
      * @return mixed
      */
@@ -151,7 +154,7 @@ class ConfigPostProcessor
 
         // Identify rewrite strategy and perform replacements
         $rewriteRule = $this->replacementRuleMatch($value, $keys);
-        return $rewriteRule($value, $keys);
+        return call_user_func($rewriteRule, $value, $keys);
     }
 
     /**
@@ -170,7 +173,7 @@ class ConfigPostProcessor
     public static function merge(array $a, array $b)
     {
         foreach ($b as $key => $value) {
-            if (! isset($a[$key]) && ! array_key_exists($key, $a)) {
+            if (!isset($a[$key]) && !array_key_exists($key, $a)) {
                 $a[$key] = $value;
                 continue;
             }
@@ -184,7 +187,7 @@ class ConfigPostProcessor
                 $a[] = $value;
                 continue;
             }
-            
+
             if (is_array($value) && is_array($a[$key])) {
                 $a[$key] = static::merge($a[$key], $value);
                 continue;
@@ -197,7 +200,7 @@ class ConfigPostProcessor
     }
 
     /**
-     * @param mixed $value
+     * @param mixed           $value
      * @param null|int|string $key
      * @return callable Callable to invoke with value
      */
@@ -230,8 +233,10 @@ class ConfigPostProcessor
      *
      * @param mixed $value
      * @return mixed
+     *
+     * public because php 5.3
      */
-    private function replaceExactValue($value)
+    public function replaceExactValue($value)
     {
         return $this->exactReplacements[$value];
     }
@@ -245,6 +250,8 @@ class ConfigPostProcessor
      * an alias map.
      *
      * @return array
+     *
+     * public because php 5.3
      */
     private function replaceDependencyAliases(array $aliases)
     {
@@ -257,6 +264,8 @@ class ConfigPostProcessor
     /**
      * @param mixed $value
      * @return mixed Returns $value verbatim.
+     *
+     * public because php 5.3
      */
     private function noopReplacement($value)
     {

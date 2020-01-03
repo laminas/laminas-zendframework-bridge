@@ -33,8 +33,8 @@ class ModuleTest extends TestCase
     public function configurations()
     {
         return array(
-            array( 'Acelaya Expressive Slim Router' ,'ExpressiveSlimRouterConfig.php'),
-            array( 'mwop.net App module config' ,'MwopNetAppConfig.php' )
+            array('Acelaya Expressive Slim Router', 'ExpressiveSlimRouterConfig.php'),
+            array('mwop.net App module config', 'MwopNetAppConfig.php')
         );
     }
 

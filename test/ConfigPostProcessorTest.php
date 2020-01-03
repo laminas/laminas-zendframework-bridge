@@ -38,8 +38,8 @@ class ConfigPostProcessorTest extends TestCase
     {
         $configLocation = sprintf('%s/TestAsset/ConfigPostProcessor/%s', __DIR__, $configFile);
         $expectedResultLocation = $configLocation . '.out';
-        $config = require $configLocation;
-        $expected = require $expectedResultLocation;
+        $config    = require $configLocation;
+        $expected  = require $expectedResultLocation;
         $processor = new ConfigPostProcessor();
 
         $this->assertSame($expected, $processor($config), $name);

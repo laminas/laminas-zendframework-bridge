@@ -11,11 +11,11 @@ return array(
                             'defaults' => array(
                                 'controller' => 'My\Custom\Controller',
                                 'action' => 'index',
-							),
-						),
-					),
-				),
-			),
-		),
-	),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    ),
 );
