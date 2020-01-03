@@ -13,7 +13,7 @@ class Replacements
     /** @var string[] */
     private $replacements;
 
-    public function __construct(array $additionalReplacements = [])
+    public function __construct(array $additionalReplacements = array())
     {
         $this->replacements = array_merge(
             require __DIR__ . '/../config/replacements.php',

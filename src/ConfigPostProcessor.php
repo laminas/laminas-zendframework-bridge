@@ -44,43 +44,45 @@ class ConfigPostProcessor
          * @param string[] $keys
          * @return mixed The transformed value
          */
-        $this->rulesets = [
+
+        $th =& $this; // fix compatibility problems with php 5.3
+        $this->rulesets = array(
             // Exact values
-            function ($value) {
-                return is_string($value) && isset($this->exactReplacements[$value])
-                    ? [$this, 'replaceExactValue']
+            function ($value) use ( $th ) {
+                return is_string($value) && isset($th->exactReplacements[$value])
+                    ? array($th, 'replaceExactValue')
                     : null;
             },
 
             // Router (MVC applications)
             // We do not want to rewrite these.
-            function ($value, array $keys) {
+            function ($value, array $keys) use ( $th ) {
                 $key = array_pop($keys);
                 // Only worried about a top-level "router" key.
                 return $key === 'router' && count($keys) === 0 && is_array($value)
-                    ? [$this, 'noopReplacement']
+                    ? array($th, 'noopReplacement')
                     : null;
             },
 
             // Aliases and invokables
-            function ($value, array $keys) {
+            function ($value, array $keys) use ( $th ) {
                 static $keysOfInterest;
 
-                $keysOfInterest = $keysOfInterest ?: ['aliases', 'invokables'];
+                $keysOfInterest = $keysOfInterest ?: array('aliases', 'invokables');
                 $key            = array_pop($keys);
 
                 return in_array($key, $keysOfInterest, true) && is_array($value)
-                    ? [$this, 'replaceDependencyAliases']
+                    ? array($th, 'replaceDependencyAliases')
                     : null;
             },
 
             // Array values
-            function ($value, array $keys) {
+            function ($value, array $keys) use ( $th ) {
                 return 0 !== count($keys) && is_array($value)
-                    ? [$this, '__invoke']
+                    ? array($th, '__invoke')
                     : null;
             },
-        ];
+		);
     }
 
     /**
@@ -88,9 +90,9 @@ class ConfigPostProcessor
      *     nested configuration.
      * @return array
      */
-    public function __invoke(array $config, array $keys = [])
+    public function __invoke(array $config, array $keys = array())
     {
-        $rewritten = [];
+        $rewritten = array();
 
         foreach ($config as $key => $value) {
             // Determine new key from replacements
@@ -207,7 +209,7 @@ class ConfigPostProcessor
                 return $result;
             }
         }
-        return [$this, 'fallbackReplacement'];
+        return array($this, 'fallbackReplacement');
     }
 
     /**
@@ -234,16 +236,16 @@ class ConfigPostProcessor
         return $this->exactReplacements[$value];
     }
 
-    /**
-     * Rewrite dependency aliases array
-     *
-     * In this case, we want to keep the alias as-is, but rewrite the target.
-     *
-     * This same logic can be used for invokables, which are essentially just
-     * an alias map.
-     *
-     * @return array
-     */
+	/**
+	 * Rewrite dependency aliases array
+	 *
+	 * In this case, we want to keep the alias as-is, but rewrite the target.
+	 *
+	 * This same logic can be used for invokables, which are essentially just
+	 * an alias map.
+	 *
+	 * @return array
+	 */
     private function replaceDependencyAliases(array $aliases)
     {
         foreach ($aliases as $alias => $target) {

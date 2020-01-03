@@ -34,7 +34,7 @@ class Autoloader
      */
     public static function load()
     {
-        $loaded = new ArrayObject([]);
+        $loaded = new ArrayObject();
 
         spl_autoload_register(self::createPrependAutoloader(
             RewriteRules::namespaceReverse(),
@@ -68,7 +68,7 @@ class Autoloader
     /**
      * @return callable
      */
-    private static function createPrependAutoloader(array $namespaces, ClassLoader $classLoader, ArrayObject $loaded)
+    private static function createPrependAutoloader($namespaces, ClassLoader $classLoader, ArrayObject $loaded)
     {
         /**
          * @param  string $class Class name to autoload
@@ -95,11 +95,11 @@ class Autoloader
 
             if ($classLoader->loadClass($class)) {
                 $legacy = $namespaces[$check]
-                    . strtr(substr($class, strlen($check)), [
+                    . strtr(substr($class, strlen($check)), array(
                         'ApiTools' => 'Apigility',
                         'Mezzio' => 'Expressive',
                         'Laminas' => 'Zend',
-                    ]);
+					));
                 class_alias($class, $legacy);
             }
         };
@@ -137,7 +137,7 @@ class Autoloader
             }
 
             $alias = $namespaces[$check]
-                . strtr(substr($class, strlen($check)), [
+                . strtr(substr($class, strlen($check)), array(
                     'Apigility' => 'ApiTools',
                     'Expressive' => 'Mezzio',
                     'Zend' => 'Laminas',
@@ -145,7 +145,7 @@ class Autoloader
                     'ZendServerDisk' => 'ZendServerDisk',
                     'ZendServerShm' => 'ZendServerShm',
                     'ZendMonitor' => 'ZendMonitor',
-                ]);
+				));
 
             $loaded[$alias] = true;
             if (class_exists($alias) || interface_exists($alias) || trait_exists($alias)) {

@@ -9,12 +9,13 @@ namespace LaminasTest\ZendFrameworkBridge\TestAsset;
 
 class EventManager
 {
-    private $listeners = [];
+    private $listeners = array();
 
     /**
      * @param string $eventName
+     * @param callable $listener
      */
-    public function attach($eventName, callable $listener)
+    public function attach($eventName, $listener)
     {
         $this->listeners[$eventName] = isset($this->listeners[$eventName])
             ? array_merge($this->listeners[$eventName], $listener)

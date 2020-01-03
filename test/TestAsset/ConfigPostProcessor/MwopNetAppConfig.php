@@ -62,7 +62,7 @@ return [
                 'siteurl' => 'https://framework.zend.com/blog/',
             ],
         ],
-        'posts' => [],
+        'posts' => array(),
     ],
     'zend-expressive' => [
         'error_handler' => [

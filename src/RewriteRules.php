@@ -15,7 +15,7 @@ class RewriteRules
      */
     public static function namespaceRewrite()
     {
-        return [
+        return array(
             // Expressive
             'Zend\\ProblemDetails\\' => 'Mezzio\\ProblemDetails\\',
             'Zend\\Expressive\\'     => 'Mezzio\\',
@@ -36,7 +36,7 @@ class RewriteRules
             'ZendService\\ReCaptcha\\' => 'Laminas\\ReCaptcha\\',
             'ZendService\\Twitter\\'   => 'Laminas\\Twitter\\',
             'ZendDeveloperTools\\'     => 'Laminas\\DeveloperTools\\',
-        ];
+		);
     }
 
     /**
@@ -44,7 +44,7 @@ class RewriteRules
      */
     public static function namespaceReverse()
     {
-        return [
+        return array(
             // ZendXml, ZendOAuth, ZendDiagnostics, ZendDeveloperTools
             'Laminas\\Xml\\'            => 'ZendXml\\',
             'Laminas\\OAuth\\'          => 'ZendOAuth\\',
@@ -74,6 +74,6 @@ class RewriteRules
             'Laminas\\ApiTools\\Provider\\'      => 'ZF\\Apigility\\Provider\\',
             'Laminas\\ApiTools\\Welcome\\'       => 'ZF\\Apiglity\\Welcome\\',
             'Laminas\\ApiTools\\'                => 'ZF\\',
-        ];
+		);
     }
 }
