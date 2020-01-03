@@ -18,27 +18,30 @@ class ConfigPostProcessorTest extends TestCase
      */
     public function configurations()
     {
-        yield 'Acelaya Expressive Slim Router' => ['ExpressiveSlimRouterConfig.php'];
-        yield 'mwop.net App module config' => ['MwopNetAppConfig.php'];
-        yield 'cyclical aliasing' => ['CyclicalAliasing.php'];
-        yield 'unknown Expressive config' => ['UnknownExpressiveConfiguration.php'];
-        yield 'equivalent key merging' => ['MergeEquivalentKeys.php'];
-        yield 'ignore router config' => ['RouterConfig.php'];
-        yield 'process invokable config' => ['InvokableConfig.php'];
+        return array(
+            array('Acelaya Expressive Slim Router', 'ExpressiveSlimRouterConfig.php'),
+            array('mwop.net App module config', 'MwopNetAppConfig.php'),
+            array('cyclical aliasing', 'CyclicalAliasing.php'),
+            array('unknown Expressive config', 'UnknownExpressiveConfiguration.php'),
+            array('equivalent key merging', 'MergeEquivalentKeys.php'),
+            array('ignore router config', 'RouterConfig.php'),
+            array('process invokable config', 'InvokableConfig.php')
+        );
     }
 
     /**
      * @dataProvider configurations
+     * @param string $name
      * @param string $configFile
      */
-    public function testRewritesNestedKeys($configFile)
+    public function testRewritesNestedKeys($name, $configFile)
     {
-        $configLocation         = sprintf('%s/TestAsset/ConfigPostProcessor/%s', __DIR__, $configFile);
+        $configLocation = sprintf('%s/TestAsset/ConfigPostProcessor/%s', __DIR__, $configFile);
         $expectedResultLocation = $configLocation . '.out';
-        $config                 = require $configLocation;
-        $expected               = require $expectedResultLocation;
-        $processor              = new ConfigPostProcessor();
+        $config = require $configLocation;
+        $expected = require $expectedResultLocation;
+        $processor = new ConfigPostProcessor();
 
-        $this->assertSame($expected, $processor($config));
+        $this->assertSame($expected, $processor($config), $name);
     }
 }

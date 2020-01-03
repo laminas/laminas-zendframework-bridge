@@ -22,7 +22,7 @@ class ModuleTest extends TestCase
         $module->init($moduleManager);
 
         $this->assertSame(
-            ['mergeConfig' => [[$module, 'onMergeConfig']]],
+            array('mergeConfig' => array(array($module, 'onMergeConfig'))),
             $eventManager->getListeners()
         );
     }
@@ -32,15 +32,18 @@ class ModuleTest extends TestCase
      */
     public function configurations()
     {
-        yield 'Acelaya Expressive Slim Router' => ['ExpressiveSlimRouterConfig.php'];
-        yield 'mwop.net App module config' => ['MwopNetAppConfig.php'];
+        return array(
+            array( 'Acelaya Expressive Slim Router' ,'ExpressiveSlimRouterConfig.php'),
+            array( 'mwop.net App module config' ,'MwopNetAppConfig.php' )
+        );
     }
 
     /**
      * @dataProvider configurations
+     * @param string $name
      * @param string $configFile
      */
-    public function testOnMergeConfigProcessesAndReplacesConfigurationPulledFromListener($configFile)
+    public function testOnMergeConfigProcessesAndReplacesConfigurationPulledFromListener($name, $configFile)
     {
         $configFile = sprintf('%s/TestAsset/ConfigPostProcessor/%s', __DIR__, $configFile);
         $expectationsFile = $configFile . '.out';
@@ -53,6 +56,6 @@ class ModuleTest extends TestCase
 
         $this->assertNull($module->onMergeConfig($event));
 
-        $this->assertSame($expected, $listener->getMergedConfig());
+        $this->assertSame($expected, $listener->getMergedConfig(), $name);
     }
 }

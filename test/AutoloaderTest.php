@@ -18,53 +18,53 @@ class AutoloaderTest extends TestCase
      */
     public function classProvider()
     {
-        return [
+        return array(
             // phpcs:disable Generic.Files.LineLength.TooLong
             // Expressive
-            ['Zend\Expressive\Application',                                             'Mezzio\Application'],
-            ['Zend\Expressive\Authentication\Authentication',                           'Mezzio\Authentication\Authentication'],
-            ['Zend\Expressive\Authentication\ZendAuthentication\AuthenticationAdapter', 'Mezzio\Authentication\LaminasAuthentication\AuthenticationAdapter'],
-            ['Zend\Expressive\Authentication\ZendAuthentication\ZendAuthentication',    'Mezzio\Authentication\LaminasAuthentication\LaminasAuthentication'],
-            ['Zend\Expressive\Authorization\Authorization',                             'Mezzio\Authorization\Authorization'],
-            ['Zend\Expressive\Authorization\Acl\ZendAclFactory',                        'Mezzio\Authorization\Acl\LaminasAclFactory'],
-            ['Zend\Expressive\Authorization\Rbac\ZendRbac',                             'Mezzio\Authorization\Rbac\LaminasRbac'],
-            ['Zend\Expressive\Router\Router',                                           'Mezzio\Router\Router'],
-            ['Zend\Expressive\Router\ZendRouter',                                       'Mezzio\Router\LaminasRouter'],
-            ['Zend\Expressive\Router\ZendRouter\RouterAdapter',                         'Mezzio\Router\LaminasRouter\RouterAdapter'],
-            ['Zend\Expressive\ZendView\ZendViewRenderer',                               'Mezzio\LaminasView\LaminasViewRenderer'],
-            ['Zend\ProblemDetails\ProblemDetails',                                      'Mezzio\ProblemDetails\ProblemDetails'],
-            ['Zend\Expressive\Hal\LinkGenerator\ExpressiveUrlGenerator',                'Mezzio\Hal\LinkGenerator\MezzioUrlGenerator'],
+            array('Zend\Expressive\Application',                                             'Mezzio\Application'),
+            array('Zend\Expressive\Authentication\Authentication',                           'Mezzio\Authentication\Authentication'),
+            array('Zend\Expressive\Authentication\ZendAuthentication\AuthenticationAdapter', 'Mezzio\Authentication\LaminasAuthentication\AuthenticationAdapter'),
+            array('Zend\Expressive\Authentication\ZendAuthentication\ZendAuthentication',    'Mezzio\Authentication\LaminasAuthentication\LaminasAuthentication'),
+            array('Zend\Expressive\Authorization\Authorization',                             'Mezzio\Authorization\Authorization'),
+            array('Zend\Expressive\Authorization\Acl\ZendAclFactory',                        'Mezzio\Authorization\Acl\LaminasAclFactory'),
+            array('Zend\Expressive\Authorization\Rbac\ZendRbac',                             'Mezzio\Authorization\Rbac\LaminasRbac'),
+            array('Zend\Expressive\Router\Router',                                           'Mezzio\Router\Router'),
+            array('Zend\Expressive\Router\ZendRouter',                                       'Mezzio\Router\LaminasRouter'),
+            array('Zend\Expressive\Router\ZendRouter\RouterAdapter',                         'Mezzio\Router\LaminasRouter\RouterAdapter'),
+            array('Zend\Expressive\ZendView\ZendViewRenderer',                               'Mezzio\LaminasView\LaminasViewRenderer'),
+            array('Zend\ProblemDetails\ProblemDetails',                                      'Mezzio\ProblemDetails\ProblemDetails'),
+            array('Zend\Expressive\Hal\LinkGenerator\ExpressiveUrlGenerator',                'Mezzio\Hal\LinkGenerator\MezzioUrlGenerator'),
             // phpcs:enable
 
             // Laminas
-            ['Zend\Cache\Storage\Adapter\AbstractZendServer', 'Laminas\Cache\Storage\Adapter\AbstractZendServer'],
-            ['Zend\Cache\Storage\Adapter\ZendServerDisk',     'Laminas\Cache\Storage\Adapter\ZendServerDisk'],
-            ['Zend\Cache\Storage\Adapter\ZendServerShm',      'Laminas\Cache\Storage\Adapter\ZendServerShm'],
-            ['Zend\Expressive',                               'Laminas\Mezzio'],
-            ['Zend\Log\Writer\ZendMonitor',                   'Laminas\Log\Writer\ZendMonitor'],
-            ['Zend\Main',                                     'Laminas\Main'],
-            ['Zend\Psr7Bridge\Psr7Bridge',                    'Laminas\Psr7Bridge\Psr7Bridge'],
-            ['Zend\Psr7Bridge\ZendBridge',                    'Laminas\Psr7Bridge\LaminasBridge'],
-            ['Zend\Psr7Bridge\Zend\Psr7Bridge',               'Laminas\Psr7Bridge\Laminas\Psr7Bridge'],
-            ['Zend\Psr7Bridge\Zend\ZendBridge',               'Laminas\Psr7Bridge\Laminas\LaminasBridge'],
-            ['ZendService\ReCaptcha\MyClass',                 'Laminas\ReCaptcha\MyClass'],
-            ['ZendService\Twitter\MyClass',                   'Laminas\Twitter\MyClass'],
-            ['ZendXml\XmlService',                            'Laminas\Xml\XmlService'],
-            ['ZendOAuth\OAuthService',                        'Laminas\OAuth\OAuthService'],
-            ['ZendDiagnostics\Tools',                         'Laminas\Diagnostics\Tools'],
-            ['ZendDeveloperTools\Tools',                      'Laminas\DeveloperTools\Tools'],
-            ['ZF\ComposerAutoloading\Autoloading',            'Laminas\ComposerAutoloading\Autoloading'],
-            ['ZF\DevelopmentMode\DevelopmentMode',            'Laminas\DevelopmentMode\DevelopmentMode'],
+            array('Zend\Cache\Storage\Adapter\AbstractZendServer', 'Laminas\Cache\Storage\Adapter\AbstractZendServer'),
+            array('Zend\Cache\Storage\Adapter\ZendServerDisk',     'Laminas\Cache\Storage\Adapter\ZendServerDisk'),
+            array('Zend\Cache\Storage\Adapter\ZendServerShm',      'Laminas\Cache\Storage\Adapter\ZendServerShm'),
+            array('Zend\Expressive',                               'Laminas\Mezzio'),
+            array('Zend\Log\Writer\ZendMonitor',                   'Laminas\Log\Writer\ZendMonitor'),
+            array('Zend\Main',                                     'Laminas\Main'),
+            array('Zend\Psr7Bridge\Psr7Bridge',                    'Laminas\Psr7Bridge\Psr7Bridge'),
+            array('Zend\Psr7Bridge\ZendBridge',                    'Laminas\Psr7Bridge\LaminasBridge'),
+            array('Zend\Psr7Bridge\Zend\Psr7Bridge',               'Laminas\Psr7Bridge\Laminas\Psr7Bridge'),
+            array('Zend\Psr7Bridge\Zend\ZendBridge',               'Laminas\Psr7Bridge\Laminas\LaminasBridge'),
+            array('ZendService\ReCaptcha\MyClass',                 'Laminas\ReCaptcha\MyClass'),
+            array('ZendService\Twitter\MyClass',                   'Laminas\Twitter\MyClass'),
+            array('ZendXml\XmlService',                            'Laminas\Xml\XmlService'),
+            array('ZendOAuth\OAuthService',                        'Laminas\OAuth\OAuthService'),
+            array('ZendDiagnostics\Tools',                         'Laminas\Diagnostics\Tools'),
+            array('ZendDeveloperTools\Tools',                      'Laminas\DeveloperTools\Tools'),
+            array('ZF\ComposerAutoloading\Autoloading',            'Laminas\ComposerAutoloading\Autoloading'),
+            array('ZF\DevelopmentMode\DevelopmentMode',            'Laminas\DevelopmentMode\DevelopmentMode'),
 
             // Apigility
             // phpcs:disable Generic.Files.LineLength.TooLong
-            ['ZF\Apigility\BaseModule',        'Laminas\ApiTools\BaseModule'],
-            ['ZF\BaseModule',                  'Laminas\ApiTools\BaseModule'],
-            ['ZF\Apigility\Admin\Controller\ApigilityVersionController', 'Laminas\ApiTools\Admin\Controller\ApiToolsVersionController'],
-            ['ZF\Apigility\ApigilityModuleInterface', 'Laminas\ApiTools\ApiToolsModuleInterface', true],
-            ['ZF\Apigility\Provider\ApigilityProviderInterface', 'Laminas\ApiTools\Provider\ApiToolsProviderInterface', true],
+            array('ZF\Apigility\BaseModule',        'Laminas\ApiTools\BaseModule'),
+            array('ZF\BaseModule',                  'Laminas\ApiTools\BaseModule'),
+            array('ZF\Apigility\Admin\Controller\ApigilityVersionController', 'Laminas\ApiTools\Admin\Controller\ApiToolsVersionController'),
+            array('ZF\Apigility\ApigilityModuleInterface', 'Laminas\ApiTools\ApiToolsModuleInterface', true),
+            array('ZF\Apigility\Provider\ApigilityProviderInterface', 'Laminas\ApiTools\Provider\ApiToolsProviderInterface', true),
             // phpcs:enable
-        ];
+        );
     }
 
     /**
@@ -92,42 +92,42 @@ class AutoloaderTest extends TestCase
      */
     public function reverseClassProvider()
     {
-        return [
+        return array(
             // Apigility
-            ['Laminas\ApiTools\Admin\Example',         'ZF\Apigility\Admin\Example'],
-            ['Laminas\ApiTools\Doctrine\Example',      'ZF\Apigility\Doctrine\Example'],
-            ['Laminas\ApiTools\Documentation\Example', 'ZF\Apigility\Documentation\Example'],
-            ['Laminas\ApiTools\Example\Example',       'ZF\Apigility\Example\Example'],
-            ['Laminas\ApiTools\Provider\Example',      'ZF\Apigility\Provider\Example'],
-            ['Laminas\ApiTools\Welcome\Example',       'ZF\Apigility\Welcome\Example'],
-            ['Laminas\ApiTools\Other\ApiToolsClass',   'ZF\Other\ApigilityClass'],
-            ['Laminas\ApiTools\Other\Example',         'ZF\Other\Example'],
-            ['Laminas\ApiTools\Example',               'ZF\Example'],
+            array('Laminas\ApiTools\Admin\Example',         'ZF\Apigility\Admin\Example'),
+            array('Laminas\ApiTools\Doctrine\Example',      'ZF\Apigility\Doctrine\Example'),
+            array('Laminas\ApiTools\Documentation\Example', 'ZF\Apigility\Documentation\Example'),
+            array('Laminas\ApiTools\Example\Example',       'ZF\Apigility\Example\Example'),
+            array('Laminas\ApiTools\Provider\Example',      'ZF\Apigility\Provider\Example'),
+            array('Laminas\ApiTools\Welcome\Example',       'ZF\Apigility\Welcome\Example'),
+            array('Laminas\ApiTools\Other\ApiToolsClass',   'ZF\Other\ApigilityClass'),
+            array('Laminas\ApiTools\Other\Example',         'ZF\Other\Example'),
+            array('Laminas\ApiTools\Example',               'ZF\Example'),
 
             // Expressive
-            ['Mezzio\ProblemDetails\Example', 'Zend\ProblemDetails\Example'],
-            ['Mezzio\Other\Example',          'Zend\Expressive\Other\Example'],
-            ['Mezzio\Other\MezzioClass',      'Zend\Expressive\Other\ExpressiveClass'],
-            ['Mezzio\Example',                'Zend\Expressive\Example'],
+            array('Mezzio\ProblemDetails\Example', 'Zend\ProblemDetails\Example'),
+            array('Mezzio\Other\Example',          'Zend\Expressive\Other\Example'),
+            array('Mezzio\Other\MezzioClass',      'Zend\Expressive\Other\ExpressiveClass'),
+            array('Mezzio\Example',                'Zend\Expressive\Example'),
 
             // Laminas
-            ['Laminas\ReCaptcha\Example',                        'ZendService\ReCaptcha\Example'],
-            ['Laminas\Twitter\Example',                          'ZendService\Twitter\Example'],
-            ['Laminas\Cache\Storage\Adapter\AbstractZendServer', 'Zend\Cache\Storage\Adapter\AbstractZendServer'],
-            ['Laminas\Cache\Storage\Adapter\ZendServerDisk',     'Zend\Cache\Storage\Adapter\ZendServerDisk'],
-            ['Laminas\Cache\Storage\Adapter\ZendServerShm',      'Zend\Cache\Storage\Adapter\ZendServerShm'],
-            ['Laminas\ComposerAutoloading\Example',              'ZF\ComposerAutoloading\Example'],
-            ['Laminas\DevelopmentMode\Example',                  'ZF\DevelopmentMode\Example'],
-            ['Laminas\Diagnostics\Example',                      'ZendDiagnostics\Example'],
-            ['Laminas\Log\Writer\ZendMonitor',                   'Zend\Log\Writer\ZendMonitor'],
-            ['Laminas\OAuth\Example',                            'ZendOAuth\Example'],
-            ['Laminas\Xml\Example',                              'ZendXml\Example'],
-            ['Laminas\Other\LaminasExample',                     'Zend\Other\ZendExample'],
-            ['Laminas\Other\Example',                            'Zend\Other\Example'],
-            ['Laminas\Example',                                  'Zend\Example'],
-            ['Laminas\DeveloperTools\Example',                   'ZendDeveloperTools\Example'],
-            ['Laminas\Router\LaminasRouterClass',                'Zend\Router\ZendRouterClass'],
-        ];
+            array('Laminas\ReCaptcha\Example',                        'ZendService\ReCaptcha\Example'),
+            array('Laminas\Twitter\Example',                          'ZendService\Twitter\Example'),
+            array('Laminas\Cache\Storage\Adapter\AbstractZendServer', 'Zend\Cache\Storage\Adapter\AbstractZendServer'),
+            array('Laminas\Cache\Storage\Adapter\ZendServerDisk',     'Zend\Cache\Storage\Adapter\ZendServerDisk'),
+            array('Laminas\Cache\Storage\Adapter\ZendServerShm',      'Zend\Cache\Storage\Adapter\ZendServerShm'),
+            array('Laminas\ComposerAutoloading\Example',              'ZF\ComposerAutoloading\Example'),
+            array('Laminas\DevelopmentMode\Example',                  'ZF\DevelopmentMode\Example'),
+            array('Laminas\Diagnostics\Example',                      'ZendDiagnostics\Example'),
+            array('Laminas\Log\Writer\ZendMonitor',                   'Zend\Log\Writer\ZendMonitor'),
+            array('Laminas\OAuth\Example',                            'ZendOAuth\Example'),
+            array('Laminas\Xml\Example',                              'ZendXml\Example'),
+            array('Laminas\Other\LaminasExample',                     'Zend\Other\ZendExample'),
+            array('Laminas\Other\Example',                            'Zend\Other\Example'),
+            array('Laminas\Example',                                  'Zend\Example'),
+            array('Laminas\DeveloperTools\Example',                   'ZendDeveloperTools\Example'),
+            array('Laminas\Router\LaminasRouterClass',                'Zend\Router\ZendRouterClass'),
+        );
     }
 
     /**

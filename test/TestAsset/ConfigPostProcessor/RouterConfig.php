@@ -1,21 +1,21 @@
 <?php
-return [
-    'router' => [
-        'routes' => [
-            'zf-apigility' => [
-                'child_routes' => [
-                    'custom' => [
+return array(
+    'router' => array(
+        'routes' => array(
+            'zf-apigility' => array(
+                'child_routes' => array(
+                    'custom' => array(
                         'type' => 'Literal',
-                        'options' => [
+                        'options' => array(
                             'route' => '/custom',
-                            'defaults' => [
+                            'defaults' => array(
                                 'controller' => 'My\Custom\Controller',
                                 'action' => 'index',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ],
-    ],
-];
+							),
+						),
+					),
+				),
+			),
+		),
+	),
+);

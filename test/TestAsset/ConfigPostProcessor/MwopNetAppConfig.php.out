@@ -10,157 +10,157 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 
-return [
-    'dependencies'            => [
-        'invokables' => [
-            Middleware\RedirectsMiddleware::class       => Middleware\RedirectsMiddleware::class,
-            Middleware\XClacksOverheadMiddleware::class => Middleware\XClacksOverheadMiddleware::class,
-            Middleware\XPoweredByMiddleware::class      => Middleware\XPoweredByMiddleware::class,
-            RequestFactoryInterface::class              => 'Laminas\Diactoros\RequestFactory',
-            ResponseFactoryInterface::class             => 'Laminas\Diactoros\ResponseFactory',
-        ],
-        'factories' => [
-            'config-cache'                               => ConfigFactory::class,
-            'config-content-security-policy'             => ConfigFactory::class,
-            'config-homepage'                            => ConfigFactory::class,
-            'config-homepage.posts'                      => ConfigFactory::class,
-            'config-instagram.feed'                      => ConfigFactory::class,
-            'config-mail.transport'                      => ConfigFactory::class,
-            Csp::class                                   => Middleware\ContentSecurityPolicyMiddlewareFactory::class,
-            CacheItemPoolInterface::class                => Factory\CachePoolFactory::class,
-            EventDispatcherInterface::class              => Factory\EventDispatcherFactory::class,
-            'Laminas\Feed\Reader\Http\ClientInterface'   => Feed\HttpPlugClientFactory::class,
-            Handler\ComicsPageHandler::class             => Handler\ComicsPageHandlerFactory::class,
-            Handler\HomePageHandler::class               => Handler\HomePageHandlerFactory::class,
-            Handler\ResumePageHandler::class             => Handler\PageHandlerFactory::class,
-            Handler\ResumePageHandler::class             => Handler\PageHandlerFactory::class,
-            'mail.transport'                             => Factory\MailTransport::class,
-            Middleware\RedirectAmpPagesMiddleware::class => Middleware\RedirectAmpPagesMiddlewareFactory::class,
-            SessionCachePool::class                      => SessionCachePoolFactory::class,
-        ],
-        'delegators' => [
-            DisplayPostHandler::class => [
-                Middleware\DisplayBlogPostHandlerDelegator::class,
-            ],
-            Engine::class => [
-                Factory\PlatesFunctionsDelegator::class,
-            ],
-        ],
-    ],
-    'homepage' => [
+return array(
+    'dependencies'            => array(
+        'invokables' => array(
+           'Mwop\App\Middleware\RedirectsMiddleware'       => 'Mwop\App\Middleware\RedirectsMiddleware',
+           'Mwop\App\Middleware\XClacksOverheadMiddleware' => 'Mwop\App\Middleware\XClacksOverheadMiddleware',
+           'Mwop\App\Middleware\XPoweredByMiddleware'      => 'Mwop\App\Middleware\XPoweredByMiddleware',
+           'Psr\Http\Message\RequestFactoryInterface'              => 'Laminas\Diactoros\RequestFactory',
+           'Psr\Http\Message\ResponseFactoryInterface'             => 'Laminas\Diactoros\ResponseFactory',
+        ),
+        'factories' => array(
+            'config-cache'                               => 'Phly\Expressive\ConfigFactory',
+            'config-content-security-policy'             => 'Phly\Expressive\ConfigFactory',
+            'config-homepage'                            => 'Phly\Expressive\ConfigFactory',
+            'config-homepage.posts'                      => 'Phly\Expressive\ConfigFactory',
+            'config-instagram.feed'                      => 'Phly\Expressive\ConfigFactory',
+            'config-mail.transport'                      => 'Phly\Expressive\ConfigFactory',
+            'Middlewares\Csp'                            => 'Mwop\App\Middleware\ContentSecurityPolicyMiddlewareFactory',
+            'Psr\Cache\CacheItemPoolInterface'             => 'Mwop\App\Factory\CachePoolFactory',
+            'Psr\EventDispatcher\EventDispatcherInterface' => 'Mwop\App\Factory\EventDispatcherFactory',
+            'Laminas\Feed\Reader\Http\ClientInterface'     => 'Mwop\App\Feed\HttpPlugClientFactory',
+            'Mwop\App\Handler\ComicsPageHandler'              => 'Mwop\App\Handler\ComicsPageHandlerFactory',
+            'Mwop\App\Handler\HomePageHandler'                => 'Mwop\App\Handler\HomePageHandlerFactory',
+            'Mwop\App\Handler\ResumePageHandler'              => 'Mwop\App\Handler\PageHandlerFactory',
+            'Mwop\App\Handler\ResumePageHandler'              => 'Mwop\App\Handler\PageHandlerFactory',
+            'mail.transport'                                  => 'Mwop\App\Factory\MailTransport',
+            'Mwop\App\Middleware\RedirectAmpPagesMiddleware'  => 'Mwop\App\Middleware\RedirectAmpPagesMiddlewareFactory',
+            'Mwop\App\SessionCachePool'             => 'Mwop\App\SessionCachePoolFactory'
+        ),
+        'delegators' => array(
+            'Mwop\Blog\Handler\DisplayPostHandler' => array(
+                'Mwop\App\Middleware\DisplayBlogPostHandlerDelegator'
+            ),
+            'League\Plates\Engine' => array(
+                'Mwop\App\Factory\PlatesFunctionsDelegator'
+            ),
+        ),
+    ),
+    'homepage' => array(
         'feed-count' => 10,
-        'feeds' => [
-            [
+        'feeds' => array(
+            array(
                 'url' => 'https://framework.zend.com/blog/feed-rss.xml',
                 'favicon' => 'https://framework.zend.com/ico/favicon.ico',
                 'sitename' => 'Zend Framework Blog',
                 'siteurl' => 'https://framework.zend.com/blog/',
-            ],
-        ],
-        'posts' => [],
-    ],
-    'zend-expressive' => [
-        'error_handler' => [
+            ),
+        ),
+        'posts' => array(),
+    ),
+    'zend-expressive' => array(
+        'error_handler' => array(
             'template_404'   => 'error::404',
             'template_error' => 'error::500',
-        ],
-    ],
-    'mezzio' => [
-        'error_handler' => [
+        ),
+    ),
+    'mezzio' => array(
+        'error_handler' => array(
             'template_404'   => 'error::404',
             'template_error' => 'error::500',
-        ],
-    ],
-    'zend-expressive-session-cache' => [
-        'cache_item_pool_service' => SessionCachePool::class,
+        ),
+    ),
+    'zend-expressive-session-cache' => array(
+        'cache_item_pool_service' => 'Mwop\App\SessionCachePool',
         'cookie_name' => 'MWOPSESS',
         'cache_limiter' => 'nocache',
         'cache_expire' => 60 * 60 * 24 * 28, // 28 days
         'persistent' => true,
-    ],
-    'mezzio-session-cache' => [
-        'cache_item_pool_service' => SessionCachePool::class,
+    ),
+    'mezzio-session-cache' => array(
+        'cache_item_pool_service' => 'Mwop\App\SessionCachePool',
         'cookie_name' => 'MWOPSESS',
         'cache_limiter' => 'nocache',
         'cache_expire' => 60 * 60 * 24 * 28, // 28 days
         'persistent' => true,
-    ],
-    'zend-expressive-swoole' => [
+    ),
+    'zend-expressive-swoole' => array(
         'enable_coroutine' => true,
-        'swoole-http-server' => [
+        'swoole-http-server' => array(
             'process-name' => 'mwopnet',
             'host'         => '0.0.0.0',
             'port'         => 9000,
             // Using string value instead of constant to prevent testing errors
             'mode'         => 'SWOOLE_PROCESS',
-            'options'      => [
+            'options'      => array(
                 'max_conn' => 1024,
                 'task_worker_num' => 4,
-            ],
-            'static-files' => [
-                'type-map' => [
+            ),
+            'static-files' => array(
+                'type-map' => array(
                     'asc' => 'application/octet-stream',
-                ],
-                'gzip' => [
+                ),
+                'gzip' => array(
                     'level' => 6,
-                ],
-                'directives' => [
-                    '/\.(?:ico|png|gif|jpg|jpeg)$/' => [
-                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 365],
+                ),
+                'directives' => array(
+                    '/\.(?:ico|png|gif|jpg|jpeg)$/' => array(
+                        'cache-control' => array('public', 'max-age=' . 60 * 60 * 24 * 365),
                         'last-modified' => true,
                         'etag' => true,
-                    ],
-                    '/\.(?:asc)$/' => [
-                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 365],
+                    ),
+                    '/\.(?:asc)$/' => array(
+                        'cache-control' => array('public', 'max-age=' . 60 * 60 * 24 * 365),
                         'last-modified' => true,
-                    ],
-                    '/\.(?:css|js)$/' => [
-                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 30],
+                    ),
+                    '/\.(?:css|js)$/' => array(
+                        'cache-control' => array('public', 'max-age=' . 60 * 60 * 24 * 30),
                         'last-modified' => true,
                         'etag' => true,
-                    ],
-                ],
+                    ),
+                ),
 
-            ],
-        ],
-    ],
-    'mezzio-swoole' => [
+            ),
+        ),
+    ),
+    'mezzio-swoole' => array(
         'enable_coroutine' => true,
-        'swoole-http-server' => [
+        'swoole-http-server' => array(
             'process-name' => 'mwopnet',
             'host'         => '0.0.0.0',
             'port'         => 9000,
             // Using string value instead of constant to prevent testing errors
             'mode'         => 'SWOOLE_PROCESS',
-            'options'      => [
+            'options'      => array(
                 'max_conn' => 1024,
                 'task_worker_num' => 4,
-            ],
-            'static-files' => [
-                'type-map' => [
+            ),
+            'static-files' => array(
+                'type-map' => array(
                     'asc' => 'application/octet-stream',
-                ],
-                'gzip' => [
+                ),
+                'gzip' => array(
                     'level' => 6,
-                ],
-                'directives' => [
-                    '/\.(?:ico|png|gif|jpg|jpeg)$/' => [
-                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 365],
+                ),
+                'directives' => array(
+                    '/\.(?:ico|png|gif|jpg|jpeg)$/' => array(
+                        'cache-control' => array('public', 'max-age=' . 60 * 60 * 24 * 365),
                         'last-modified' => true,
                         'etag' => true,
-                    ],
-                    '/\.(?:asc)$/' => [
-                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 365],
+                    ),
+                    '/\.(?:asc)$/' => array(
+                        'cache-control' => array('public', 'max-age=' . 60 * 60 * 24 * 365),
                         'last-modified' => true,
-                    ],
-                    '/\.(?:css|js)$/' => [
-                        'cache-control' => ['public', 'max-age=' . 60 * 60 * 24 * 30],
+                    ),
+                    '/\.(?:css|js)$/' => array(
+                        'cache-control' => array('public', 'max-age=' . 60 * 60 * 24 * 30),
                         'last-modified' => true,
                         'etag' => true,
-                    ],
-                ],
+                    ),
+                ),
 
-            ],
-        ],
-    ],
-];
+            ),
+        ),
+    ),
+);

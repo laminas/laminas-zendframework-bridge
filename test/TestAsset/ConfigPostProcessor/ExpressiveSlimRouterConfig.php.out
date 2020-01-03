@@ -1,10 +1,10 @@
 <?php
 namespace Acelaya\Expressive;
 
-return [
-    'dependencies' => [
-        'factories' => [
-            'Mezzio\Router\RouterInterface' => Factory\SlimRouterFactory::class,
-        ],
-    ],
-];
+return array(
+    'dependencies' => array(
+        'factories' => array(
+            'Mezzio\Router\RouterInterface' => 'Acelaya\Expressive\Factory\SlimRouterFactory',
+        ),
+    ),
+);

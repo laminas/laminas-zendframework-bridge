@@ -74,7 +74,7 @@ class Autoloader
          * @param  string $class Class name to autoload
          * @return void
          */
-        return static function ($class) use ($namespaces, $classLoader, $loaded) {
+        return function ($class) use ($namespaces, $classLoader, $loaded) {
             if (isset($loaded[$class])) {
                 return;
             }
@@ -99,7 +99,7 @@ class Autoloader
                         'ApiTools' => 'Apigility',
                         'Mezzio' => 'Expressive',
                         'Laminas' => 'Zend',
-					));
+                    ));
                 class_alias($class, $legacy);
             }
         };
@@ -114,7 +114,7 @@ class Autoloader
          * @param  string $class Class name to autoload
          * @return void
          */
-        return static function ($class) use ($namespaces, $loaded) {
+        return function ($class) use ($namespaces, $loaded) {
             $segments = explode('\\', $class);
 
             if ($segments[0] === 'ZendService' && isset($segments[1])) {
@@ -145,7 +145,7 @@ class Autoloader
                     'ZendServerDisk' => 'ZendServerDisk',
                     'ZendServerShm' => 'ZendServerShm',
                     'ZendMonitor' => 'ZendMonitor',
-				));
+                ));
 
             $loaded[$alias] = true;
             if (class_exists($alias) || interface_exists($alias) || trait_exists($alias)) {

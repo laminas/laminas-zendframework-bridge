@@ -26,7 +26,7 @@ class Module
     {
         $moduleManager
             ->getEventManager()
-            ->attach('mergeConfig', [$this, 'onMergeConfig']);
+            ->attach('mergeConfig', array($this, 'onMergeConfig'));
     }
 
     /**

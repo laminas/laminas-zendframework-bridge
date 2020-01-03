@@ -1,6 +1,6 @@
 <?php
-return [
-    'zend-expressive-custom-package' => [
+return array(
+    'zend-expressive-custom-package' => array(
         'foo' => 'bar',
-    ],
-];
+    ),
+);

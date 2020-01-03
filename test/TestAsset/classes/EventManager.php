@@ -19,7 +19,7 @@ class EventManager
     {
         $this->listeners[$eventName] = isset($this->listeners[$eventName])
             ? array_merge($this->listeners[$eventName], $listener)
-            : [$listener];
+            : array($listener);
     }
 
     /**

@@ -36,7 +36,7 @@ class RewriteRules
             'ZendService\\ReCaptcha\\' => 'Laminas\\ReCaptcha\\',
             'ZendService\\Twitter\\'   => 'Laminas\\Twitter\\',
             'ZendDeveloperTools\\'     => 'Laminas\\DeveloperTools\\',
-		);
+        );
     }
 
     /**
@@ -74,6 +74,6 @@ class RewriteRules
             'Laminas\\ApiTools\\Provider\\'      => 'ZF\\Apigility\\Provider\\',
             'Laminas\\ApiTools\\Welcome\\'       => 'ZF\\Apiglity\\Welcome\\',
             'Laminas\\ApiTools\\'                => 'ZF\\',
-		);
+        );
     }
 }

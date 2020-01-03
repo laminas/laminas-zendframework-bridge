@@ -11,10 +11,10 @@ namespace Laminas\ZendFrameworkBridge;
 class ConfigPostProcessor
 {
     /** @var array String keys => string values */
-    private $exactReplacements = [
+    private $exactReplacements = array(
         'zend-expressive' => 'mezzio',
         'zf-apigility'    => 'api-tools',
-    ];
+    );
 
     /** @var Replacements */
     private $replacements;
@@ -48,7 +48,7 @@ class ConfigPostProcessor
         $th =& $this; // fix compatibility problems with php 5.3
         $this->rulesets = array(
             // Exact values
-            function ($value) use ( $th ) {
+            function ($value) use ($th) {
                 return is_string($value) && isset($th->exactReplacements[$value])
                     ? array($th, 'replaceExactValue')
                     : null;
@@ -56,7 +56,7 @@ class ConfigPostProcessor
 
             // Router (MVC applications)
             // We do not want to rewrite these.
-            function ($value, array $keys) use ( $th ) {
+            function ($value, array $keys) use ($th) {
                 $key = array_pop($keys);
                 // Only worried about a top-level "router" key.
                 return $key === 'router' && count($keys) === 0 && is_array($value)
@@ -65,7 +65,7 @@ class ConfigPostProcessor
             },
 
             // Aliases and invokables
-            function ($value, array $keys) use ( $th ) {
+            function ($value, array $keys) use ($th) {
                 static $keysOfInterest;
 
                 $keysOfInterest = $keysOfInterest ?: array('aliases', 'invokables');
@@ -77,12 +77,12 @@ class ConfigPostProcessor
             },
 
             // Array values
-            function ($value, array $keys) use ( $th ) {
+            function ($value, array $keys) use ($th) {
                 return 0 !== count($keys) && is_array($value)
                     ? array($th, '__invoke')
                     : null;
             },
-		);
+        );
     }
 
     /**
@@ -236,16 +236,16 @@ class ConfigPostProcessor
         return $this->exactReplacements[$value];
     }
 
-	/**
-	 * Rewrite dependency aliases array
-	 *
-	 * In this case, we want to keep the alias as-is, but rewrite the target.
-	 *
-	 * This same logic can be used for invokables, which are essentially just
-	 * an alias map.
-	 *
-	 * @return array
-	 */
+    /**
+     * Rewrite dependency aliases array
+     *
+     * In this case, we want to keep the alias as-is, but rewrite the target.
+     *
+     * This same logic can be used for invokables, which are essentially just
+     * an alias map.
+     *
+     * @return array
+     */
     private function replaceDependencyAliases(array $aliases)
     {
         foreach ($aliases as $alias => $target) {

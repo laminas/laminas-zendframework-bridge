@@ -1,12 +1,10 @@
 <?php
 namespace Acelaya\Expressive;
 
-use Zend\Expressive\Router\RouterInterface;
-
-return [
-    'dependencies' => [
-        'factories' => [
-            RouterInterface::class => Factory\SlimRouterFactory::class,
-        ],
-    ],
-];
+return array(
+    'dependencies' => array(
+        'factories' => array(
+            'Zend\Expressive\Router\RouterInterface' => 'Acelaya\Expressive\Factory\SlimRouterFactory',
+		),
+	),
+);

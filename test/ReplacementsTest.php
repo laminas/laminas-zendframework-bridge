@@ -18,62 +18,69 @@ class ReplacementsTest extends TestCase
      */
     public function edgeCases()
     {
-        yield 'Example class' => [
-            file_get_contents(__DIR__ . '/TestAsset/Replacements/TestClass.php'),
-            file_get_contents(__DIR__ . '/TestAsset/Replacements/TestClass.php.out'),
-        ];
-        yield 'Apigility module' => ['ZF\Apigility', 'Laminas\ApiTools'];
-        yield 'Apigility documentation module' => ['ZF\Apigility\Documentation', 'Laminas\ApiTools\Documentation'];
-        yield 'Apigility modules.config.php' => [
-            file_get_contents(__DIR__ . '/TestAsset/Replacements/edge-case-apigility-modules.php'),
-            file_get_contents(__DIR__ . '/TestAsset/Replacements/edge-case-apigility-modules.php.out'),
-        ];
-        yield 'Auryn' => [
-            'Northwoods\Container\Zend\Config',
-            'Northwoods\Container\Zend\Config'
-        ];
-        yield 'Expressive ZendRouter' => [
-            'Zend\Expressive\Router\ZendRouter',
-            'Mezzio\Router\LaminasRouter'
-        ];
-        yield 'Expressive ZendView Renderer' => [
-            'Zend\Expressive\ZendView\ZendViewRenderer',
-            'Mezzio\LaminasView\LaminasViewRenderer'
-        ];
-        yield 'Expressive ACL Authorizations' => [
-            'Zend\Expressive\Authorization\Acl\ZendAcl',
-            'Mezzio\Authorization\Acl\LaminasAcl'
-        ];
-        yield 'Expressive RBAC Authorizations' => [
-            'Zend\Expressive\Authorization\Rbac\ZendRbac',
-            'Mezzio\Authorization\Rbac\LaminasRbac'
-        ];
-        yield 'Cache Zend Server abstract adapter' => [
-            'Zend\Cache\Storage\Adapter\AbstractZendServer',
-            'Laminas\Cache\Storage\Adapter\AbstractZendServer'
-        ];
-        yield 'Cache Zend Server Disk adapter' => [
-            'Zend\Cache\Storage\Adapter\ZendServerDisk',
-            'Laminas\Cache\Storage\Adapter\ZendServerDisk'
-        ];
-        yield 'Cache Zend Server Shm adapter' => [
-            'Zend\Cache\Storage\Adapter\ZendServerShm',
-            'Laminas\Cache\Storage\Adapter\ZendServerShm'
-        ];
-        yield 'Log Zend Monitor writer' => [
-            'Zend\Log\Writer\ZendMonitor',
-            'Laminas\Log\Writer\ZendMonitor'
-        ];
+        return array(
+            array('Example class', array(
+                file_get_contents(__DIR__ . '/TestAsset/Replacements/TestClass.php'),
+                file_get_contents(__DIR__ . '/TestAsset/Replacements/TestClass.php.out'),
+            )
+            ),
+            array('Apigility module', array('ZF\Apigility', 'Laminas\ApiTools')),
+            array('Apigility documentation module', array(
+                'ZF\Apigility\Documentation', 'Laminas\ApiTools\Documentation')
+            ),
+            array('Apigility modules.config.php', array(
+                file_get_contents(__DIR__ . '/TestAsset/Replacements/edge-case-apigility-modules.php'),
+                file_get_contents(__DIR__ . '/TestAsset/Replacements/edge-case-apigility-modules.php.out'),
+            )),
+            array('Auryn', array(
+                'Northwoods\Container\Zend\Config',
+                'Northwoods\Container\Zend\Config'
+            )),
+            array('Expressive ZendRouter', array(
+                'Zend\Expressive\Router\ZendRouter',
+                'Mezzio\Router\LaminasRouter'
+            )),
+            array('Expressive ZendView Renderer', array(
+                'Zend\Expressive\ZendView\ZendViewRenderer',
+                'Mezzio\LaminasView\LaminasViewRenderer'
+            )),
+            array('Expressive ACL Authorizations', array(
+                'Zend\Expressive\Authorization\Acl\ZendAcl',
+                'Mezzio\Authorization\Acl\LaminasAcl'
+            )),
+            array('Expressive RBAC Authorizations', array(
+                'Zend\Expressive\Authorization\Rbac\ZendRbac',
+                'Mezzio\Authorization\Rbac\LaminasRbac'
+            )),
+            array('Cache Zend Server abstract adapter', array(
+                'Zend\Cache\Storage\Adapter\AbstractZendServer',
+                'Laminas\Cache\Storage\Adapter\AbstractZendServer'
+            )),
+            array('Cache Zend Server Disk adapter', array(
+                'Zend\Cache\Storage\Adapter\ZendServerDisk',
+                'Laminas\Cache\Storage\Adapter\ZendServerDisk'
+            )),
+            array('Cache Zend Server Shm adapter', array(
+                'Zend\Cache\Storage\Adapter\ZendServerShm',
+                'Laminas\Cache\Storage\Adapter\ZendServerShm'
+            )),
+            array('Log Zend Monitor writer', array(
+                'Zend\Log\Writer\ZendMonitor',
+                'Laminas\Log\Writer\ZendMonitor'
+            ))
+        );
     }
 
     /**
      * @dataProvider edgeCases
-     * @param string $string
-     * @param string $expected
+     * @param string $name
+     * @param array  $values
      */
-    public function testEdgeCases($string, $expected)
+    public function testEdgeCases($name, $values)
     {
+        list($string, $expected) = $values;
+
         $replacements = new Replacements();
-        $this->assertSame($expected, $replacements->replace($string));
+        $this->assertSame($expected, $replacements->replace($string), $name);
     }
 }
