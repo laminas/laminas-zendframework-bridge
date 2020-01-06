@@ -1,6 +1,6 @@
 # laminas-zendframework-bridge
 
-[![Build Status](https://travis-ci.org/laminas/laminas-zendframework-bridge.svg?branch=master)](https://travis-ci.org/laminas/laminas-zendframework-bridge)
+[![Build Status](https://travis-ci.com/laminas/laminas-zendframework-bridge.svg?branch=master)](https://travis-ci.com/laminas/laminas-zendframework-bridge)
 [![Coverage Status](https://coveralls.io/repos/github/laminas/laminas-zendframework-bridge/badge.svg?branch=master)](https://coveralls.io/github/laminas/laminas-zendframework-bridge?branch=master)
 
 This library provides a custom autoloader that aliases legacy Zend Framework,
