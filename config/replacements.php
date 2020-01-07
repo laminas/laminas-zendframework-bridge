@@ -435,6 +435,7 @@ return [
 
     // CONFIG KEYS, SCRIPT NAMES, ETC
     // ZF components
+    'use_zend_loader' => 'use_laminas_loader', // zend-modulemanager
     'zend-config' => 'laminas-config',
     'zend-developer-tools/' => 'laminas-developer-tools/',
     'zend-tag-cloud' => 'laminas-tag-cloud',
