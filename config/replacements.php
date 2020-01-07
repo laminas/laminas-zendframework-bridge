@@ -3,6 +3,7 @@
 return [
     // NEVER REWRITE
     'zendframework/zendframework' => 'zendframework/zendframework',
+    'zend-developer-tools/toolbar/doctrine' => 'zend-developer-tools/toolbar/doctrine',
 
     // NAMESPACES
     // Zend Framework components
