@@ -22,6 +22,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
+- [#46](https://github.com/laminas/laminas-zendframework-bridge/pull/46) adds a rule to rewrite the config key `use_zend_loader` to `use_laminas_loader`.
+
 - [#45](https://github.com/laminas/laminas-zendframework-bridge/pull/45) adds a rule to exclude rewriting of view paths provided by the various Doctrine modules targeting the developer tools.
 
 ## 1.0.0 - 2019-12-31
