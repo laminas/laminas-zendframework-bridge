@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#45](https://github.com/laminas/laminas-zendframework-bridge/pull/45) adds a rule to exclude rewriting of view paths provided by the various Doctrine modules targeting the developer tools.
 
 ## 1.0.0 - 2019-12-31
 
