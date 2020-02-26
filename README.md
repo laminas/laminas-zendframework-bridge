@@ -18,10 +18,6 @@ Run the following to install this library:
 $ composer require laminas/laminas-zendframework-bridge
 ```
 
-## Documentation
-
-Browse the documentation online at https://docs.laminas.dev/laminas-zendframework-bridge/
-
 ## Support
 
 * [Issues](https://github.com/laminas/laminas-zendframework-bridge/issues/)
