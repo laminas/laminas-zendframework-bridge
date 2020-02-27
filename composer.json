@@ -9,7 +9,6 @@
         "zendframework"
     ],
     "support": {
-        "docs": "https://docs.laminas.dev/laminas-zendframework-bridge/",
         "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
         "source": "https://github.com/laminas/laminas-zendframework-bridge",
         "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
