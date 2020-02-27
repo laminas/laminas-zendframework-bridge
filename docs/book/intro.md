@@ -1,3 +1,0 @@
-# laminas-zendframework-bridge
-
-This component provides ...
