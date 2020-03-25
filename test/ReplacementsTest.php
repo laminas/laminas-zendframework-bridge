@@ -66,6 +66,26 @@ class ReplacementsTest extends TestCase
             'Zend\Log\Writer\ZendMonitor',
             'Laminas\Log\Writer\ZendMonitor',
         ];
+        yield 'Generated class name containing ZendCode in namespace' => [
+            'Some\Module\ZendCode\GeneratedClass',
+            'Some\Module\ZendCode\GeneratedClass'
+        ];
+        yield 'Laminas Rbac class definition' => [
+            'class ZendRbac',
+            'class LaminasRbac'
+        ];
+        yield 'Importing Zend\Expressive\ZendView namespace' => [
+            'use Zend\Expressive\ZendView',
+            'use Mezzio\LaminasView'
+        ];
+        yield 'Importing zend-http client as ZendHttp' => [
+            'use Zend\Http as ZendHttp',
+            'use Laminas\Http as LaminasHttp'
+        ];
+        yield 'ZendHttpClientDecorator definition' => [
+            'class ZendHttpClientDecorator implements HeaderAwareClientInterface',
+            'class LaminasHttpClientDecorator implements HeaderAwareClientInterface'
+        ];
     }
 
     /**
