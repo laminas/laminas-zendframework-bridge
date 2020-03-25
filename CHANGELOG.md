@@ -22,7 +22,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#52](https://github.com/laminas/laminas-zendframework-bridge/pull/52) fixes a scenario whereby factory _values_ were not being rewritten during configuration post processing.
+
+- [#52](https://github.com/laminas/laminas-zendframework-bridge/pull/52) fixes an issue that occurs with the configuration post processor. Previously, when a service name used as a factory or invokable was encountered that referenced a legacy class, it would get rewritten. This would cause issues if the service was not exposed in the original legacy package, however, as there would now be no alias of the legacy service to the new one. This patch modifies the configuration post processor such that it now tests to see if a service name it will rename exists as an alias; if not, it also creates the alias.
 
 ## 1.0.1 - 2020-01-07
 
