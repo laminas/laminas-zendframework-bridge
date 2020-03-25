@@ -11,6 +11,8 @@ namespace LaminasTest\ZendFrameworkBridge;
 use Laminas\ZendFrameworkBridge\Replacements;
 use PHPUnit\Framework\TestCase;
 
+use function file_get_contents;
+
 class ReplacementsTest extends TestCase
 {
     /**
@@ -30,44 +32,45 @@ class ReplacementsTest extends TestCase
         ];
         yield 'Auryn' => [
             'Northwoods\Container\Zend\Config',
-            'Northwoods\Container\Zend\Config'
+            'Northwoods\Container\Zend\Config',
         ];
         yield 'Expressive ZendRouter' => [
             'Zend\Expressive\Router\ZendRouter',
-            'Mezzio\Router\LaminasRouter'
+            'Mezzio\Router\LaminasRouter',
         ];
         yield 'Expressive ZendView Renderer' => [
             'Zend\Expressive\ZendView\ZendViewRenderer',
-            'Mezzio\LaminasView\LaminasViewRenderer'
+            'Mezzio\LaminasView\LaminasViewRenderer',
         ];
         yield 'Expressive ACL Authorizations' => [
             'Zend\Expressive\Authorization\Acl\ZendAcl',
-            'Mezzio\Authorization\Acl\LaminasAcl'
+            'Mezzio\Authorization\Acl\LaminasAcl',
         ];
         yield 'Expressive RBAC Authorizations' => [
             'Zend\Expressive\Authorization\Rbac\ZendRbac',
-            'Mezzio\Authorization\Rbac\LaminasRbac'
+            'Mezzio\Authorization\Rbac\LaminasRbac',
         ];
         yield 'Cache Zend Server abstract adapter' => [
             'Zend\Cache\Storage\Adapter\AbstractZendServer',
-            'Laminas\Cache\Storage\Adapter\AbstractZendServer'
+            'Laminas\Cache\Storage\Adapter\AbstractZendServer',
         ];
         yield 'Cache Zend Server Disk adapter' => [
             'Zend\Cache\Storage\Adapter\ZendServerDisk',
-            'Laminas\Cache\Storage\Adapter\ZendServerDisk'
+            'Laminas\Cache\Storage\Adapter\ZendServerDisk',
         ];
         yield 'Cache Zend Server Shm adapter' => [
             'Zend\Cache\Storage\Adapter\ZendServerShm',
-            'Laminas\Cache\Storage\Adapter\ZendServerShm'
+            'Laminas\Cache\Storage\Adapter\ZendServerShm',
         ];
         yield 'Log Zend Monitor writer' => [
             'Zend\Log\Writer\ZendMonitor',
-            'Laminas\Log\Writer\ZendMonitor'
+            'Laminas\Log\Writer\ZendMonitor',
         ];
     }
 
     /**
      * @dataProvider edgeCases
+     *
      * @param string $string
      * @param string $expected
      */

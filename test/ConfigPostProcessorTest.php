@@ -11,6 +11,8 @@ namespace LaminasTest\ZendFrameworkBridge;
 use Laminas\ZendFrameworkBridge\ConfigPostProcessor;
 use PHPUnit\Framework\TestCase;
 
+use function sprintf;
+
 class ConfigPostProcessorTest extends TestCase
 {
     /**
@@ -30,6 +32,7 @@ class ConfigPostProcessorTest extends TestCase
 
     /**
      * @dataProvider configurations
+     *
      * @param string $configFile
      */
     public function testRewritesNestedKeys($configFile)
