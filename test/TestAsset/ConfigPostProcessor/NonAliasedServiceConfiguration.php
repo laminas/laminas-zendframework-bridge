@@ -12,6 +12,11 @@ return [
             'Zend\Expressive\Router\RouterInterface' => 'MyService',
             'Zend\Expressive\OtherInterface' => 'OtherService',
             'OtherService' => 'Mezzio\OtherInterface',
+            'MyAlias' => 'Zend\Expressive\AliasChain',
+        ],
+        'invokables' => [
+            'Zend\Expressive\AliasInterface' => 'MyNamespace\InvokableClass',
+            'Zend\Expressive\AliasChain' => 'MyNamespace\OtherInvokableClass',
         ],
     ],
 ];

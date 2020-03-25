@@ -245,16 +245,11 @@ class ConfigPostProcessor
     private function replaceDependencyConfiguration(array $config)
     {
         $aliases = isset($config['aliases']) ? $this->replaceDependencyAliases($config['aliases']) : [];
-        $invokables = isset($config['invokables']) ? $this->replaceDependencyInvokables($config['invokables']) : [];
-
         if ($aliases) {
             $config['aliases'] = $aliases;
         }
 
-        if ($invokables) {
-            $config['invokables'] = $invokables;
-        }
-
+        $config = $this->replaceDependencyInvokables($config);
         $config = $this->replaceDependencyFactories($config);
 
         return $config;
@@ -297,15 +292,29 @@ class ConfigPostProcessor
      *
      * In this case, we want to keep the alias as-is, but rewrite the target.
      *
+     * We need also provide an additional alias if invokable is defined with
+     * an alias which is a legacy class.
+     *
      * @return array
      */
-    private function replaceDependencyInvokables(array $invokables)
+    private function replaceDependencyInvokables(array $config)
     {
-        foreach ($invokables as $alias => $target) {
-            $invokables[$alias] = $this->replacements->replace($target);
+        if (empty($config['invokables'])) {
+            return $config;
         }
 
-        return $invokables;
+        foreach ($config['invokables'] as $alias => $target) {
+            if ($alias !== $target) {
+                $newAlias = $this->replacements->replace($alias);
+                if (! isset($config['aliases'][$newAlias]) && $newAlias !== $alias) {
+                    $config['aliases'][$newAlias] = $alias;
+                }
+            }
+
+            $config['invokables'][$alias] = $this->replacements->replace($target);
+        }
+
+        return $config;
     }
 
     /**
