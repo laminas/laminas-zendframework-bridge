@@ -10,6 +10,8 @@ return [
             'foo' => 'Laminas\Form\Factory',
             'Zend\Cache\Storage\StorageInterface' => 'Laminas\Cache\Storage\StorageInterface',
             'Zend\Expressive\Router\RouterInterface' => 'MyService',
+            'Zend\Expressive\OtherInterface' => 'OtherService',
+            'OtherService' => 'Mezzio\OtherInterface',
             'Mezzio\Router\RouterInterface' => 'Zend\Expressive\Router\RouterInterface',
             'Zend\Form\Factory' => 'Laminas\Form\Factory',
         ],
