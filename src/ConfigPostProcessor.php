@@ -10,7 +10,6 @@ namespace Laminas\ZendFrameworkBridge;
 
 use function array_flip;
 use function array_intersect_key;
-use function var_dump;
 
 class ConfigPostProcessor
 {
@@ -68,9 +67,7 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
-                static $keysOfInterest;
-
-                $keysOfInterest = $keysOfInterest ?: ['aliases', 'invokables', 'factories'];
+                $keysOfInterest = ['aliases', 'invokables', 'factories'];
 
                 return is_array($value) && array_intersect_key(array_flip($keysOfInterest), $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
@@ -239,8 +236,8 @@ class ConfigPostProcessor
 
     private function replaceDependencyConfiguration(array $config)
     {
-        $aliases = $this->replaceDependencyAliases(isset($config['aliases']) ? $config['aliases'] : []);
-        $invokables = $this->replaceDependencyAliases(isset($config['invokables']) ? $config['invokables'] : []);
+        $aliases = isset($config['aliases']) ? $this->replaceDependencyAliases($config['aliases']) : [];
+        $invokables = isset($config['invokables']) ? $this->replaceDependencyAliases($config['invokables']) : [];
 
         $config = $this->replaceDependencyFactories($config);
 
