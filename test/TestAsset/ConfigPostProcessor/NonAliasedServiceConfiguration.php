@@ -9,6 +9,7 @@ return [
         'aliases' => [
             'foo' => 'Zend\Form\Factory',
             'Zend\Cache\Storage\StorageInterface' => 'Laminas\Cache\Storage\StorageInterface',
+            'Zend\Expressive\Router\RouterInterface' => 'MyService',
         ],
     ],
 ];

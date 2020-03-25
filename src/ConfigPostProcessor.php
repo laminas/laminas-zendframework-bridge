@@ -245,7 +245,7 @@ class ConfigPostProcessor
     private function replaceDependencyConfiguration(array $config)
     {
         $aliases = isset($config['aliases']) ? $this->replaceDependencyAliases($config['aliases']) : [];
-        $invokables = isset($config['invokables']) ? $this->replaceDependencyAliases($config['invokables']) : [];
+        $invokables = isset($config['invokables']) ? $this->replaceDependencyInvokables($config['invokables']) : [];
 
         if ($aliases) {
             $config['aliases'] = $aliases;
@@ -264,18 +264,48 @@ class ConfigPostProcessor
      * Rewrite dependency aliases array
      *
      * In this case, we want to keep the alias as-is, but rewrite the target.
-     *
-     * This same logic can be used for invokables, which are essentially just
-     * an alias map.
+     * Also, we want to add new alias in case ...
      *
      * @return array
      */
     private function replaceDependencyAliases(array $aliases)
     {
         foreach ($aliases as $alias => $target) {
-            $aliases[$alias] = $this->replacements->replace($target);
+            $newTarget = $this->replacements->replace($target);
+            $aliases[$alias] = $newTarget;
+
+            $newAlias = $this->replacements->replace($alias);
+            if (! isset($aliases[$newAlias])) {
+                $notIn = [$alias];
+                $name  = $alias;
+                while (isset($aliases[$name])) {
+                    $notIn[] = $aliases[$name];
+                    $name = $aliases[$name];
+                }
+
+                if (! in_array($newAlias, $notIn, true)) {
+                    $aliases[$newAlias] = $alias;
+                }
+            }
         }
+
         return $aliases;
+    }
+
+    /**
+     * Rewrite dependency invokables array
+     *
+     * In this case, we want to keep the alias as-is, but rewrite the target.
+     *
+     * @return array
+     */
+    private function replaceDependencyInvokables(array $invokables)
+    {
+        foreach ($invokables as $alias => $target) {
+            $invokables[$alias] = $this->replacements->replace($target);
+        }
+
+        return $invokables;
     }
 
     /**
