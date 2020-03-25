@@ -153,8 +153,6 @@ return [
     'Zend\\\\XmlRpc' => 'Laminas\\\\XmlRpc',
     // class ZendAcl in zend-expressive-authorization-acl
     'ZendAcl' => 'LaminasAcl',
-    'Acl\\ZendAcl' => 'Acl\\LaminasAcl',
-    'Acl\\\\ZendAcl' => 'Acl\\\\LaminasAcl',
     'Zend\\Expressive\\Authorization\\Acl\\ZendAcl' => 'Mezzio\\Authorization\\Acl\\LaminasAcl',
     'Zend\\\\Expressive\\\\Authorization\\\\Acl\\\\ZendAcl' => 'Mezzio\\\\Authorization\\\\Acl\\\\LaminasAcl',
     // class ZendHttpClientDecorator in zend-feed
@@ -163,20 +161,14 @@ return [
     'ZendModule' => 'LaminasModule',
     // class ZendRbac in zend-expressive-authorization-rbac
     'ZendRbac' => 'LaminasRbac',
-    'Rbac\\ZendRbac' => 'Rbac\\LaminasRbac',
-    'Rbac\\\\ZendRbac' => 'Rbac\\\\LaminasRbac',
     'Zend\\Expressive\\Authorization\\Rbac\\ZendRbac' => 'Mezzio\\Authorization\\Rbac\\LaminasRbac',
     'Zend\\\\Expressive\\\\Authorization\\\\Rbac\\\\ZendRbac' => 'Mezzio\\\\Authorization\\\\Rbac\\\\LaminasRbac',
     // class ZendRouter in zend-expressive-router-zendrouter
     'ZendRouter' => 'LaminasRouter',
-    'Router\\ZendRouter' => 'Router\\LaminasRouter',
-    'Router\\\\ZendRouter' => 'Router\\\\LaminasRouter',
     'Zend\\Expressive\\Router\\ZendRouter' => 'Mezzio\\Router\\LaminasRouter',
     'Zend\\\\Expressive\\\\Router\\\\ZendRouter' => 'Mezzio\\Router\\\\LaminasRouter',
     // class ZendViewRenderer in zend-expressive-zendviewrenderer
     'ZendViewRenderer' => 'LaminasViewRenderer',
-    'ZendView\\ZendViewRenderer' => 'LaminasView\\LaminasViewRenderer',
-    'ZendView\\\\ZendViewRenderer' => 'LaminasView\\\\LaminasViewRenderer',
     'Zend\\Expressive\\ZendView\\ZendViewRenderer' => 'Mezzio\\LaminasView\\LaminasViewRenderer',
     'Zend\\\\Expressive\\\\ZendView\\\\ZendViewRenderer' => 'Mezzio\\LaminasView\\\\LaminasViewRenderer',
     'a\\Zend' => 'a\\Zend',

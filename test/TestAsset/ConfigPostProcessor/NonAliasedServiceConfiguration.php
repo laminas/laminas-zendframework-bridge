@@ -2,6 +2,7 @@
 return [
     'dependencies' => [
         'factories' => [
+            'some-alias' => 'Some\Vendor\Acl\ZendAcl',
             'Zend\Form\Factory' => 'Some\Vendor\Zend\Form\ZendFormFactory',
             'Zend\Cache\Storage\StorageInterface' => 'Zend\ServiceManager\Factory\InvokableFactory',
         ],

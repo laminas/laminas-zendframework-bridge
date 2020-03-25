@@ -86,6 +86,10 @@ class ReplacementsTest extends TestCase
             'class ZendHttpClientDecorator implements HeaderAwareClientInterface',
             'class LaminasHttpClientDecorator implements HeaderAwareClientInterface'
         ];
+        yield 'Vendor ZendAcl extension' => [
+            '\'some-alias\' => Some\Vendor\Acl\ZendAcl::class,',
+            '\'some-alias\' => Some\Vendor\Acl\ZendAcl::class,'
+        ];
     }
 
     /**
