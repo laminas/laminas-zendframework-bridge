@@ -287,6 +287,7 @@ class ConfigPostProcessor
 
         foreach ($config['factories'] as $service => $factory) {
             $replacedService = $this->replacements->replace($service);
+            $factory         = is_string($factory) ? $this->replacements->replace($factory) : $factory;
             $config['factories'][$replacedService] = $factory;
 
             if ($replacedService === $service) {
