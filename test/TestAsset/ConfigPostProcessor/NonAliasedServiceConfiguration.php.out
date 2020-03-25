@@ -3,9 +3,11 @@ return [
     'dependencies' => [
         'factories' => [
             'Laminas\Form\Factory' => 'Some\Vendor\Zend\Form\Factory',
+            'Laminas\Cache\Storage\StorageInterface' => 'Zend\ServiceManager\Factory\InvokableFactory',
         ],
         'aliases' => [
             'foo' => 'Laminas\Form\Factory',
+            'Zend\Cache\Storage\StorageInterface' => 'Laminas\Cache\Storage\StorageInterface',
             'Zend\Form\Factory' => 'Laminas\Form\Factory',
         ],
     ],
