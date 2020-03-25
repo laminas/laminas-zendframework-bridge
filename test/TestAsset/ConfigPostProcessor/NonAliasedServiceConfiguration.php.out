@@ -1,0 +1,11 @@
+<?php
+return [
+    'dependencies' => [
+        'factories' => [
+            'Laminas\Form\Factory' => 'Some\Vendor\Zend\Form\Factory',
+        ],
+        'aliases' => [
+            'Zend\Form\Factory' => 'Laminas\Form\Factory',
+        ],
+    ],
+];

@@ -25,6 +25,7 @@ class ConfigPostProcessorTest extends TestCase
         yield 'equivalent key merging' => ['MergeEquivalentKeys.php'];
         yield 'ignore router config' => ['RouterConfig.php'];
         yield 'process invokable config' => ['InvokableConfig.php'];
+        yield 'non aliased service config' => ['NonAliasedServiceConfiguration.php'];
     }
 
     /**
