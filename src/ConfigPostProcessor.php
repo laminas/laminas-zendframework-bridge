@@ -239,8 +239,6 @@ class ConfigPostProcessor
         $aliases = isset($config['aliases']) ? $this->replaceDependencyAliases($config['aliases']) : [];
         $invokables = isset($config['invokables']) ? $this->replaceDependencyAliases($config['invokables']) : [];
 
-        $config = $this->replaceDependencyFactories($config);
-
         if ($aliases) {
             $config['aliases'] = $aliases;
         }
@@ -248,6 +246,8 @@ class ConfigPostProcessor
         if ($invokables) {
             $config['invokables'] = $invokables;
         }
+
+        $config = $this->replaceDependencyFactories($config);
 
         return $config;
     }

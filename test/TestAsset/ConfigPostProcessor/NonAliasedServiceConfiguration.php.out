@@ -5,6 +5,7 @@ return [
             'Laminas\Form\Factory' => 'Some\Vendor\Zend\Form\Factory',
         ],
         'aliases' => [
+            'foo' => 'Laminas\Form\Factory',
             'Zend\Form\Factory' => 'Laminas\Form\Factory',
         ],
     ],
