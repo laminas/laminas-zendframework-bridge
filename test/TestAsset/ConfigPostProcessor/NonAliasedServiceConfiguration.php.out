@@ -2,7 +2,7 @@
 return [
     'dependencies' => [
         'factories' => [
-            'Laminas\Form\Factory' => 'Some\Vendor\Zend\Form\Factory',
+            'Laminas\Form\Factory' => 'Some\Vendor\Zend\Form\ZendFormFactory',
             'Laminas\Cache\Storage\StorageInterface' => 'Laminas\ServiceManager\Factory\InvokableFactory',
         ],
         'aliases' => [
