@@ -11,6 +11,10 @@ namespace LaminasTest\ZendFrameworkBridge;
 use Laminas\LegacyTypeHint;
 use PHPUnit\Framework\TestCase;
 
+use function class_exists;
+use function get_class;
+use function interface_exists;
+
 class AutoloaderTest extends TestCase
 {
     /**
@@ -132,6 +136,7 @@ class AutoloaderTest extends TestCase
 
     /**
      * @dataProvider reverseClassProvider
+     *
      * @param string $actual
      * @param string $legacy
      */

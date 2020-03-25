@@ -8,6 +8,9 @@
 
 namespace Laminas\ZendFrameworkBridge;
 
+use function array_merge;
+use function strtr;
+
 class Replacements
 {
     /** @var string[] */
@@ -20,7 +23,7 @@ class Replacements
             $additionalReplacements
         );
     }
-    
+
     /**
      * @param string $value
      * @return string

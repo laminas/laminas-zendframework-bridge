@@ -10,6 +10,14 @@ namespace Laminas\ZendFrameworkBridge;
 
 use function array_flip;
 use function array_intersect_key;
+use function array_key_exists;
+use function array_pop;
+use function array_push;
+use function count;
+use function is_array;
+use function is_callable;
+use function is_int;
+use function is_string;
 
 class ConfigPostProcessor
 {
