@@ -281,30 +281,24 @@ class ConfigPostProcessor
 
     private function replaceDependencyFactories(array $config)
     {
-        $factories = isset($config['factories']) ? $config['factories'] : [];
-        $aliases = isset($config['aliases']) ? $config['aliases'] : [];
+        if (empty($config['factories'])) {
+            return $config;
+        }
 
-        foreach ($factories as $service => $factory) {
+        foreach ($config['factories'] as $service => $factory) {
             $replacedService = $this->replacements->replace($service);
-            $factories[$replacedService] = $factory;
+            $config['factories'][$replacedService] = $factory;
 
             if ($replacedService === $service) {
                 continue;
             }
-            unset($factories[$service]);
-            if (isset($aliases[$service])) {
+
+            unset($config['factories'][$service]);
+            if (isset($config['aliases'][$service])) {
                 continue;
             }
 
-            $aliases[$service] = $replacedService;
-        }
-
-        if ($aliases !== []) {
-            $config['aliases'] = $aliases;
-        }
-
-        if ($factories !== []) {
-            $config['factories'] = $factories;
+            $config['aliases'][$service] = $replacedService;
         }
 
         return $config;
