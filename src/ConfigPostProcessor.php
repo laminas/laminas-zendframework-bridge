@@ -259,7 +259,8 @@ class ConfigPostProcessor
      * Rewrite dependency aliases array
      *
      * In this case, we want to keep the alias as-is, but rewrite the target.
-     * Also, we want to add new alias in case ...
+     *
+     * We need also provide an additional alias if the alias key is a legacy class.
      *
      * @return array
      */
