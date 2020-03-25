@@ -11,6 +11,8 @@ namespace LaminasTest\ZendFrameworkBridge;
 use Laminas\ZendFrameworkBridge\Module;
 use PHPUnit\Framework\TestCase;
 
+use function sprintf;
+
 class ModuleTest extends TestCase
 {
     public function testInitRegistersListenerWithEventManager()
@@ -38,6 +40,7 @@ class ModuleTest extends TestCase
 
     /**
      * @dataProvider configurations
+     *
      * @param string $configFile
      */
     public function testOnMergeConfigProcessesAndReplacesConfigurationPulledFromListener($configFile)
