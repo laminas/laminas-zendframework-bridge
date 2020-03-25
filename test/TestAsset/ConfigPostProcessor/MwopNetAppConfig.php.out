@@ -29,7 +29,6 @@ return [
             Csp::class                                   => Middleware\ContentSecurityPolicyMiddlewareFactory::class,
             CacheItemPoolInterface::class                => Factory\CachePoolFactory::class,
             EventDispatcherInterface::class              => Factory\EventDispatcherFactory::class,
-            'Laminas\Feed\Reader\Http\ClientInterface'   => Feed\HttpPlugClientFactory::class,
             Handler\ComicsPageHandler::class             => Handler\ComicsPageHandlerFactory::class,
             Handler\HomePageHandler::class               => Handler\HomePageHandlerFactory::class,
             Handler\ResumePageHandler::class             => Handler\PageHandlerFactory::class,
@@ -37,6 +36,7 @@ return [
             'mail.transport'                             => Factory\MailTransport::class,
             Middleware\RedirectAmpPagesMiddleware::class => Middleware\RedirectAmpPagesMiddlewareFactory::class,
             SessionCachePool::class                      => SessionCachePoolFactory::class,
+            'Laminas\Feed\Reader\Http\ClientInterface'   => Feed\HttpPlugClientFactory::class,
         ],
         'delegators' => [
             DisplayPostHandler::class => [
@@ -45,6 +45,9 @@ return [
             Engine::class => [
                 Factory\PlatesFunctionsDelegator::class,
             ],
+        ],
+        'aliases' => [
+            'Zend\Feed\Reader\Http\ClientInterface' => 'Laminas\Feed\Reader\Http\ClientInterface',
         ],
     ],
     'homepage' => [
