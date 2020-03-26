@@ -98,6 +98,18 @@ class ReplacementsTest extends TestCase
             file_get_contents(__DIR__ . '/TestAsset/Replacements/module.config.php'),
             file_get_contents(__DIR__ . '/TestAsset/Replacements/module.config.php.out'),
         ];
+        yield 'api-skeletons composer' => [
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/api-skeletons-composer.json'),
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/api-skeletons-composer.json.out'),
+        ];
+        yield 'api-skeletons OAuth2 Client' => [
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/ZFOAuth2Client.php'),
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/ZFOAuth2Client.php.out'),
+        ];
+        yield 'api-skeletons zf-oauth2-doctrine config' => [
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/zf-oauth2-config.php'),
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/zf-oauth2-config.php.out'),
+        ];
     }
 
     /**

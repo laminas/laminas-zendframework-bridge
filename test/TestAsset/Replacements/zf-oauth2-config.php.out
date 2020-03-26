@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'zf-oauth2-doctrine' => [
+    ],
+    'zf-oauth2-doctrine-permissions-acl' => [
+    ],
+    'api-tools-doctrine-querybuilder' => [
+    ],
+];

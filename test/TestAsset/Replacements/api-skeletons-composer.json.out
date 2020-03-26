@@ -1,0 +1,14 @@
+{
+    "require": {
+        "api-skeletons/zf-doctrine-criteria": "^1.0",
+        "api-skeletons/zf-doctrine-data-fixture": "^1.0",
+        "api-skeletons/zf-doctrine-graphql": "^1.0",
+        "api-skeletons/zf-doctrine-module-zend-hydrator": "^1.0",
+        "api-skeletons/zf-doctrine-repository": "^1.0",
+        "api-skeletons/zf-oauth2-client": "^1.0",
+        "api-skeletons/zf-oauth2-doctrine": "^1.0",
+        "api-skeletons/zf-oauth2-doctrine-console": "^1.0",
+        "api-skeletons/zf-oauth2-doctrine-identity": "^1.0",
+        "api-skeletons/zf-oauth2-doctrine-permissions-acl": "^1.0"
+    }
+}

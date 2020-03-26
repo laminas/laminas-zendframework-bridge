@@ -361,4 +361,11 @@ return [
     'ZfApigilityDoctrineQueryCreateFilterManager' => 'LaminasApiToolsDoctrineQueryCreateFilterManager',
     'zf-apigility-doctrine' => 'api-tools-doctrine',
     'zf-development-mode' => 'laminas-development-mode',
+    'zf-doctrine-querybuilder' => 'api-tools-doctrine-querybuilder',
+
+    // 3rd party Apigility packages
+    'api-skeletons/zf-' => 'api-skeletons/zf-', // api-skeletons packages
+    'zf-oauth2-' => 'zf-oauth2-', // api-skeletons OAuth2-related packages
+    'ZF\\OAuth2\\Client' => 'ZF\\OAuth2\\Client', // api-skeletons/zf-oauth2-client
+    'ZF\\OAuth2\\Doctrine' => 'ZF\\OAuth2\\Doctrine', // api-skeletons/zf-oauth2-doctrine
 ];
