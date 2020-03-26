@@ -268,7 +268,7 @@ class ConfigPostProcessor
     {
         foreach ($aliases as $alias => $target) {
             $newTarget = $this->replacements->replace($target);
-            $newAlias = $this->replacements->replace($alias);
+            $newAlias  = $this->replacements->replace($alias);
 
             if ($newAlias === $alias) {
                 $aliases[$alias] = $newTarget;
@@ -283,11 +283,11 @@ class ConfigPostProcessor
             $name  = $newTarget;
             while (isset($aliases[$name])) {
                 $notIn[] = $aliases[$name];
-                $name = $aliases[$name];
+                $name    = $aliases[$name];
             }
 
             if (! in_array($newAlias, $notIn, true)) {
-                $aliases[$alias] = $newAlias;
+                $aliases[$alias]    = $newAlias;
                 $aliases[$newAlias] = $newTarget;
             }
         }
