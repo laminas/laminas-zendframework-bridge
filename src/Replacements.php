@@ -9,6 +9,8 @@
 namespace Laminas\ZendFrameworkBridge;
 
 use function array_merge;
+use function str_replace;
+use function strpos;
 use function strtr;
 
 class Replacements
