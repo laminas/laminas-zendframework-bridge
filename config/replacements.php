@@ -338,8 +338,8 @@ return [
     'zend-expressive-tooling' => 'mezzio-tooling',
 
     // Apigility-related
-    "'zf-apigility'" => "'laminas-api-tools'",
-    '"zf-apigility"' => '"laminas-api-tools"',
+    "'zf-apigility'" => "'api-tools'",
+    '"zf-apigility"' => '"api-tools"',
     'zf-apigility/' => 'api-tools/',
     'zf-apigility-admin' => 'api-tools-admin',
     'zf-content-negotiation' => 'api-tools-content-negotiation',

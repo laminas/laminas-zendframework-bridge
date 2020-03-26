@@ -94,6 +94,10 @@ class ReplacementsTest extends TestCase
             file_get_contents(__DIR__ . '/TestAsset/Replacements/phpstan-baseline.neon'),
             file_get_contents(__DIR__ . '/TestAsset/Replacements/phpstan-baseline.neon.out'),
         ];
+        yield 'api-tools config' => [
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/module.config.php'),
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/module.config.php.out'),
+        ];
     }
 
     /**

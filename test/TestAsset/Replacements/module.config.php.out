@@ -1,0 +1,8 @@
+<?php
+
+return array(
+    'api-tools' => array(
+        'db-connected' => array(
+        ),
+    ),
+);
