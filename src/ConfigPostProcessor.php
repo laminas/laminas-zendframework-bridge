@@ -268,20 +268,27 @@ class ConfigPostProcessor
     {
         foreach ($aliases as $alias => $target) {
             $newTarget = $this->replacements->replace($target);
-            $aliases[$alias] = $newTarget;
-
             $newAlias = $this->replacements->replace($alias);
-            if (! isset($aliases[$newAlias])) {
-                $notIn = [$alias];
-                $name  = $alias;
-                while (isset($aliases[$name])) {
-                    $notIn[] = $aliases[$name];
-                    $name = $aliases[$name];
-                }
 
-                if (! in_array($newAlias, $notIn, true)) {
-                    $aliases[$newAlias] = $alias;
-                }
+            if ($newAlias === $alias) {
+                $aliases[$alias] = $newTarget;
+                continue;
+            }
+
+            if (isset($aliases[$newAlias])) {
+                continue;
+            }
+
+            $notIn = [$newTarget];
+            $name  = $newTarget;
+            while (isset($aliases[$name])) {
+                $notIn[] = $aliases[$name];
+                $name = $aliases[$name];
+            }
+
+            if (! in_array($newAlias, $notIn, true)) {
+                $aliases[$alias] = $newAlias;
+                $aliases[$newAlias] = $newTarget;
             }
         }
 
@@ -305,14 +312,22 @@ class ConfigPostProcessor
         }
 
         foreach ($config['invokables'] as $alias => $target) {
+            $newTarget = $this->replacements->replace($target);
+
             if ($alias !== $target) {
                 $newAlias = $this->replacements->replace($alias);
-                if (! isset($config['aliases'][$newAlias]) && $newAlias !== $alias) {
-                    $config['aliases'][$newAlias] = $alias;
-                }
-            }
+                $config['invokables'][$newAlias] = $newTarget;
 
-            $config['invokables'][$alias] = $this->replacements->replace($target);
+                if ($newAlias !== $alias) {
+                    if (! isset($config['aliases'][$newAlias])) {
+                        $config['aliases'][$alias] = $newAlias;
+                    }
+
+                    unset($config['invokables'][$alias]);
+                }
+            } else {
+                $config['invokables'][$alias] = $newTarget;
+            }
         }
 
         return $config;

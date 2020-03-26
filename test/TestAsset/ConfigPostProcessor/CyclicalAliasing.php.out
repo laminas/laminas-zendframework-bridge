@@ -4,8 +4,8 @@ return [
     'dependencies' => [
         'aliases' => [
             'Zend\Db\Adapter\Adapter' => 'Laminas\Db\Adapter\Adapter',
-            'Zend\Db\Adapter\Adapter' => 'Laminas\ApiTools\DbConnectedAdapter',
-            'Laminas\Db\Adapter\Adapter' => 'Zend\Db\Adapter\Adapter',
+            'Zend\Db\Adapter\Adapter' => 'Laminas\Db\Adapter\Adapter',
+            'Laminas\Db\Adapter\Adapter' => 'Laminas\ApiTools\DbConnectedAdapter',
         ],
     ],
     'service_manager' => [
