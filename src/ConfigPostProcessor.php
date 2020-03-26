@@ -314,20 +314,23 @@ class ConfigPostProcessor
         foreach ($config['invokables'] as $alias => $target) {
             $newTarget = $this->replacements->replace($target);
 
-            if ($alias !== $target) {
-                $newAlias = $this->replacements->replace($alias);
-                $config['invokables'][$newAlias] = $newTarget;
-
-                if ($newAlias !== $alias) {
-                    if (! isset($config['aliases'][$newAlias])) {
-                        $config['aliases'][$alias] = $newAlias;
-                    }
-
-                    unset($config['invokables'][$alias]);
-                }
-            } else {
+            if ($alias === $target) {
                 $config['invokables'][$alias] = $newTarget;
+                continue;
             }
+
+            $newAlias = $this->replacements->replace($alias);
+            $config['invokables'][$newAlias] = $newTarget;
+
+            if ($newAlias === $alias) {
+                continue;
+            }
+
+            if (! isset($config['aliases'][$newAlias])) {
+                $config['aliases'][$alias] = $newAlias;
+            }
+
+            unset($config['invokables'][$alias]);
         }
 
         return $config;
