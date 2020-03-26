@@ -13,13 +13,13 @@ return [
             'Zend\Expressive\OtherInterface' => 'OtherService',
             'OtherService' => 'Mezzio\OtherInterface',
             'MyAlias' => 'Zend\Expressive\AliasChain',
-            'Mezzio\TwoInterface' => 'middle-alias',
-            'middle-alias' => 'Zend\Expressive\TwoInterface',
+            'Mezzio\SessionInterface' => 'session',
+            'session' => 'Zend\Expressive\SessionInterface',
         ],
         'invokables' => [
             'Zend\Expressive\AliasInterface' => 'MyNamespace\InvokableClass',
             'Zend\Expressive\AliasChain' => 'MyNamespace\OtherInvokableClass',
-            'Zend\Expressive\TwoInterface' => 'MyNamespace\TwoInvokableClass',
+            'Zend\Expressive\SessionInterface' => 'MyNamespace\SessionInvokableClass',
         ],
     ],
 ];
