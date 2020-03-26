@@ -270,20 +270,20 @@ class ConfigPostProcessor
             $newTarget = $this->replacements->replace($target);
             $newAlias  = $this->replacements->replace($alias);
 
-            if ($newAlias === $alias) {
+            $notIn = [$newTarget];
+            $name  = $newTarget;
+            while (isset($aliases[$name])) {
+                $notIn[] = $aliases[$name];
+                $name    = $aliases[$name];
+            }
+
+            if ($newAlias === $alias && ! in_array($alias, $notIn, true)) {
                 $aliases[$alias] = $newTarget;
                 continue;
             }
 
             if (isset($aliases[$newAlias])) {
                 continue;
-            }
-
-            $notIn = [$newTarget];
-            $name  = $newTarget;
-            while (isset($aliases[$name])) {
-                $notIn[] = $aliases[$name];
-                $name    = $aliases[$name];
             }
 
             if (! in_array($newAlias, $notIn, true)) {
@@ -313,13 +313,13 @@ class ConfigPostProcessor
 
         foreach ($config['invokables'] as $alias => $target) {
             $newTarget = $this->replacements->replace($target);
+            $newAlias  = $this->replacements->replace($alias);
 
-            if ($alias === $target) {
+            if ($alias === $target || isset($config['aliases'][$newAlias])) {
                 $config['invokables'][$alias] = $newTarget;
                 continue;
             }
 
-            $newAlias = $this->replacements->replace($alias);
             $config['invokables'][$newAlias] = $newTarget;
 
             if ($newAlias === $alias) {
