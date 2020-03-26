@@ -22,6 +22,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
+- [#57](https://github.com/laminas/laminas-zendframework-bridge/pull/57) fixes how references to the "zf-apigility" key are replaced. Previously, they were rewritten to "laminas-api-tools", but the correct replacement is "api-tools".
+
 - [#56](https://github.com/laminas/laminas-zendframework-bridge/pull/56) provides a mechanism to add additional maps with multiple levels of namespace separator escaping, in order to ensure that all various known permutations are matched. The escaping is applied to both the original and target, to ensure that rewrites conform to the original escaping.
 
 - [#56](https://github.com/laminas/laminas-zendframework-bridge/pull/56) makes changes to the replacement rules to ensure we do not replace references to "Zend" or "ZF" if they occur as subnamespaces OR as class names (formerly, we only enforced subnamespaces). Additional rules were provided for cases where one or both occur within our own packages.
