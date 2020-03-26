@@ -22,6 +22,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
+- [#59](https://github.com/laminas/laminas-zendframework-bridge/pull/59) fixes the replacement rules such as to avoid replacing references to API Skeletons packages, classes, or configuration keys.
+
 - [#57](https://github.com/laminas/laminas-zendframework-bridge/pull/57) fixes how references to the "zf-apigility" key are replaced. Previously, they were rewritten to "laminas-api-tools", but the correct replacement is "api-tools".
 
 - [#56](https://github.com/laminas/laminas-zendframework-bridge/pull/56) provides a mechanism to add additional maps with multiple levels of namespace separator escaping, in order to ensure that all various known permutations are matched. The escaping is applied to both the original and target, to ensure that rewrites conform to the original escaping.
