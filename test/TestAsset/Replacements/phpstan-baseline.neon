@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^PHPDoc tag @var for variable \\$query has no value type specified in iterable type Zend\\\\Stdlib\\\\Parameters\\.$#"
+			count: 2
+			path: module/Application/src/ApiParamsListener.php

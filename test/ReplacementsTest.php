@@ -90,6 +90,10 @@ class ReplacementsTest extends TestCase
             '\'some-alias\' => Some\Vendor\Acl\ZendAcl::class,',
             '\'some-alias\' => Some\Vendor\Acl\ZendAcl::class,'
         ];
+        yield 'phpstan-baseline.neon' => [
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/phpstan-baseline.neon'),
+            file_get_contents(__DIR__ . '/TestAsset/Replacements/phpstan-baseline.neon.out'),
+        ];
     }
 
     /**
