@@ -326,9 +326,7 @@ class ConfigPostProcessor
                 continue;
             }
 
-            if (! isset($config['aliases'][$newAlias])) {
-                $config['aliases'][$alias] = $newAlias;
-            }
+            $config['aliases'][$alias] = $newAlias;
 
             unset($config['invokables'][$alias]);
         }
