@@ -22,6 +22,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
+- [#55](https://github.com/laminas/laminas-zendframework-bridge/pull/55) adds provisions to ensure that references to legacy classes/interfaces in dependency configuration always create aliases from the legacy to the new classes. Previously, we did straight replacements in the configuration, which could lead to the legacy service no longer being available. Now it will remain available.
+
 - [#59](https://github.com/laminas/laminas-zendframework-bridge/pull/59) fixes the replacement rules such as to avoid replacing references to API Skeletons packages, classes, or configuration keys.
 
 - [#57](https://github.com/laminas/laminas-zendframework-bridge/pull/57) fixes how references to the "zf-apigility" key are replaced. Previously, they were rewritten to "laminas-api-tools", but the correct replacement is "api-tools".
