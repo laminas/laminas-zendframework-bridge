@@ -2,16 +2,22 @@
 
 return [
     'dependencies' => [
+        'factories' => [
+            'Buzzer' => 'Laminas\ServiceManager\Factory\InvokableFactory',
+        ],
         'delegators' => [
             'Buzzer' => [
-                '\Laminas\ServiceManager\Proxy\LazyServiceFactory',
+                'Laminas\ServiceManager\Proxy\LazyServiceFactory',
             ],
         ],
     ],
     'service_manager' => [
+        'factories' => [
+            'Buzzer' => 'Laminas\ServiceManager\Factory\InvokableFactory',
+        ],
         'delegators' => [
             'Buzzer' => [
-                '\Laminas\ServiceManager\Proxy\LazyServiceFactory',
+                'Laminas\ServiceManager\Proxy\LazyServiceFactory',
             ],
         ],
     ],
