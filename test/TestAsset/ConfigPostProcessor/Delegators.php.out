@@ -1,0 +1,18 @@
+<?php
+
+return [
+    'dependencies' => [
+        'delegators' => [
+            'Buzzer' => [
+                '\Laminas\ServiceManager\Proxy\LazyServiceFactory',
+            ],
+        ],
+    ],
+    'service_manager' => [
+        'delegators' => [
+            'Buzzer' => [
+                '\Laminas\ServiceManager\Proxy\LazyServiceFactory',
+            ],
+        ],
+    ],
+];
