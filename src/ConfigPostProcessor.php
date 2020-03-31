@@ -75,9 +75,19 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
-                $keysOfInterest = ['aliases', 'invokables', 'factories'];
+                $keysOfInterest = [
+                    'abstract_factories' => true,
+                    'aliases' => true,
+                    'delegators' => true,
+                    'factories' => true,
+                    'initializers' => true,
+                    'invokables' => true,
+                    'lazy_services' => true,
+                    'services' => true,
+                    'shared' => true,
+                ];
 
-                return is_array($value) && array_intersect_key(array_flip($keysOfInterest), $value) !== []
+                return is_array($value) && array_intersect_key($keysOfInterest, $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
                     : null;
             },
@@ -251,9 +261,41 @@ class ConfigPostProcessor
 
         $config = $this->replaceDependencyInvokables($config);
         $config = $this->replaceDependencyFactories($config);
+
         $delegators = isset($config['delegators']) ? $this->replaceDependencyDelegators($config['delegators']) : [];
         if ($delegators) {
             $config['delegators'] = $delegators;
+        }
+
+        $abstractFactories = isset($config['abstract_factories'])
+            ? $this->replaceDependencyAbstractFactories($config['abstract_factories'])
+            : [];
+        if ($abstractFactories) {
+            $config['abstract_factories'] = $abstractFactories;
+        }
+
+        $lazyServices = isset($config['lazy_services'])
+            ? $this->replaceDependencyLazyServices($config['lazy_services'])
+            : [];
+        if ($lazyServices) {
+            $config['lazy_services'] = $lazyServices;
+        }
+
+        $services = isset($config['services']) ? $this->replaceDependencyServices($config['services']) : [];
+        if ($services) {
+            $config['services'] = $services;
+        }
+
+        $shared = isset($config['shared']) ? $this->replaceDependencySharedServices($config['shared']) : [];
+        if ($shared) {
+            $config['shared'] = $shared;
+        }
+
+        $initializers = isset($config['initializers'])
+            ? $this->replaceDependencyInitializers($config['initializers'])
+            : [];
+        if ($initializers) {
+            $config['initializers'] = $initializers;
         }
 
         return $config;
@@ -395,5 +437,86 @@ class ConfigPostProcessor
         }
 
         return $replacedDelegators;
+    }
+
+    private function replaceDependencyAbstractFactories(array $abstractFactories)
+    {
+        if (empty($abstractFactories)) {
+            return $abstractFactories;
+        }
+
+        foreach ($abstractFactories as $index => $factory) {
+            $abstractFactories[$index] = is_string($factory) ? $this->replacements->replace($factory) : $factory;
+        }
+
+        return $abstractFactories;
+    }
+
+    private function replaceDependencyLazyServices(array $lazyServices)
+    {
+        if (empty($lazyServices)) {
+            return $lazyServices;
+        }
+
+        $classMap = isset($lazyServices['class_map']) ? $lazyServices['class_map'] : [];
+        if (empty($classMap)) {
+            return $lazyServices;
+        }
+
+        $replacedClassMap = [];
+
+        foreach ($classMap as $name => $classOrName) {
+            $name = $this->replacements->replace($name);
+            $classOrName = $this->replacements->replace($classOrName);
+            $replacedClassMap[$name] = $classOrName;
+        }
+
+        $lazyServices['class_map'] = $replacedClassMap;
+
+        return $lazyServices;
+    }
+
+    private function replaceDependencyServices(array $services)
+    {
+        if (empty($services)) {
+            return $services;
+        }
+
+        $replacedServices = [];
+        foreach ($services as $service => $instance) {
+            $service = $this->replacements->replace($service);
+            $replacedServices[$service] = $instance;
+        }
+
+        return $replacedServices;
+    }
+
+    private function replaceDependencySharedServices(array $sharedServices)
+    {
+        if (empty($sharedServices)) {
+            return $sharedServices;
+        }
+
+        $replacedSharedServices = [];
+        foreach ($sharedServices as $service => $shared) {
+            $service = $this->replacements->replace($service);
+            $replacedSharedServices[$service] = $shared;
+        }
+
+        return $replacedSharedServices;
+    }
+
+    private function replaceDependencyInitializers(array $initializers)
+    {
+        if (empty($initializers)) {
+            return $initializers;
+        }
+
+        foreach ($initializers as $index => $initializer) {
+            $initializers[$index] = is_string($initializer) ?
+                $this->replacements->replace($initializer) : $initializer;
+        }
+
+        return $initializers;
     }
 }
