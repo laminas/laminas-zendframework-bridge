@@ -9,5 +9,9 @@ return [
             'MyOtherService', 'MyOtherFactory',
             'MyOtherService' => 'MyOtherFactory',
         ],
+        'invokables' => [
+            'Foo', 'Bar',
+            'Foo' => 'Bar',
+        ],
     ],
 ];
