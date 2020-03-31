@@ -31,6 +31,7 @@ class ConfigPostProcessorTest extends TestCase
         yield 'config delegators' => ['Delegators.php'];
         yield 'abstract factories' => ['AbstractFactories.php'];
         yield 'lazy services' => ['LazyServices.php'];
+        yield 'service manager configuration' => ['FullServiceManagerConfiguration.php'];
     }
 
     /**

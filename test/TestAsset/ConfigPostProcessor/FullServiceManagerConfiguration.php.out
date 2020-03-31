@@ -1,0 +1,43 @@
+<?php
+
+return [
+    'service_manager' => [
+        'abstract_factories' => [
+            'Laminas\ServiceManager\AbstractFactory\ConfigAbstractFactory',
+        ],
+        'aliases' => [
+            'Zend\Cache\Storage\StorageInterface' => 'Laminas\Cache\Storage\StorageInterface',
+            'Laminas\Cache\Storage\StorageInterface' => 'Laminas\Cache\Storage\Adapter\Redis',
+            'Zend\Expressive\Router\RouterInterface' => 'Mezzio\Router\RouterInterface',
+            'Zend\Form\Factory' => 'Laminas\Form\Factory',
+
+        ],
+        'delegators' => [
+            'Laminas\Cache\Storage\Adapter\Redis' => [
+                'Laminas\ServiceManager\Proxy\LazyServiceFactory',
+            ],
+        ],
+        'factories' => [
+            'MyService' => 'Laminas\ServiceManager\Factory\InvokableFactory',
+            'Laminas\Form\Factory' => 'Some\Vendor\Zend\Form\ZendFormFactory',
+        ],
+        'initializers' => [
+            // Just for testing purposes, this initializer does not exist
+            'Laminas\Form\FactoryInitializer',
+        ],
+        'invokables' => [
+            'Mezzio\Router\RouterInterface' => 'MyService',
+        ],
+        'lazy_services' => [
+            'class_map' => [
+                'Laminas\Cache\Storage\Adapter\Redis' => 'Laminas\Cache\Storage\Adapter\Redis',
+            ],
+        ],
+        'services' => [
+            'Laminas\Cache\Storage\Adapter\Redis' => 'Zend\Cache\Storage\Adapter\Redis',
+        ],
+        'shared' => [
+            'Laminas\Form\Factory' => false,
+        ],
+    ],
+];
