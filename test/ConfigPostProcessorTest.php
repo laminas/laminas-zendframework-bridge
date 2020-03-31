@@ -32,6 +32,7 @@ class ConfigPostProcessorTest extends TestCase
         yield 'abstract factories' => ['AbstractFactories.php'];
         yield 'lazy services' => ['LazyServices.php'];
         yield 'service manager configuration' => ['FullServiceManagerConfiguration.php'];
+        yield 'invalid service manager configuration' => ['InvalidServiceManagerConfiguration.php'];
     }
 
     /**
