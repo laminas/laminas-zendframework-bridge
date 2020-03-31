@@ -10,6 +10,7 @@ return [
         ],
         'abstract_factories' => [
             ConfigAbstractFactory::class,
+            'Zend\ServiceManager\AbstractFactory\ConfigAbstractFactory',
         ],
     ],
 
@@ -19,6 +20,7 @@ return [
         ],
         'abstract_factories' => [
             ConfigAbstractFactory::class,
+            'Zend\ServiceManager\AbstractFactory\ConfigAbstractFactory',
         ],
     ],
 ];
