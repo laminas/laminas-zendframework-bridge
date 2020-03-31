@@ -9,6 +9,9 @@ return [
             'Buzzer' => [
                 'Zend\ServiceManager\Proxy\LazyServiceFactory',
             ],
+            'Zend\Db\Adapter' => [
+                'Zend\ServiceManager\Proxy\LazyServiceFactory',
+            ],
         ],
     ],
     'service_manager' => [
@@ -17,6 +20,9 @@ return [
         ],
         'delegators' => [
             'Buzzer' => [
+                'Zend\ServiceManager\Proxy\LazyServiceFactory',
+            ],
+            'Zend\Db\Adapter' => [
                 'Zend\ServiceManager\Proxy\LazyServiceFactory',
             ],
         ],

@@ -9,6 +9,9 @@ return [
             'Buzzer' => [
                 'Laminas\ServiceManager\Proxy\LazyServiceFactory',
             ],
+            'Laminas\Db\Adapter' => [
+                'Laminas\ServiceManager\Proxy\LazyServiceFactory',
+            ],
         ],
     ],
     'service_manager' => [
@@ -17,6 +20,9 @@ return [
         ],
         'delegators' => [
             'Buzzer' => [
+                'Laminas\ServiceManager\Proxy\LazyServiceFactory',
+            ],
+            'Laminas\Db\Adapter' => [
                 'Laminas\ServiceManager\Proxy\LazyServiceFactory',
             ],
         ],
