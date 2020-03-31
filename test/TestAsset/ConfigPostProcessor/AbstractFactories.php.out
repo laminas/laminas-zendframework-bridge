@@ -1,0 +1,24 @@
+<?php
+
+use Laminas\ServiceManager\AbstractFactory\ConfigAbstractFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
+
+return [
+    'service_manager' => [
+        'factories' => [
+            'MyService' => InvokableFactory::class,
+        ],
+        'abstract_factories' => [
+            ConfigAbstractFactory::class,
+        ],
+    ],
+
+    'dependencies' => [
+        'factories' => [
+            'MyService' => InvokableFactory::class,
+        ],
+        'abstract_factories' => [
+            ConfigAbstractFactory::class,
+        ],
+    ],
+];

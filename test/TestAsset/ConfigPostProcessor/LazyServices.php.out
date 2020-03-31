@@ -1,0 +1,24 @@
+<?php
+
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\Proxy\LazyServiceFactory;
+
+return [
+    'dependencies' => [
+        'factories' => [
+            'Laminas\Db\Adapter\Adapter' => 'Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory',
+        ],
+        'lazy_services' => [
+            // Mapping services to their class names is required
+            // since the ServiceManager is not a declarative DIC.
+            'class_map' => [
+                'Laminas\Db\Adapter\Adapter' => 'Laminas\Db\Adapter\Adapter',
+            ],
+        ],
+        'delegators' => [
+            'Laminas\Db\Adapter\Adapter' => [
+                LazyServiceFactory::class,
+            ],
+        ],
+    ],
+];
