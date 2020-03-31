@@ -379,18 +379,21 @@ class ConfigPostProcessor
             return $delegators;
         }
 
+        $replacedDelegators = [];
         foreach ($delegators as $service => $factories) {
+            $service = $this->replacements->replace($service);
             if (!is_array($factories)) {
+                $replacedDelegators[$service] = $factories;
                 // Invalid configuration aint replaced.
                 continue;
             }
 
             foreach ($factories as $index => $factory) {
                 $factory = is_string($factory) ? $this->replacements->replace($factory) : $factory;
-                $delegators[$service][$index] = $factory;
+                $replacedDelegators[$service][$index] = $factory;
             }
         }
 
-        return $delegators;
+        return $replacedDelegators;
     }
 }
