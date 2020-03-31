@@ -20,5 +20,8 @@ return [
                 LazyServiceFactory::class,
             ],
         ],
+        'aliases' => [
+            'Zend\Db\Adapter\Adapter' => 'Laminas\Db\Adapter\Adapter'
+        ],
     ],
 ];
