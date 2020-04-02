@@ -258,7 +258,7 @@ class ConfigPostProcessor
                 continue;
             }
 
-            $config[$key] = $this->__invoke($config[$key], [$key]);
+            $config[$key] = is_array($data) ? $this->__invoke($data, [$key]):  $data;
         }
 
         return $config;
