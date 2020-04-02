@@ -23,7 +23,7 @@ use function is_string;
 class ConfigPostProcessor
 {
     /** @var array<string> */
-    const SERVICE_MANAGER_KEYS_OF_INTEREST = ['aliases', 'invokables', 'factories'];
+    const SERVICE_MANAGER_KEYS_OF_INTEREST = ['aliases', 'invokables', 'factories', 'services'];
 
     /** @var array String keys => string values */
     private $exactReplacements = [
@@ -255,6 +255,7 @@ class ConfigPostProcessor
 
         $config = $this->replaceDependencyInvokables($config);
         $config = $this->replaceDependencyFactories($config);
+        $config = $this->replaceDependencyServices($config);
 
         foreach ($config as $key => $data) {
             if (in_array($key, self::SERVICE_MANAGER_KEYS_OF_INTEREST, true)) {
@@ -379,6 +380,31 @@ class ConfigPostProcessor
             }
 
             unset($config['factories'][$service]);
+            if (isset($config['aliases'][$service])) {
+                continue;
+            }
+
+            $config['aliases'][$service] = $replacedService;
+        }
+
+        return $config;
+    }
+
+    private function replaceDependencyServices(array $config)
+    {
+        if (empty($config['services'])) {
+            return $config;
+        }
+
+        foreach ($config['services'] as $service => $serviceInstance) {
+            $replacedService = $this->replacements->replace($service);
+
+            if ($service === $replacedService) {
+                continue;
+            }
+            $config['services'][$replacedService] = $serviceInstance;
+            unset($config['services'][$service]);
+
             if (isset($config['aliases'][$service])) {
                 continue;
             }
