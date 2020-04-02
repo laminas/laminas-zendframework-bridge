@@ -34,7 +34,7 @@ return [
             ],
         ],
         'services' => [
-            'Laminas\Cache\Storage\Adapter\Redis' => 'Zend\Cache\Storage\Adapter\Redis',
+            'Laminas\Cache\Storage\Adapter\Redis' => 'Laminas\Cache\Storage\Adapter\Redis',
         ],
         'shared' => [
             'Laminas\Form\Factory' => false,
