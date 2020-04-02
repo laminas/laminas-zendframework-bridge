@@ -8,7 +8,6 @@
 
 namespace Laminas\ZendFrameworkBridge;
 
-use function array_flip;
 use function array_intersect_key;
 use function array_key_exists;
 use function array_pop;
@@ -22,8 +21,13 @@ use function is_string;
 
 class ConfigPostProcessor
 {
-    /** @var array<string> */
-    private static $SERVICE_MANAGER_KEYS_OF_INTEREST = ['aliases', 'invokables', 'factories', 'services'];
+    /** @internal */
+    const SERVICE_MANAGER_KEYS_OF_INTEREST = [
+        'aliases'    => true,
+        'factories'  => true,
+        'invokables' => true,
+        'services'   => true,
+    ];
 
     /** @var array String keys => string values */
     private $exactReplacements = [
@@ -79,9 +83,7 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
-                $keysOfInterest = self::$SERVICE_MANAGER_KEYS_OF_INTEREST;
-
-                return is_array($value) && array_intersect_key(array_flip($keysOfInterest), $value) !== []
+                return is_array($value) && array_intersect_key(self::SERVICE_MANAGER_KEYS_OF_INTEREST, $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
                     : null;
             },
@@ -257,8 +259,9 @@ class ConfigPostProcessor
         $config = $this->replaceDependencyFactories($config);
         $config = $this->replaceDependencyServices($config);
 
+        $keys = self::SERVICE_MANAGER_KEYS_OF_INTEREST;
         foreach ($config as $key => $data) {
-            if (in_array($key, self::$SERVICE_MANAGER_KEYS_OF_INTEREST, true)) {
+            if (isset($keys[$key])) {
                 continue;
             }
 
