@@ -10,7 +10,7 @@ return [
             'Laminas\Cache\Storage\StorageInterface' => 'Laminas\Cache\Storage\Adapter\Redis',
             'Zend\Expressive\Router\RouterInterface' => 'Mezzio\Router\RouterInterface',
             'Zend\Form\Factory' => 'Laminas\Form\Factory',
-
+            'Zend\Cache\Storage\Adapter\Redis' => 'Laminas\Cache\Storage\Adapter\Redis',
         ],
         'delegators' => [
             'Laminas\Cache\Storage\Adapter\Redis' => [
