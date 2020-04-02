@@ -76,7 +76,7 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
-                $keysOfInterest = ['aliases', 'factories', 'invokables'];
+                $keysOfInterest = ['aliases', 'invokables', 'factories'];
 
                 return is_array($value) && array_intersect_key(array_flip($keysOfInterest), $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
