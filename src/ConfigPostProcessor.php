@@ -85,7 +85,7 @@ class ConfigPostProcessor
                     'invokables' => true,
                 ];
 
-                return is_array($value) && array_intersect_key($keysOfInterest, $value) !== []
+                return array_intersect_key($keysOfInterest, $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
                     : [$this, '__invoke'];
             },
