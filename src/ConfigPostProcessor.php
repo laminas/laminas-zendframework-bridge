@@ -22,6 +22,9 @@ use function is_string;
 
 class ConfigPostProcessor
 {
+    /** @var array<string> */
+    const SERVICE_MANAGER_KEYS_OF_INTEREST = ['aliases', 'invokables', 'factories'];
+
     /** @var array String keys => string values */
     private $exactReplacements = [
         'zend-expressive' => 'mezzio',
@@ -76,7 +79,7 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
-                $keysOfInterest = ['aliases', 'invokables', 'factories'];
+                $keysOfInterest = self::SERVICE_MANAGER_KEYS_OF_INTEREST;
 
                 return is_array($value) && array_intersect_key(array_flip($keysOfInterest), $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
@@ -254,7 +257,7 @@ class ConfigPostProcessor
         $config = $this->replaceDependencyFactories($config);
 
         foreach ($config as $key => $data) {
-            if (in_array($key, ['aliases', 'invokables', 'factories'], true)) {
+            if (in_array($key, self::SERVICE_MANAGER_KEYS_OF_INTEREST, true)) {
                 continue;
             }
 
