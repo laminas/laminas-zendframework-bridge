@@ -323,7 +323,7 @@ class ConfigPostProcessor
      */
     private function replaceDependencyInvokables(array $config)
     {
-        if (empty($config['invokables'])) {
+        if (empty($config['invokables']) || ! is_array($config['invokables'])) {
             return $config;
         }
 
@@ -365,7 +365,7 @@ class ConfigPostProcessor
 
     private function replaceDependencyFactories(array $config)
     {
-        if (empty($config['factories'])) {
+        if (empty($config['factories']) || ! is_array($config['factories'])) {
             return $config;
         }
 
@@ -395,7 +395,7 @@ class ConfigPostProcessor
 
     private function replaceDependencyServices(array $config)
     {
-        if (empty($config['services'])) {
+        if (empty($config['services']) || ! is_array($config['services'])) {
             return $config;
         }
 
