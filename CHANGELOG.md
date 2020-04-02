@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#61](https://github.com/laminas/laminas-zendframework-bridge/pull/61) ensures configuration for delegator factories gets rewritten; the functionality broke in version 1.0.1.
 
 ## 1.0.2 - 2020-03-26
 
