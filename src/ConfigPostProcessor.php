@@ -75,21 +75,19 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
+                if (! is_array($value)) {
+                    return null;
+                }
+
                 $keysOfInterest = [
-                    'abstract_factories' => true,
                     'aliases' => true,
-                    'delegators' => true,
                     'factories' => true,
-                    'initializers' => true,
                     'invokables' => true,
-                    'lazy_services' => true,
-                    'services' => true,
-                    'shared' => true,
                 ];
 
                 return is_array($value) && array_intersect_key($keysOfInterest, $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
-                    : null;
+                    : [$this, '__invoke'];
             },
 
             // Array values
