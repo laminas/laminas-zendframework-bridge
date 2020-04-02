@@ -38,5 +38,6 @@ return [
         'shared' => [
             'Zend\Form\Factory' => false,
         ],
+        'sharedByDefault' => false,
     ],
 ];

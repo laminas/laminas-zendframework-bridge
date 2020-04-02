@@ -39,5 +39,6 @@ return [
         'shared' => [
             'Laminas\Form\Factory' => false,
         ],
+        'sharedByDefault' => false,
     ],
 ];
