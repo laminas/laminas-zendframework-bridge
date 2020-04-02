@@ -23,7 +23,7 @@ use function is_string;
 class ConfigPostProcessor
 {
     /** @var array<string> */
-    const SERVICE_MANAGER_KEYS_OF_INTEREST = ['aliases', 'invokables', 'factories', 'services'];
+    private static $SERVICE_MANAGER_KEYS_OF_INTEREST = ['aliases', 'invokables', 'factories', 'services'];
 
     /** @var array String keys => string values */
     private $exactReplacements = [
@@ -79,7 +79,7 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
-                $keysOfInterest = self::SERVICE_MANAGER_KEYS_OF_INTEREST;
+                $keysOfInterest = self::$SERVICE_MANAGER_KEYS_OF_INTEREST;
 
                 return is_array($value) && array_intersect_key(array_flip($keysOfInterest), $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
@@ -258,11 +258,11 @@ class ConfigPostProcessor
         $config = $this->replaceDependencyServices($config);
 
         foreach ($config as $key => $data) {
-            if (in_array($key, self::SERVICE_MANAGER_KEYS_OF_INTEREST, true)) {
+            if (in_array($key, self::$SERVICE_MANAGER_KEYS_OF_INTEREST, true)) {
                 continue;
             }
 
-            $config[$key] = is_array($data) ? $this->__invoke($data, [$key]):  $data;
+            $config[$key] = is_array($data) ? $this->__invoke($data, [$key]) :  $data;
         }
 
         return $config;
