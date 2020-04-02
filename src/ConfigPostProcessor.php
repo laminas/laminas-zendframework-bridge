@@ -8,6 +8,7 @@
 
 namespace Laminas\ZendFrameworkBridge;
 
+use function array_flip;
 use function array_intersect_key;
 use function array_key_exists;
 use function array_pop;
@@ -75,19 +76,11 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
-                if (! is_array($value)) {
-                    return null;
-                }
+                $keysOfInterest = ['aliases', 'factories', 'invokables'];
 
-                $keysOfInterest = [
-                    'aliases' => true,
-                    'factories' => true,
-                    'invokables' => true,
-                ];
-
-                return array_intersect_key($keysOfInterest, $value) !== []
+                return is_array($value) && array_intersect_key(array_flip($keysOfInterest), $value) !== []
                     ? [$this, 'replaceDependencyConfiguration']
-                    : [$this, '__invoke'];
+                    : null;
             },
 
             // Array values
