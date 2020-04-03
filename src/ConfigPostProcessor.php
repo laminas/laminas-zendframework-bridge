@@ -250,7 +250,9 @@ class ConfigPostProcessor
 
     private function replaceDependencyConfiguration(array $config)
     {
-        $aliases = isset($config['aliases']) ? $this->replaceDependencyAliases($config['aliases']) : [];
+        $aliases = isset($config['aliases']) && is_array($config['aliases']) ?
+            $this->replaceDependencyAliases($config['aliases']) : [];
+
         if ($aliases) {
             $config['aliases'] = $aliases;
         }
