@@ -11,6 +11,7 @@ namespace LaminasTest\ZendFrameworkBridge;
 use Laminas\ZendFrameworkBridge\ConfigPostProcessor;
 use PHPUnit\Framework\TestCase;
 
+use stdClass;
 use function sprintf;
 
 class ConfigPostProcessorTest extends TestCase
@@ -116,6 +117,27 @@ class ConfigPostProcessorTest extends TestCase
                 'dependencies' => [
                     'lazy_services' => [
                         'class_map' => 'non-array',
+                    ],
+                ],
+            ],
+        ];
+
+        yield 'non string values in alias key/value pairs' => [
+            [
+                'dependencies' => [
+                    'aliases' => [
+                        'foo',
+                    ],
+                ],
+            ],
+        ];
+
+        yield 'non string value for mapped alias' => [
+            [
+                'dependencies' => [
+                    'aliases' => [
+                        'foo' => 0,
+                        'bar' => new stdClass(),
                     ],
                 ],
             ],

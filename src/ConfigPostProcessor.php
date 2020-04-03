@@ -286,6 +286,10 @@ class ConfigPostProcessor
     private function replaceDependencyAliases(array $aliases)
     {
         foreach ($aliases as $alias => $target) {
+            if (! is_string($alias) || ! is_string($target)) {
+                continue;
+            }
+
             $newTarget = $this->replacements->replace($target);
             $newAlias  = $this->replacements->replace($alias);
 
