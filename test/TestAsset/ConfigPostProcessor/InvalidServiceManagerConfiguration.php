@@ -13,5 +13,8 @@ return [
             'Foo', 'Bar',
             'Foo' => 'Bar',
         ],
+        'services' => [
+            'Invalid',
+        ],
     ],
 ];
