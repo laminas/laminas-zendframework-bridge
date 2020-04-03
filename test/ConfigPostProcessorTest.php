@@ -38,7 +38,6 @@ class ConfigPostProcessorTest extends TestCase
 
     /**
      * @dataProvider configurations
-     *
      * @param string $configFile
      */
     public function testRewritesNestedKeys($configFile)
@@ -79,9 +78,8 @@ class ConfigPostProcessorTest extends TestCase
     }
 
     /**
-     * @param array<string,array<string,mixed>> $config
-     *
      * @dataProvider invalidServiceManagerConfiguration
+     * @param array<string,array<string,mixed>> $config
      */
     public function testWillSkipInvalidConfigurations($config)
     {
