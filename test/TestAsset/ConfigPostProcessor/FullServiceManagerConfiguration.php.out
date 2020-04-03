@@ -10,7 +10,7 @@ return [
             'Laminas\Cache\Storage\StorageInterface' => 'Laminas\Cache\Storage\Adapter\Redis',
             'Zend\Expressive\Router\RouterInterface' => 'Mezzio\Router\RouterInterface',
             'Zend\Form\Factory' => 'Laminas\Form\Factory',
-            'Zend\Cache\Storage\Adapter\Redis' => 'Laminas\Cache\Storage\Adapter\Redis',
+            'Zend\Cache\Storage\Adapter\RedisOptions' => 'Laminas\Cache\Storage\Adapter\RedisOptions',
         ],
         'delegators' => [
             'Laminas\Cache\Storage\Adapter\Redis' => [
@@ -34,7 +34,13 @@ return [
             ],
         ],
         'services' => [
-            'Laminas\Cache\Storage\Adapter\Redis' => 'Zend\Cache\Storage\Adapter\Redis',
+            'Laminas\Cache\Storage\Adapter\RedisOptions' => [
+                'server' => [
+                    'host' => 'localhost',
+                    'port' => 6379,
+                    'timeout' => 0,
+                ],
+            ],
         ],
         'shared' => [
             'Laminas\Form\Factory' => false,

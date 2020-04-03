@@ -30,10 +30,13 @@ return [
             ],
         ],
         'services' => [
-            // NOTE: this is an invalid configuration, you have to provide service instances in this array.
-            // For testing purposes, we have to change this to a string we can use to verify that the value
-            // is not touched at all. Using instances would lead to
-            'Zend\Cache\Storage\Adapter\Redis' => 'Zend\Cache\Storage\Adapter\Redis',
+            'Zend\Cache\Storage\Adapter\RedisOptions' => [
+                'server' => [
+                    'host' => 'localhost',
+                    'port' => 6379,
+                    'timeout' => 0,
+                ],
+            ],
         ],
         'shared' => [
             'Zend\Form\Factory' => false,
