@@ -74,4 +74,51 @@ class ConfigPostProcessorTest extends TestCase
         $processor = new ConfigPostProcessor();
         self::assertSame($expected, $processor($config));
     }
+
+    /**
+     * @param array<string,array<string,mixed>> $config
+     *
+     * @dataProvider invalidServiceManagerConfiguration
+     */
+    public function testWillSkipInvalidConfigurations($config)
+    {
+        $processor = new ConfigPostProcessor();
+        self::assertSame($config, $processor($config));
+    }
+
+    public function invalidServiceManagerConfiguration()
+    {
+        yield 'non array values in dependency config' => [
+            [
+                'dependencies' => [
+                    'services' => 'non-array',
+                    'aliases' => 'non-array',
+                    'factories' => 'non-array',
+                    'delegators' => 'non-array',
+                    'invokables' => 'non-array',
+                    'abstract_factories' => 'non-array',
+                ],
+            ],
+        ];
+
+        yield 'non array values in dependency delegators config' => [
+            [
+                'dependencies' => [
+                    'delegators' => [
+                        'class' => 'non-array',
+                    ],
+                ],
+            ],
+        ];
+
+        yield 'non array values in lazy_services.class_map config' => [
+            [
+                'dependencies' => [
+                    'lazy_services' => [
+                        'class_map' => 'non-array',
+                    ],
+                ],
+            ],
+        ];
+    }
 }
