@@ -400,6 +400,10 @@ class ConfigPostProcessor
         }
 
         foreach ($config['services'] as $service => $serviceInstance) {
+            if (! is_string($service)) {
+                continue;
+            }
+
             $replacedService = $this->replacements->replace($service);
             $serviceInstance = is_array($serviceInstance) ? $this->__invoke($serviceInstance) : $serviceInstance;
 
