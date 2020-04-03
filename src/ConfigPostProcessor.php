@@ -401,11 +401,14 @@ class ConfigPostProcessor
 
         foreach ($config['services'] as $service => $serviceInstance) {
             $replacedService = $this->replacements->replace($service);
+            $serviceInstance = is_array($serviceInstance) ? $this->__invoke($serviceInstance) : $serviceInstance;
+
+            $config['services'][$replacedService] = $serviceInstance;
 
             if ($service === $replacedService) {
                 continue;
             }
-            $config['services'][$replacedService] = $serviceInstance;
+
             unset($config['services'][$service]);
 
             if (isset($config['aliases'][$service])) {
