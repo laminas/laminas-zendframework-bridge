@@ -34,6 +34,10 @@ return [
             ],
         ],
         'services' => [
+            'preferred-cache-storage' => [
+                'name' => 'Laminas\Cache\Storage\Adapter\Redis',
+                'options' => 'Laminas\Cache\Storage\Adapter\RedisOptions',
+            ],
             'Laminas\Cache\Storage\Adapter\RedisOptions' => [
                 'server' => [
                     'host' => 'localhost',

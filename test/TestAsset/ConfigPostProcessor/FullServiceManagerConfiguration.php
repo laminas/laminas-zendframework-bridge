@@ -37,6 +37,10 @@ return [
                     'timeout' => 0,
                 ],
             ],
+            'preferred-cache-storage' => [
+                'name' => 'Zend\Cache\Storage\Adapter\Redis',
+                'options' => 'Zend\Cache\Storage\Adapter\RedisOptions',
+            ],
         ],
         'shared' => [
             'Zend\Form\Factory' => false,
