@@ -50,4 +50,28 @@ class ConfigPostProcessorTest extends TestCase
 
         $this->assertSame($expected, $processor($config));
     }
+
+    public function testServiceManagerServiceInstancesCanBeHandled()
+    {
+        $instance = new \stdClass();
+        $config = [
+            'dependencies' => [
+                'services' => [
+                    'Zend\Cache\Class' => $instance,
+                ],
+            ],
+        ];
+        $expected = [
+            'dependencies' => [
+                'services' => [
+                    'Laminas\Cache\Class' => $instance,
+                ],
+                'aliases' => [
+                    'Zend\Cache\Class' => 'Laminas\Cache\Class',
+                ],
+            ],
+        ];
+        $processor = new ConfigPostProcessor();
+        self::assertSame($expected, $processor($config));
+    }
 }
