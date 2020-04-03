@@ -10,8 +10,8 @@ namespace LaminasTest\ZendFrameworkBridge;
 
 use Laminas\ZendFrameworkBridge\ConfigPostProcessor;
 use PHPUnit\Framework\TestCase;
-
 use stdClass;
+
 use function sprintf;
 
 class ConfigPostProcessorTest extends TestCase
@@ -54,25 +54,27 @@ class ConfigPostProcessorTest extends TestCase
 
     public function testServiceManagerServiceInstancesCanBeHandled()
     {
-        $instance = new \stdClass();
+        $instance = new stdClass();
         $config = [
             'dependencies' => [
                 'services' => [
-                    'Zend\Cache\Class' => $instance,
+                    'Zend\Cache\MyClass' => $instance,
                 ],
             ],
         ];
         $expected = [
             'dependencies' => [
                 'services' => [
-                    'Laminas\Cache\Class' => $instance,
+                    'Laminas\Cache\MyClass' => $instance,
                 ],
                 'aliases' => [
-                    'Zend\Cache\Class' => 'Laminas\Cache\Class',
+                    'Zend\Cache\MyClass' => 'Laminas\Cache\MyClass',
                 ],
             ],
         ];
+
         $processor = new ConfigPostProcessor();
+
         self::assertSame($expected, $processor($config));
     }
 
