@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.0.4 - TBD
+## 1.0.4 - 2020-05-20
 
 ### Added
 
@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#66](https://github.com/laminas/laminas-zendframework-bridge/pull/66) ensures that references to BjyAuthorize templates are not rewritten, so that they can be resolved during runtime.
 
 ## 1.0.3 - 2020-04-03
 
