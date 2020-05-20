@@ -74,6 +74,10 @@ class Autoloader
             return include __DIR__ . '/../vendor/autoload.php';
         }
 
+        if (file_exists('vendor/autoload.php')) {
+            return include 'vendor/autoload.php';
+        }
+
         throw new RuntimeException('Cannot detect composer autoload. Please run composer install');
     }
 
