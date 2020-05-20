@@ -34,6 +34,10 @@ class ReplacementsTest extends TestCase
             'Northwoods\Container\Zend\Config',
             'Northwoods\Container\Zend\Config',
         ];
+        yield 'BjyAuthorize' => [
+            'zend-developer-tools/toolbar/bjy-authorize-role',
+            'zend-developer-tools/toolbar/bjy-authorize-role',
+        ];
         yield 'Expressive ZendRouter' => [
             'Zend\Expressive\Router\ZendRouter',
             'Mezzio\Router\LaminasRouter',
