@@ -66,16 +66,16 @@ class Autoloader
      */
     private static function getClassLoader()
     {
+        if (file_exists(getenv('COMPOSER_VENDOR_DIR') . '/autoload.php')) {
+            return include getenv('COMPOSER_VENDOR_DIR') . '/autoload.php';
+        }
+
         if (file_exists(__DIR__ . '/../../../autoload.php')) {
             return include __DIR__ . '/../../../autoload.php';
         }
 
         if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
             return include __DIR__ . '/../vendor/autoload.php';
-        }
-
-        if (file_exists('vendor/autoload.php')) {
-            return include 'vendor/autoload.php';
         }
 
         throw new RuntimeException('Cannot detect composer autoload. Please run composer install');
