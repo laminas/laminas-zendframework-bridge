@@ -23,7 +23,7 @@ matrix:
     - php: 7.4
     - php: nightly
       env:
-        - COMPOSER_ARGS="--no-interaction --ignore-platform-reqs=php"
+        - COMPOSER_ARGS="--no-interaction --ignore-platform-reqs"
   allow_failures:
     - php: nightly
 
