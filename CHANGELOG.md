@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#67](https://github.com/laminas/laminas-zendframework-bridge/pull/67) fixes how the Composer autoload file is found, looking first in the `COMPOSER_VENDOR_DIR` before trying to resolve relative to where the package is installed.
 
 ## 1.0.4 - 2020-05-20
 
