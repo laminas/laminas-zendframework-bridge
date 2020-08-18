@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#68](https://github.com/laminas/laminas-zendframework-bridge/pull/68) adds support for the upcoming PHP 8.0 release.
 
 ### Changed
 
