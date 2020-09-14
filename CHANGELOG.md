@@ -24,6 +24,24 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+## 1.1.1 - 2020-09-14
+
+### Fixed
+
+- [#71](https://github.com/laminas/laminas-zendframework-bridge/pull/71) fixes detection of the vendor directory when the `COMPOSER_VENDOR_DIR` env variable is missing or empty. Previously, this could lead to scenarios where a non-existent path was used for finding the bridge autoloader.
+
+-----
+
+### Release Notes for [1.1.1](https://github.com/laminas/laminas-zendframework-bridge/milestone/5)
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [71: Verify `COMPOSER&#95;VENDOR&#95;DIR` in conditional](https://github.com/laminas/laminas-zendframework-bridge/pull/71) thanks to @aaronbushnell
+
 ## 1.1.0 - 2020-08-18
 
 ### Added
