@@ -2,27 +2,36 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.2.0 - TBD
+## 1.2.0 - 2021-02-25
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.2.0](https://github.com/laminas/laminas-zendframework-bridge/milestone/7)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+## Added
 
-- Nothing.
+- Added Psalm support
 
-### Removed
+## Removed
 
-- Nothing.
+- Dropped support for PHP prior 7.3
 
-### Fixed
+### 1.2.0
 
-- Nothing.
+- Total issues resolved: **1**
+- Total pull requests resolved: **2**
+- Total contributors: **3**
+
+#### Enhancement
+
+ - [78: GitHub Actions &amp; Psalm](https://github.com/laminas/laminas-zendframework-bridge/pull/78) thanks to @gsteel and @boesing
+
+#### Bug
+
+ - [72: Merge release 1.1.1 into 1.2.x](https://github.com/laminas/laminas-zendframework-bridge/pull/72) thanks to @github-actions[bot]
 
 ## 1.1.1 - 2020-09-14
 
