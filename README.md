@@ -1,7 +1,7 @@
 # laminas-zendframework-bridge
 
-[![Build Status](https://travis-ci.com/laminas/laminas-zendframework-bridge.svg?branch=master)](https://travis-ci.com/laminas/laminas-zendframework-bridge)
-[![Coverage Status](https://coveralls.io/repos/github/laminas/laminas-zendframework-bridge/badge.svg?branch=master)](https://coveralls.io/github/laminas/laminas-zendframework-bridge?branch=master)
+[![Build Status](https://github.com/laminas/laminas-zendframework-bridge/workflows/Continuous%20Integration/badge.svg)](https://github.com/laminas/laminas-zendframework-bridge/actions?query=workflow%3A"Continuous+Integration")
+
 
 This library provides a custom autoloader that aliases legacy Zend Framework,
 Apigility, and Expressive classes to their replacements under the Laminas
