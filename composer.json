@@ -1,19 +1,13 @@
 {
     "name": "laminas/laminas-zendframework-bridge",
     "description": "Alias legacy ZF class names to Laminas Project equivalents.",
-    "license": "BSD-3-Clause",
     "keywords": [
         "autoloading",
         "laminas",
         "zf",
         "zendframework"
     ],
-    "support": {
-        "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
-        "source": "https://github.com/laminas/laminas-zendframework-bridge",
-        "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
-        "forum": "https://discourse.laminas.dev/"
-    },
+    "license": "BSD-3-Clause",
     "require": {
         "php": "^7.3 || ^8.0"
     },
@@ -23,33 +17,33 @@
         "squizlabs/php_codesniffer": "^3.5",
         "vimeo/psalm": "^4.6"
     },
-    "autoload": {
-        "files": [
-            "src/autoload.php"
-        ],
-        "psr-4": {
-            "Laminas\\ZendFrameworkBridge\\": "src//"
-        }
-    },
-    "autoload-dev": {
-        "files": [
-            "test/classes.php"
-        ],
-        "psr-4": {
-            "LaminasTest\\ZendFrameworkBridge\\": "test/",
-            "LaminasTest\\ZendFrameworkBridge\\TestAsset\\": "test/TestAsset/classes/",
-            "Laminas\\ApiTools\\": "test/TestAsset/LaminasApiTools/",
-            "Mezzio\\": "test/TestAsset/Mezzio/",
-            "Laminas\\": "test/TestAsset/Laminas/"
-        }
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "laminas": {
             "module": "Laminas\\ZendFrameworkBridge"
         }
     },
-    "config": {
-        "sort-packages": true
+    "autoload": {
+        "psr-4": {
+            "Laminas\\ZendFrameworkBridge\\": "src//"
+        },
+        "files": [
+            "src/autoload.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaminasTest\\ZendFrameworkBridge\\": "test/",
+            "LaminasTest\\ZendFrameworkBridge\\TestAsset\\": "test/TestAsset/classes/",
+            "Laminas\\ApiTools\\": "test/TestAsset/LaminasApiTools/",
+            "Mezzio\\": "test/TestAsset/Mezzio/",
+            "Laminas\\": "test/TestAsset/Laminas/"
+        },
+        "files": [
+            "test/classes.php"
+        ]
     },
     "scripts": {
         "cs-check": "phpcs",
@@ -57,5 +51,11 @@
         "static-analysis": "psalm --shepherd --stats",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+    },
+    "support": {
+        "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
+        "forum": "https://discourse.laminas.dev/",
+        "source": "https://github.com/laminas/laminas-zendframework-bridge",
+        "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom"
     }
 }
