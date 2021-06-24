@@ -10,6 +10,12 @@ Project.
 This package should be installed only if you are also using the composer plugin
 that installs Laminas packages to replace ZF/Apigility/Expressive packages.
 
+This tool supports:
+
+* Zend Framework MVC projects, all v2 and v3 releases
+* Apigility projects, all stable versions
+* Expressive versions, all stable versions
+
 ## Installation
 
 Run the following to install this library:
