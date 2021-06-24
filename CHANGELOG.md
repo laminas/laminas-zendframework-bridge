@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.2.1 - TBD
+## 2.4.0 - TBD
 
 ### Added
 
@@ -23,6 +23,62 @@ All notable changes to this project will be documented in this file, in reverse 
 ### Fixed
 
 - Nothing.
+
+## 1.3.0 - 2021-06-24
+
+
+-----
+
+### Release Notes for [1.3.1](https://github.com/laminas/laminas-zendframework-bridge/milestone/9)
+
+Feature release (minor)
+
+## Changed
+
+- [#84](https://github.com/laminas/laminas-zendframework-bridge/pull/84) Improve performance : count() and array_push removal when possible.
+
+### 1.2.1
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Enhancement
+
+ - [84: Improve performance : count() and array_push removal when possible](https://github.com/laminas/laminas-zendframework-bridge/pull/84) thanks to @samsonasik
+
+## 1.2.1 - 2021-06-24
+
+
+-----
+
+### Release Notes for [1.2.1](https://github.com/laminas/laminas-zendframework-bridge/milestone/9)
+
+bugfix release (patch)
+
+### Fixed
+
+- [#80](https://github.com/laminas/laminas-zendframework-bridge/pull/80) Fixes #75 - README does not mention which ZF versions are supported.
+- [#79](https://github.com/laminas/laminas-zendframework-bridge/pull/79) Changelog typo.
+
+## Changed
+
+- [#81](https://github.com/laminas/laminas-zendframework-bridge/pull/81) Remove file headers.
+
+### 1.2.1
+
+- Total issues resolved: **1**
+- Total pull requests resolved: **3**
+- Total contributors: **3**
+
+#### Enhancement
+
+ - [81: Remove file headers](https://github.com/laminas/laminas-zendframework-bridge/pull/81) thanks to @ghostwriter
+
+#### Bug
+
+ - [80: Fixes #75 - README does not mention which ZF versions are supported](https://github.com/laminas/laminas-zendframework-bridge/pull/80) thanks to @froschdesign
+ - [79: Changelog typo](https://github.com/laminas/laminas-zendframework-bridge/pull/79) thanks to @COil
 
 ## 1.2.0 - 2021-02-25
 
