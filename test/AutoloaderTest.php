@@ -86,9 +86,9 @@ class AutoloaderTest extends TestCase
     }
 
     /**
-     * @return array[]
+     * @psalm-return array<array-key, array{0: string, 1: string}>
      */
-    public function reverseClassProvider()
+    public function reverseClassProvider(): array
     {
         return [
             // Apigility

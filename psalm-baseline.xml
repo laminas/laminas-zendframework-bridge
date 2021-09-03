@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.6.1@e93e532e4eaad6d68c4d7b606853800eaceccc72">
+<files psalm-version="4.9.3@4c262932602b9bbab5020863d1eb22d49de0dbf4">
   <file src="config/replacements.php">
     <DuplicateArrayKey occurrences="3">
       <code>'ZendAcl' =&gt; 'LaminasAcl'</code>
@@ -169,13 +169,6 @@
     <PossiblyInvalidArgument occurrences="1">
       <code>testLegacyClassIsAliasToLaminas</code>
     </PossiblyInvalidArgument>
-    <ReservedWord occurrences="5">
-      <code>self::assertSame($actual, get_class(new $legacy()))</code>
-      <code>self::assertTrue($isInterface ? interface_exists($legacy) : class_exists($legacy))</code>
-      <code>self::assertTrue(class_exists($actual))</code>
-      <code>self::assertTrue(class_exists($legacy))</code>
-      <code>self::assertTrue(class_exists('Laminas\LegacyTypeHint'))</code>
-    </ReservedWord>
   </file>
   <file src="test/ConfigPostProcessorTest.php">
     <MissingReturnType occurrences="4">
@@ -194,11 +187,6 @@
     <MixedInferredReturnType occurrences="1">
       <code>iterable</code>
     </MixedInferredReturnType>
-    <ReservedWord occurrences="3">
-      <code>$this-&gt;assertSame($expected, $processor($config))</code>
-      <code>self::assertSame($config, $processor($config))</code>
-      <code>self::assertSame($expected, $processor($config))</code>
-    </ReservedWord>
     <UnresolvableInclude occurrences="2">
       <code>require $configLocation</code>
       <code>require $expectedResultLocation</code>
@@ -223,10 +211,6 @@
     <MixedInferredReturnType occurrences="1">
       <code>iterable</code>
     </MixedInferredReturnType>
-    <ReservedWord occurrences="3">
-      <code>$this-&gt;assertNull($module-&gt;onMergeConfig($event))</code>
-      <code>$this-&gt;assertSame($expected, $listener-&gt;getMergedConfig())</code>
-    </ReservedWord>
     <UnresolvableInclude occurrences="2">
       <code>require $configFile</code>
       <code>require $expectationsFile</code>
@@ -239,9 +223,6 @@
     <MixedInferredReturnType occurrences="1">
       <code>iterable</code>
     </MixedInferredReturnType>
-    <ReservedWord occurrences="1">
-      <code>$this-&gt;assertSame($expected, $replacements-&gt;replace($string))</code>
-    </ReservedWord>
   </file>
   <file src="test/TestAsset/ConfigPostProcessor/AbstractFactories.php">
     <UndefinedClass occurrences="4">
