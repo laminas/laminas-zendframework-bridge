@@ -12,9 +12,6 @@
       <code>$class</code>
       <code>$class</code>
     </MissingClosureParamType>
-    <MissingFile occurrences="1">
-      <code>include __DIR__ . '/../../../autoload.php'</code>
-    </MissingFile>
     <MissingReturnType occurrences="1">
       <code>load</code>
     </MissingReturnType>
@@ -31,25 +28,10 @@
     <MixedArrayOffset occurrences="1">
       <code>$loaded[$class]</code>
     </MixedArrayOffset>
-    <MixedInferredReturnType occurrences="1">
-      <code>ClassLoader</code>
-    </MixedInferredReturnType>
     <MixedOperand occurrences="2">
       <code>$namespaces[$check]</code>
       <code>$namespaces[$check]</code>
     </MixedOperand>
-    <MixedReturnStatement occurrences="3">
-      <code>include __DIR__ . '/../../../autoload.php'</code>
-      <code>include __DIR__ . '/../vendor/autoload.php'</code>
-      <code>include getenv('COMPOSER_VENDOR_DIR') . '/autoload.php'</code>
-    </MixedReturnStatement>
-    <PossiblyFalseOperand occurrences="2">
-      <code>getenv('COMPOSER_VENDOR_DIR')</code>
-      <code>getenv('COMPOSER_VENDOR_DIR')</code>
-    </PossiblyFalseOperand>
-    <UnresolvableInclude occurrences="1">
-      <code>include getenv('COMPOSER_VENDOR_DIR') . '/autoload.php'</code>
-    </UnresolvableInclude>
   </file>
   <file src="src/ConfigPostProcessor.php">
     <InvalidArgument occurrences="1">
