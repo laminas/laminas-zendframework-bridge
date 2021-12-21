@@ -41,10 +41,15 @@ class Autoloader
     public static function load()
     {
         $loaded = new ArrayObject([]);
+        $classLoader = self::getClassLoader();
+
+        if ($classLoader === null) {
+            return;
+        }
 
         spl_autoload_register(self::createPrependAutoloader(
             RewriteRules::namespaceReverse(),
-            self::getClassLoader(),
+            $classLoader,
             $loaded
         ), true, true);
 
@@ -54,25 +59,39 @@ class Autoloader
         ));
     }
 
-    /**
-     * @return ClassLoader
-     * @throws RuntimeException
-     */
-    private static function getClassLoader()
+    private static function getClassLoader(): ?ClassLoader
     {
         if (getenv('COMPOSER_VENDOR_DIR') && file_exists(getenv('COMPOSER_VENDOR_DIR') . '/autoload.php')) {
-            return include getenv('COMPOSER_VENDOR_DIR') . '/autoload.php';
+            /** @psalm-suppress MixedAssignment */
+            $loader = include getenv('COMPOSER_VENDOR_DIR') . '/autoload.php';
+            if (!$loader instanceof ClassLoader) {
+                return null;
+            }
+
+            return $loader;
         }
 
         if (file_exists(__DIR__ . '/../../../autoload.php')) {
-            return include __DIR__ . '/../../../autoload.php';
+            /** @psalm-suppress MixedAssignment */
+            $loader = include __DIR__ . '/../../../autoload.php';
+            if (!$loader instanceof ClassLoader) {
+                return null;
+            }
+
+            return $loader;
         }
 
         if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-            return include __DIR__ . '/../vendor/autoload.php';
+            /** @psalm-suppress MixedAssignment */
+            $loader = include __DIR__ . '/../vendor/autoload.php';
+            if (!$loader instanceof ClassLoader) {
+                return null;
+            }
+
+            return $loader;
         }
 
-        throw new RuntimeException('Cannot detect composer autoload. Please run composer install');
+        return null;
     }
 
     /**

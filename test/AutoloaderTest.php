@@ -3,14 +3,20 @@
 namespace LaminasTest\ZendFrameworkBridge;
 
 use Laminas\LegacyTypeHint;
+use Laminas\ZendFrameworkBridge\Autoloader;
 use PHPUnit\Framework\TestCase;
 
 use function class_exists;
+use function clearstatcache;
+use function file_exists;
 use function get_class;
 use function interface_exists;
+use function rename;
 
 class AutoloaderTest extends TestCase
 {
+    private const PATH_TO_AUTOLOADER = __DIR__ . '/../vendor/autoload.php';
+
     /**
      * @return array[]
      */
@@ -138,5 +144,23 @@ class AutoloaderTest extends TestCase
     {
         self::assertTrue(class_exists($actual));
         self::assertTrue(class_exists($legacy));
+    }
+
+    public function testCanHandleNonExistentAutoloadFile(): void
+    {
+        self::assertTrue(file_exists(self::PATH_TO_AUTOLOADER));
+        $pathToAutoloaderBackup = sprintf('%s.bak', self::PATH_TO_AUTOLOADER);
+        rename(self::PATH_TO_AUTOLOADER, $pathToAutoloaderBackup);
+        clearstatcache();
+        self::assertFalse(file_exists(self::PATH_TO_AUTOLOADER));
+
+        try {
+            Autoloader::load();
+        } finally {
+            rename($pathToAutoloaderBackup, self::PATH_TO_AUTOLOADER);
+        }
+
+        clearstatcache();
+        self::assertTrue(file_exists(self::PATH_TO_AUTOLOADER));
     }
 }
