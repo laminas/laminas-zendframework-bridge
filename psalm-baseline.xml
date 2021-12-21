@@ -12,9 +12,6 @@
       <code>$class</code>
       <code>$class</code>
     </MissingClosureParamType>
-    <MissingFile occurrences="1">
-      <code>include __DIR__ . '/../../../autoload.php'</code>
-    </MissingFile>
     <MissingReturnType occurrences="1">
       <code>load</code>
     </MissingReturnType>
@@ -35,13 +32,6 @@
       <code>$namespaces[$check]</code>
       <code>$namespaces[$check]</code>
     </MixedOperand>
-    <PossiblyFalseOperand occurrences="2">
-      <code>getenv('COMPOSER_VENDOR_DIR')</code>
-      <code>getenv('COMPOSER_VENDOR_DIR')</code>
-    </PossiblyFalseOperand>
-    <UnresolvableInclude occurrences="1">
-      <code>include getenv('COMPOSER_VENDOR_DIR') . '/autoload.php'</code>
-    </UnresolvableInclude>
   </file>
   <file src="src/ConfigPostProcessor.php">
     <InvalidArgument occurrences="1">
