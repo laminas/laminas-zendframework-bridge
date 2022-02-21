@@ -49,7 +49,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.3.99"
+        }
     },
     "scripts": {
         "cs-check": "phpcs",
