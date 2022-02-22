@@ -41,6 +41,7 @@ class Autoloader
      *
      * - The second is _appended_ in order to create aliases for legacy
      *   classes.
+     * @return void
      */
     public static function load()
     {
@@ -75,15 +76,16 @@ class Autoloader
     }
 
     /**
-     * @return callable
+     * @param array<string,string> $namespaces
+     * @return callable(string): void
      */
     private static function createPrependAutoloader(array $namespaces, ClassLoader $classLoader, ArrayObject $loaded)
     {
         /**
-         * @param  string $class Class name to autoload
+         * @param string $class Class name to autoload
          * @return void
          */
-        return static function ($class) use ($namespaces, $classLoader, $loaded) {
+        return static function ($class) use ($namespaces, $classLoader, $loaded): void {
             if (isset($loaded[$class])) {
                 return;
             }
@@ -115,7 +117,8 @@ class Autoloader
     }
 
     /**
-     * @return callable
+     * @param array<string,string> $namespaces
+     * @return callable(string): void
      */
     private static function createAppendAutoloader(array $namespaces, ArrayObject $loaded)
     {
@@ -129,6 +132,7 @@ class Autoloader
             if ($segments[0] === 'ZendService' && isset($segments[1])) {
                 $segments[0] .= '\\' . $segments[1];
                 unset($segments[1]);
+                /** @psalm-suppress RedundantFunctionCall */
                 $segments = array_values($segments);
             }
 
