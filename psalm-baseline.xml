@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.9.3@4c262932602b9bbab5020863d1eb22d49de0dbf4">
+<files psalm-version="4.21.0@d8bec4c7aaee111a532daec32fb09de5687053d1">
   <file src="config/replacements.php">
     <DuplicateArrayKey occurrences="3">
       <code>'ZendAcl' =&gt; 'LaminasAcl'</code>
@@ -8,30 +8,7 @@
     </DuplicateArrayKey>
   </file>
   <file src="src/Autoloader.php">
-    <MissingClosureParamType occurrences="2">
-      <code>$class</code>
-      <code>$class</code>
-    </MissingClosureParamType>
-    <MissingReturnType occurrences="1">
-      <code>load</code>
-    </MissingReturnType>
-    <MixedArgument occurrences="7">
-      <code>$class</code>
-      <code>$class</code>
-      <code>$class</code>
-      <code>$class</code>
-      <code>$class</code>
-      <code>$class</code>
-      <code>$class</code>
-    </MixedArgument>
     <MixedArgumentTypeCoercion occurrences="2"/>
-    <MixedArrayOffset occurrences="1">
-      <code>$loaded[$class]</code>
-    </MixedArrayOffset>
-    <MixedOperand occurrences="2">
-      <code>$namespaces[$check]</code>
-      <code>$namespaces[$check]</code>
-    </MixedOperand>
   </file>
   <file src="src/ConfigPostProcessor.php">
     <InvalidArgument occurrences="1">
@@ -82,7 +59,7 @@
     <MixedArrayTypeCoercion occurrences="1">
       <code>$aliases[$name]</code>
     </MixedArrayTypeCoercion>
-    <MixedAssignment occurrences="26">
+    <MixedAssignment occurrences="25">
       <code>$a[$key]</code>
       <code>$a[$key]</code>
       <code>$a[]</code>
@@ -98,7 +75,6 @@
       <code>$key</code>
       <code>$name</code>
       <code>$newKey</code>
-      <code>$newValue</code>
       <code>$notIn[]</code>
       <code>$result</code>
       <code>$rewritten[$key]</code>
@@ -205,141 +181,5 @@
     <MixedInferredReturnType occurrences="1">
       <code>iterable</code>
     </MixedInferredReturnType>
-  </file>
-  <file src="test/TestAsset/ConfigPostProcessor/AbstractFactories.php">
-    <UndefinedClass occurrences="4">
-      <code>ConfigAbstractFactory</code>
-      <code>ConfigAbstractFactory</code>
-      <code>InvokableFactory</code>
-      <code>InvokableFactory</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/TestAsset/ConfigPostProcessor/CyclicalAliasing.php">
-    <DuplicateArrayKey occurrences="1">
-      <code>'Zend\Db\Adapter\Adapter' =&gt; 'ZF\Apigility\DbConnectedAdapter'</code>
-    </DuplicateArrayKey>
-  </file>
-  <file src="test/TestAsset/ConfigPostProcessor/ExpressiveSlimRouterConfig.php">
-    <UndefinedClass occurrences="2">
-      <code>Factory\SlimRouterFactory</code>
-      <code>RouterInterface</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/TestAsset/ConfigPostProcessor/LazyServices.php">
-    <UndefinedClass occurrences="1">
-      <code>LazyServiceFactory</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/TestAsset/ConfigPostProcessor/MwopNetAppConfig.php">
-    <UndefinedClass occurrences="42">
-      <code>CacheItemPoolInterface</code>
-      <code>ConfigFactory</code>
-      <code>ConfigFactory</code>
-      <code>ConfigFactory</code>
-      <code>ConfigFactory</code>
-      <code>ConfigFactory</code>
-      <code>ConfigFactory</code>
-      <code>Csp</code>
-      <code>DisplayPostHandler</code>
-      <code>Engine</code>
-      <code>EventDispatcherInterface</code>
-      <code>Factory\CachePoolFactory</code>
-      <code>Factory\EventDispatcherFactory</code>
-      <code>Factory\MailTransport</code>
-      <code>Factory\PlatesFunctionsDelegator</code>
-      <code>FeedReaderHttpClientInterface</code>
-      <code>Feed\HttpPlugClientFactory</code>
-      <code>Handler\ComicsPageHandler</code>
-      <code>Handler\ComicsPageHandlerFactory</code>
-      <code>Handler\HomePageHandler</code>
-      <code>Handler\HomePageHandlerFactory</code>
-      <code>Handler\PageHandlerFactory</code>
-      <code>Handler\PageHandlerFactory</code>
-      <code>Handler\ResumePageHandler</code>
-      <code>Handler\ResumePageHandler</code>
-      <code>Middleware\ContentSecurityPolicyMiddlewareFactory</code>
-      <code>Middleware\DisplayBlogPostHandlerDelegator</code>
-      <code>Middleware\RedirectAmpPagesMiddleware</code>
-      <code>Middleware\RedirectAmpPagesMiddlewareFactory</code>
-      <code>Middleware\RedirectsMiddleware</code>
-      <code>Middleware\RedirectsMiddleware</code>
-      <code>Middleware\XClacksOverheadMiddleware</code>
-      <code>Middleware\XClacksOverheadMiddleware</code>
-      <code>Middleware\XPoweredByMiddleware</code>
-      <code>Middleware\XPoweredByMiddleware</code>
-      <code>RequestFactory</code>
-      <code>RequestFactoryInterface</code>
-      <code>ResponseFactory</code>
-      <code>ResponseFactoryInterface</code>
-      <code>SessionCachePool</code>
-      <code>SessionCachePool</code>
-      <code>SessionCachePoolFactory</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/TestAsset/Replacements/TestClass.php">
-    <UndefinedClass occurrences="1">
-      <code>\Zend\Expressive\Router</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/TestAsset/Replacements/ZFOAuth2Client.php">
-    <UndefinedClass occurrences="1">
-      <code>OAuth2Client</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/TestAsset/classes/ConfigListener.php">
-    <MissingReturnType occurrences="1">
-      <code>setMergedConfig</code>
-    </MissingReturnType>
-  </file>
-  <file src="test/TestAsset/classes/EventManager.php">
-    <InvalidArgument occurrences="1">
-      <code>$listener</code>
-    </InvalidArgument>
-    <MissingPropertyType occurrences="1">
-      <code>$listeners</code>
-    </MissingPropertyType>
-    <MissingReturnType occurrences="1">
-      <code>attach</code>
-    </MissingReturnType>
-    <MixedArgument occurrences="1">
-      <code>$this-&gt;listeners[$eventName]</code>
-    </MixedArgument>
-    <MixedArrayAccess occurrences="1">
-      <code>$this-&gt;listeners[$eventName]</code>
-    </MixedArrayAccess>
-    <MixedArrayAssignment occurrences="1">
-      <code>$this-&gt;listeners[$eventName]</code>
-    </MixedArrayAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;listeners</code>
-    </MixedReturnStatement>
-  </file>
-  <file src="test/TestAsset/classes/ModuleEvent.php">
-    <MissingPropertyType occurrences="1">
-      <code>$listener</code>
-    </MissingPropertyType>
-    <MixedInferredReturnType occurrences="1">
-      <code>ConfigListener</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;listener</code>
-    </MixedReturnStatement>
-  </file>
-  <file src="test/TestAsset/classes/ModuleManager.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>EventManager</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;eventManager</code>
-    </MixedReturnStatement>
-    <UndefinedThisPropertyAssignment occurrences="1">
-      <code>$this-&gt;eventManager</code>
-    </UndefinedThisPropertyAssignment>
-    <UndefinedThisPropertyFetch occurrences="1">
-      <code>$this-&gt;eventManager</code>
-    </UndefinedThisPropertyFetch>
   </file>
 </files>
