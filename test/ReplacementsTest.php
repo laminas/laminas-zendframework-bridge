@@ -108,6 +108,10 @@ class ReplacementsTest extends TestCase
             file_get_contents(__DIR__ . '/TestAsset/Replacements/zf-oauth2-config.php'),
             file_get_contents(__DIR__ . '/TestAsset/Replacements/zf-oauth2-config.php.out'),
         ];
+        yield '3rd party CustomZendFormBinder' => [
+            'CustomZendFormBinder\Controller\Plugin\BinderPlugin',
+            'CustomZendFormBinder\Controller\Plugin\BinderPlugin',
+        ];
     }
 
     /**
