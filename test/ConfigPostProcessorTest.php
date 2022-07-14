@@ -4,6 +4,7 @@ namespace LaminasTest\ZendFrameworkBridge;
 
 use Laminas\ZendFrameworkBridge\ConfigPostProcessor;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 use stdClass;
 
 use function sprintf;
@@ -136,5 +137,111 @@ class ConfigPostProcessorTest extends TestCase
                 ],
             ],
         ];
+    }
+
+    public function testWillUseReplacementsFromConfigurationWhenPresent(): void
+    {
+        $config = [
+            'laminas-zendframework-bridge' => [
+                'replacements' => [
+                    'MyFoo' => 'YourFoo',
+                    'MyBar' => 'SomeBar',
+                ],
+            ],
+            'dependencies' => [
+                'factories' => [
+                    'MyFoo'              => 'MyBar',
+                    'Zend\Cache\MyClass' => 'My\Factory\For\Caching',
+                    'ShouldNotRewrite'   => 'My\Factory\ShouldNotRewrite',
+                ],
+            ],
+        ];
+
+        $expected = [
+            'laminas-zendframework-bridge' => [
+                'replacements' => [
+                    'MyFoo' => 'YourFoo',
+                    'MyBar' => 'SomeBar',
+                ],
+            ],
+            'dependencies' => [
+                'factories' => [
+                    'YourFoo'               => 'SomeBar',
+                    'Laminas\Cache\MyClass' => 'My\Factory\For\Caching',
+                    'ShouldNotRewrite'      => 'My\Factory\ShouldNotRewrite',
+                ],
+                'aliases' => [
+                    'MyFoo'              => 'YourFoo',
+                    'Zend\Cache\MyClass' => 'Laminas\Cache\MyClass',
+                ],
+            ],
+        ];
+
+        $processor = new ConfigPostProcessor();
+        $result    = $processor($config);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /** @psalm-return iterable<string, array{0: array, 1: string}> */
+    public function invalidReplacementsConfiguration(): iterable
+    {
+        yield 'non-array-value' => [
+            ['laminas-zendframework-bridge' => ['replacements' => new stdClass()]],
+            'MUST be an array',
+        ];
+
+        yield 'empty-key' => [
+            ['laminas-zendframework-bridge' => ['replacements' => [
+                '' => 'Laminas\FooBar',
+            ]]],
+            'MUST be non-empty strings',
+        ];
+
+        yield 'whitespace-key' => [
+            ['laminas-zendframework-bridge' => ['replacements' => [
+                "  \t\n" => 'Laminas\FooBar',
+            ]]],
+            'MUST be non-empty strings',
+        ];
+
+        yield 'integer-key' => [
+            ['laminas-zendframework-bridge' => ['replacements' => [
+                1 => 'Laminas\FooBar',
+            ]]],
+            'MUST be non-empty strings',
+        ];
+
+        yield 'non-string-value' => [
+            ['laminas-zendframework-bridge' => ['replacements' => [
+                'Zend' => new stdClass(),
+            ]]],
+            'MUST be non-empty strings',
+        ];
+
+        yield 'empty-value' => [
+            ['laminas-zendframework-bridge' => ['replacements' => [
+                'Zend' => '',
+            ]]],
+            'MUST be non-empty strings',
+        ];
+
+        yield 'whitespace-value' => [
+            ['laminas-zendframework-bridge' => ['replacements' => [
+                'Zend' => "  \t\n",
+            ]]],
+            'MUST be non-empty strings',
+        ];
+    }
+
+    /** @dataProvider invalidReplacementsConfiguration */
+    public function testInvalidReplacementsConfigurationWillResultInExceptions(
+        array $config,
+        string $expectedExceptionMessage
+    ): void {
+        $processor = new ConfigPostProcessor();
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage($expectedExceptionMessage);
+        $processor($config);
     }
 }
