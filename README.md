@@ -44,6 +44,52 @@ Run the following to install this library:
 $ composer require laminas/laminas-zendframework-bridge
 ```
 
+## Configuration
+
+- Since 1.6.0
+
+You may provide additional replacements for the configuration post processor.
+This is particularly useful if your application uses third-party components that include class names that the post processor otherwise rewrites, and which you want to never rewrite.
+
+Configuration is via the following structure:
+
+```php
+return [
+    'laminas-zendframework-bridge' => [
+        'replacements' => [
+            'to-replace' => 'replacement',
+            // ...
+        ],
+    ],
+];
+```
+
+As an example, if your configuration included the following dependency mapping:
+
+```php
+return [
+    'controller_plugins' => [
+        'factories' => [
+            'customZendFormBinder' => \CustomZendFormBinder\Controller\Plugin\Factory\BinderPluginFactory::class,
+        ],
+    ],
+];
+```
+
+And you wanted the two strings that contain the verbiage `ZendForm` to remain untouched, you could define the following replacements mapping:
+
+```php
+return [
+    'laminas-zendframework-bridge' => [
+        'replacements' => [
+            // Never rewrite!
+            'customZendFormBinder' => 'customZendFormBinder',
+            'CustomZendFormBinder' => 'CustomZendFormBinder',
+        ],
+    ],
+];
+```
+
 ## Support
 
 * [Issues](https://github.com/laminas/laminas-zendframework-bridge/issues/)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.21.0@d8bec4c7aaee111a532daec32fb09de5687053d1">
+<files psalm-version="4.9.3@4c262932602b9bbab5020863d1eb22d49de0dbf4">
   <file src="config/replacements.php">
     <DuplicateArrayKey occurrences="3">
       <code>'ZendAcl' =&gt; 'LaminasAcl'</code>
@@ -8,7 +8,10 @@
     </DuplicateArrayKey>
   </file>
   <file src="src/Autoloader.php">
-    <MixedArgumentTypeCoercion occurrences="2"/>
+    <MixedArgumentTypeCoercion occurrences="2">
+      <code>RewriteRules::namespaceReverse()</code>
+      <code>RewriteRules::namespaceRewrite()</code>
+    </MixedArgumentTypeCoercion>
   </file>
   <file src="src/ConfigPostProcessor.php">
     <InvalidArgument occurrences="1">
@@ -59,7 +62,7 @@
     <MixedArrayTypeCoercion occurrences="1">
       <code>$aliases[$name]</code>
     </MixedArrayTypeCoercion>
-    <MixedAssignment occurrences="25">
+    <MixedAssignment occurrences="27">
       <code>$a[$key]</code>
       <code>$a[$key]</code>
       <code>$a[]</code>
@@ -75,8 +78,10 @@
       <code>$key</code>
       <code>$name</code>
       <code>$newKey</code>
+      <code>$newValue</code>
       <code>$notIn[]</code>
       <code>$result</code>
+      <code>$rewritten[$key]</code>
       <code>$rewritten[$key]</code>
       <code>$rewritten[$newKey]</code>
       <code>$rewritten[$newKey][]</code>

@@ -2,6 +2,8 @@
 
 namespace Laminas\ZendFrameworkBridge;
 
+use RuntimeException;
+
 use function array_intersect_key;
 use function array_key_exists;
 use function array_pop;
@@ -35,6 +37,7 @@ class ConfigPostProcessor
 
     public function __construct()
     {
+        // This value will be reset during __invoke(); setting here to prevent Psalm errors.
         $this->replacements = new Replacements();
 
         /* Define the rulesets for replacements.
@@ -96,9 +99,16 @@ class ConfigPostProcessor
      */
     public function __invoke(array $config, array $keys = [])
     {
-        $rewritten = [];
+        $this->replacements = $this->initializeReplacements($config);
+        $rewritten          = [];
 
         foreach ($config as $key => $value) {
+            // Do not rewrite configuration for the bridge
+            if ($key === 'laminas-zendframework-bridge') {
+                $rewritten[$key] = $value;
+                continue;
+            }
+
             // Determine new key from replacements
             $newKey = is_string($key) ? $this->replace($key, $keys) : $key;
 
@@ -422,5 +432,33 @@ class ConfigPostProcessor
         }
 
         return $config;
+    }
+
+    private function initializeReplacements(array $config): Replacements
+    {
+        $replacements = $config['laminas-zendframework-bridge']['replacements'] ?? [];
+        if (! is_array($replacements)) {
+            throw new RuntimeException(sprintf(
+                'Invalid laminas-zendframework-bridge.replacements configuration;'
+                . ' value MUST be an array; received %s',
+                is_object($replacements) ? get_class($replacements) : gettype($replacements)
+            ));
+        }
+
+        foreach ($replacements as $lookup => $replacement) {
+            if (
+                ! is_string($lookup)
+                || ! is_string($replacement)
+                || preg_match('/^\s*$/', $lookup)
+                || preg_match('/^\s*$/', $replacement)
+            ) {
+                throw new RuntimeException(
+                    'Invalid lookup or replacement in laminas-zendframework-bridge.replacements configuration;'
+                    . ' all keys and values MUST be non-empty strings.'
+                );
+            }
+        }
+
+        return new Replacements($replacements);
     }
 }
