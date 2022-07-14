@@ -2,6 +2,10 @@
 
 [![Build Status](https://github.com/laminas/laminas-zendframework-bridge/workflows/Continuous%20Integration/badge.svg)](https://github.com/laminas/laminas-zendframework-bridge/actions?query=workflow%3A"Continuous+Integration")
 
+> This package is considered feature-complete, and is now in **security-only** maintenance mode, following a [decision by the Technical Steering Committee](https://github.com/laminas/technical-steering-committee/blob/6dc4d8a798021f690ad8c65d0d9a0c4b21835a1e/meetings/minutes/2022-07-11-TSC-Minutes.md#future-of-the-migration-layer).
+> If you have a security issue, please [follow our security reporting guidelines](https://getlaminas.org/security/).
+> If you wish to take on the role of maintainer, please [nominate yourself](https://github.com/laminas/technical-steering-committee/issues/new?assignees=&labels=Nomination&template=Maintainer_Nomination.md&title=%5BNOMINATION%5D%5BMAINTAINER%5D%3A+%7Bname+of+person+being+nominated%7D)
+
 > ## 🇷🇺 Русским гражданам
 > 
 > Мы, участники Laminas, родились и живем в разных странах. У многих из нас есть друзья, родственники и коллеги как в России, так и в Украине. Некоторые из нас родились в России. Некоторые из нас живут в России. У некоторых бабушки и дедушки сражались с фашистами во Второй мировой войне. Здесь никто не поддерживает фашизм.
