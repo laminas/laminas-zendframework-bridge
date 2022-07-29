@@ -29,7 +29,10 @@ class ConfigPostProcessor
         'zf-apigility'    => 'api-tools',
     ];
 
-    /** @var Replacements */
+    /**
+     * @psalm-suppress PropertyNotSetInConstructor Initialized during call to the only public method __invoke()
+     * @var Replacements
+     */
     private $replacements;
 
     /** @var callable[] */
@@ -37,9 +40,6 @@ class ConfigPostProcessor
 
     public function __construct()
     {
-        // This value will be reset during __invoke(); setting here to prevent Psalm errors.
-        $this->replacements = new Replacements();
-
         /* Define the rulesets for replacements.
          *
          * Each ruleset has the following signature:
@@ -86,7 +86,7 @@ class ConfigPostProcessor
             // Array values
             function ($value, array $keys) {
                 return $keys !== [] && is_array($value)
-                    ? [$this, '__invoke']
+                    ? [$this, 'processConfig']
                     : null;
             },
         ];
@@ -100,51 +100,7 @@ class ConfigPostProcessor
     public function __invoke(array $config, array $keys = [])
     {
         $this->replacements = $this->initializeReplacements($config);
-        $rewritten          = [];
-
-        foreach ($config as $key => $value) {
-            // Do not rewrite configuration for the bridge
-            if ($key === 'laminas-zendframework-bridge') {
-                $rewritten[$key] = $value;
-                continue;
-            }
-
-            // Determine new key from replacements
-            $newKey = is_string($key) ? $this->replace($key, $keys) : $key;
-
-            // Keep original values with original key, if the key has changed, but only at the top-level.
-            if (empty($keys) && $newKey !== $key) {
-                $rewritten[$key] = $value;
-            }
-
-            // Perform value replacements, if any
-            $newValue = $this->replace($value, $keys, $newKey);
-
-            // Key does not already exist and/or is not an array value
-            if (! array_key_exists($newKey, $rewritten) || ! is_array($rewritten[$newKey])) {
-                // Do not overwrite existing values with null values
-                $rewritten[$newKey] = array_key_exists($newKey, $rewritten) && null === $newValue
-                    ? $rewritten[$newKey]
-                    : $newValue;
-                continue;
-            }
-
-            // New value is null; nothing to do.
-            if (null === $newValue) {
-                continue;
-            }
-
-            // Key already exists as an array value, but $value is not an array
-            if (! is_array($newValue)) {
-                $rewritten[$newKey][] = $newValue;
-                continue;
-            }
-
-            // Key already exists as an array value, and $value is also an array
-            $rewritten[$newKey] = static::merge($rewritten[$newKey], $newValue);
-        }
-
-        return $rewritten;
+        return $this->processConfig($config, $keys);
     }
 
     /**
@@ -270,7 +226,7 @@ class ConfigPostProcessor
                 continue;
             }
 
-            $config[$key] = is_array($data) ? $this->__invoke($data, [$key]) :  $data;
+            $config[$key] = is_array($data) ? $this->processConfig($data, [$key]) :  $data;
         }
 
         return $config;
@@ -414,7 +370,7 @@ class ConfigPostProcessor
             }
 
             $replacedService = $this->replacements->replace($service);
-            $serviceInstance = is_array($serviceInstance) ? $this->__invoke($serviceInstance) : $serviceInstance;
+            $serviceInstance = is_array($serviceInstance) ? $this->processConfig($serviceInstance) : $serviceInstance;
 
             $config['services'][$replacedService] = $serviceInstance;
 
@@ -460,5 +416,58 @@ class ConfigPostProcessor
         }
 
         return new Replacements($replacements);
+    }
+
+    /**
+     * @param string[] $keys Hierarchy of keys, for determining location in
+     *     nested configuration.
+     */
+    private function processConfig(array $config, array $keys = []): array
+    {
+        $rewritten = [];
+
+        foreach ($config as $key => $value) {
+            // Do not rewrite configuration for the bridge
+            if ($key === 'laminas-zendframework-bridge') {
+                $rewritten[$key] = $value;
+                continue;
+            }
+
+            // Determine new key from replacements
+            $newKey = is_string($key) ? $this->replace($key, $keys) : $key;
+
+            // Keep original values with original key, if the key has changed, but only at the top-level.
+            if (empty($keys) && $newKey !== $key) {
+                $rewritten[$key] = $value;
+            }
+
+            // Perform value replacements, if any
+            $newValue = $this->replace($value, $keys, $newKey);
+
+            // Key does not already exist and/or is not an array value
+            if (!array_key_exists($newKey, $rewritten) || !is_array($rewritten[$newKey])) {
+                // Do not overwrite existing values with null values
+                $rewritten[$newKey] = array_key_exists($newKey, $rewritten) && null === $newValue
+                    ? $rewritten[$newKey]
+                    : $newValue;
+                continue;
+            }
+
+            // New value is null; nothing to do.
+            if (null === $newValue) {
+                continue;
+            }
+
+            // Key already exists as an array value, but $value is not an array
+            if (!is_array($newValue)) {
+                $rewritten[$newKey][] = $newValue;
+                continue;
+            }
+
+            // Key already exists as an array value, and $value is also an array
+            $rewritten[$newKey] = static::merge($rewritten[$newKey], $newValue);
+        }
+
+        return $rewritten;
     }
 }
