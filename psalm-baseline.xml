@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.9.3@4c262932602b9bbab5020863d1eb22d49de0dbf4">
+<files psalm-version="4.21.0@d8bec4c7aaee111a532daec32fb09de5687053d1">
   <file src="config/replacements.php">
     <DuplicateArrayKey occurrences="3">
       <code>'ZendAcl' =&gt; 'LaminasAcl'</code>
@@ -41,9 +41,7 @@
       <code>$newKey</code>
       <code>$target</code>
     </MixedArgument>
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>[$key]</code>
-    </MixedArgumentTypeCoercion>
+    <MixedArgumentTypeCoercion occurrences="1"/>
     <MixedArrayAssignment occurrences="4">
       <code>$config[$key]</code>
       <code>$config['aliases'][$alias]</code>
@@ -62,7 +60,7 @@
     <MixedArrayTypeCoercion occurrences="1">
       <code>$aliases[$name]</code>
     </MixedArrayTypeCoercion>
-    <MixedAssignment occurrences="27">
+    <MixedAssignment occurrences="26">
       <code>$a[$key]</code>
       <code>$a[$key]</code>
       <code>$a[]</code>
@@ -78,7 +76,6 @@
       <code>$key</code>
       <code>$name</code>
       <code>$newKey</code>
-      <code>$newValue</code>
       <code>$notIn[]</code>
       <code>$result</code>
       <code>$rewritten[$key]</code>
