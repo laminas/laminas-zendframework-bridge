@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.21.0@d8bec4c7aaee111a532daec32fb09de5687053d1">
+<files psalm-version="5.2.0@fb685a16df3050d4c18d8a4100fe83abe6458cba">
   <file src="config/replacements.php">
     <DuplicateArrayKey occurrences="3">
       <code>'ZendAcl' =&gt; 'LaminasAcl'</code>
@@ -121,14 +121,6 @@
     <InvalidStringClass occurrences="1">
       <code>new $legacy()</code>
     </InvalidStringClass>
-    <MissingReturnType occurrences="3">
-      <code>testLegacyClassIsAliasToLaminas</code>
-      <code>testReverseAliasCreated</code>
-      <code>testTypeHint</code>
-    </MissingReturnType>
-    <PossiblyInvalidArgument occurrences="1">
-      <code>testLegacyClassIsAliasToLaminas</code>
-    </PossiblyInvalidArgument>
   </file>
   <file src="test/ConfigPostProcessorTest.php">
     <MissingReturnType occurrences="4">

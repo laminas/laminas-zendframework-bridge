@@ -21,7 +21,7 @@
         "phpunit/phpunit": "^9.5.26",
         "psalm/plugin-phpunit": "^0.18.0",
         "squizlabs/php_codesniffer": "^3.7.1",
-        "vimeo/psalm": "^4.29.0"
+        "vimeo/psalm": "^5.0.0"
     },
     "autoload": {
         "files": [
