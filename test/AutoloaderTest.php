@@ -18,9 +18,9 @@ class AutoloaderTest extends TestCase
     private const PATH_TO_AUTOLOADER = __DIR__ . '/../vendor/autoload.php';
 
     /**
-     * @return array[]
+     * @return list<array{0: string, 1: string, 2?:bool}>
      */
-    public function classProvider()
+    public static function classProvider(): array
     {
         return [
             // phpcs:disable Generic.Files.LineLength.TooLong
@@ -71,13 +71,8 @@ class AutoloaderTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider classProvider
-     * @param string $legacy
-     * @param string $actual
-     * @param null|bool $isInterface
-     */
-    public function testLegacyClassIsAliasToLaminas($legacy, $actual, $isInterface = false)
+    /** @dataProvider classProvider */
+    public function testLegacyClassIsAliasToLaminas(string $legacy, string $actual, bool $isInterface = false): void
     {
         self::assertTrue($isInterface ? interface_exists($legacy) : class_exists($legacy));
         if (! $isInterface) {
@@ -85,7 +80,7 @@ class AutoloaderTest extends TestCase
         }
     }
 
-    public function testTypeHint()
+    public function testTypeHint(): void
     {
         self::assertTrue(class_exists('Laminas\LegacyTypeHint'));
         new LegacyTypeHint(new \Laminas\Example());
@@ -94,7 +89,7 @@ class AutoloaderTest extends TestCase
     /**
      * @psalm-return array<array-key, array{0: string, 1: string}>
      */
-    public function reverseClassProvider(): array
+    public static function reverseClassProvider(): array
     {
         return [
             // Apigility
@@ -134,13 +129,8 @@ class AutoloaderTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider reverseClassProvider
-     *
-     * @param string $actual
-     * @param string $legacy
-     */
-    public function testReverseAliasCreated($actual, $legacy)
+    /** @dataProvider reverseClassProvider */
+    public function testReverseAliasCreated(string $actual, string $legacy): void
     {
         self::assertTrue(class_exists($actual));
         self::assertTrue(class_exists($legacy));
