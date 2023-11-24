@@ -14,6 +14,7 @@
         "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
         "forum": "https://discourse.laminas.dev/"
     },
+    "abandoned": true,
     "require": {
         "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
     },
