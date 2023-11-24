@@ -14,7 +14,7 @@ class ConfigPostProcessorTest extends TestCase
     /**
      * @return iterable
      */
-    public function configurations()
+    public static function configurations(): iterable
     {
         yield 'Acelaya Expressive Slim Router' => ['ExpressiveSlimRouterConfig.php'];
         yield 'mwop.net App module config' => ['MwopNetAppConfig.php'];
@@ -33,9 +33,8 @@ class ConfigPostProcessorTest extends TestCase
 
     /**
      * @dataProvider configurations
-     * @param string $configFile
      */
-    public function testRewritesNestedKeys($configFile)
+    public function testRewritesNestedKeys(string $configFile): void
     {
         $configLocation         = sprintf('%s/TestAsset/ConfigPostProcessor/%s', __DIR__, $configFile);
         $expectedResultLocation = $configLocation . '.out';
@@ -46,7 +45,7 @@ class ConfigPostProcessorTest extends TestCase
         $this->assertSame($expected, $processor($config));
     }
 
-    public function testServiceManagerServiceInstancesCanBeHandled()
+    public function testServiceManagerServiceInstancesCanBeHandled(): void
     {
         $instance = new stdClass();
         $config = [
@@ -76,13 +75,13 @@ class ConfigPostProcessorTest extends TestCase
      * @dataProvider invalidServiceManagerConfiguration
      * @param array<string,array<string,mixed>> $config
      */
-    public function testWillSkipInvalidConfigurations($config)
+    public function testWillSkipInvalidConfigurations(array $config): void
     {
         $processor = new ConfigPostProcessor();
         self::assertSame($config, $processor($config));
     }
 
-    public function invalidServiceManagerConfiguration()
+    public static function invalidServiceManagerConfiguration(): iterable
     {
         yield 'non array values in dependency config' => [
             [
@@ -184,7 +183,7 @@ class ConfigPostProcessorTest extends TestCase
     }
 
     /** @psalm-return iterable<string, array{0: array, 1: string}> */
-    public function invalidReplacementsConfiguration(): iterable
+    public static function invalidReplacementsConfiguration(): iterable
     {
         yield 'non-array-value' => [
             ['laminas-zendframework-bridge' => ['replacements' => new stdClass()]],
