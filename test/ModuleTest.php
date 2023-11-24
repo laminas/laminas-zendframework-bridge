@@ -9,7 +9,7 @@ use function sprintf;
 
 class ModuleTest extends TestCase
 {
-    public function testInitRegistersListenerWithEventManager()
+    public function testInitRegistersListenerWithEventManager(): void
     {
         $eventManager = new TestAsset\EventManager();
         $moduleManager = new TestAsset\ModuleManager($eventManager);
@@ -26,7 +26,7 @@ class ModuleTest extends TestCase
     /**
      * @return iterable
      */
-    public function configurations()
+    public static function configurations(): iterable
     {
         yield 'Acelaya Expressive Slim Router' => ['ExpressiveSlimRouterConfig.php'];
         yield 'mwop.net App module config' => ['MwopNetAppConfig.php'];
@@ -37,7 +37,7 @@ class ModuleTest extends TestCase
      *
      * @param string $configFile
      */
-    public function testOnMergeConfigProcessesAndReplacesConfigurationPulledFromListener($configFile)
+    public function testOnMergeConfigProcessesAndReplacesConfigurationPulledFromListener(string $configFile): void
     {
         $configFile = sprintf('%s/TestAsset/ConfigPostProcessor/%s', __DIR__, $configFile);
         $expectationsFile = $configFile . '.out';

@@ -144,12 +144,6 @@
     </InvalidStringClass>
   </file>
   <file src="test/ConfigPostProcessorTest.php">
-    <MissingReturnType>
-      <code>invalidServiceManagerConfiguration</code>
-      <code>testRewritesNestedKeys</code>
-      <code>testServiceManagerServiceInstancesCanBeHandled</code>
-      <code>testWillSkipInvalidConfigurations</code>
-    </MissingReturnType>
     <MixedArgument>
       <code>$config</code>
     </MixedArgument>
@@ -158,6 +152,7 @@
       <code>$expected</code>
     </MixedAssignment>
     <MixedInferredReturnType>
+      <code>iterable</code>
       <code>iterable</code>
     </MixedInferredReturnType>
     <UnresolvableInclude>
@@ -170,10 +165,6 @@
       <code>$event</code>
       <code>$moduleManager</code>
     </InvalidArgument>
-    <MissingReturnType>
-      <code>testInitRegistersListenerWithEventManager</code>
-      <code>testOnMergeConfigProcessesAndReplacesConfigurationPulledFromListener</code>
-    </MissingReturnType>
     <MixedArgument>
       <code>$config</code>
     </MixedArgument>
@@ -190,9 +181,6 @@
     </UnresolvableInclude>
   </file>
   <file src="test/ReplacementsTest.php">
-    <MissingReturnType>
-      <code>testEdgeCases</code>
-    </MissingReturnType>
     <MixedInferredReturnType>
       <code>iterable</code>
     </MixedInferredReturnType>

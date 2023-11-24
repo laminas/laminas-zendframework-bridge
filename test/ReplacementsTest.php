@@ -12,7 +12,7 @@ class ReplacementsTest extends TestCase
     /**
      * @return iterable
      */
-    public function edgeCases()
+    public static function edgeCases(): iterable
     {
         yield 'Example class' => [
             file_get_contents(__DIR__ . '/TestAsset/Replacements/TestClass.php'),
@@ -116,7 +116,7 @@ class ReplacementsTest extends TestCase
      * @param string $string
      * @param string $expected
      */
-    public function testEdgeCases($string, $expected)
+    public function testEdgeCases(string $string, string $expected): void
     {
         $replacements = new Replacements();
         $this->assertSame($expected, $replacements->replace($string));
