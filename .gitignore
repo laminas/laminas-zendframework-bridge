@@ -1,2 +1,3 @@
 /.phpunit.result.cache
+/.psalm-cache
 /vendor/
