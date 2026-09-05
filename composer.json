@@ -22,7 +22,7 @@
         "phpunit/phpunit": "^10.4",
         "psalm/plugin-phpunit": "^0.18.0",
         "squizlabs/php_codesniffer": "^3.7.1",
-        "vimeo/psalm": "^5.16.0"
+        "vimeo/psalm": "^6.0.0"
     },
     "autoload": {
         "files": [
